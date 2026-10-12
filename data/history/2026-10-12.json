@@ -1,7 +1,7 @@
 {
  "trade_date": "2026-10-12",
- "generated_at": "2026-10-12 09:09:17",
- "elapsed_sec": 1180.9,
+ "generated_at": "2026-10-12 17:04:24",
+ "elapsed_sec": 301.0,
  "params": {
   "buy_kinds": [
    "2",
@@ -4674,37 +4674,6 @@
    "score": 44
   },
   {
-   "code": "688665",
-   "name": "四方光电",
-   "type": "stock",
-   "market": "科创板",
-   "price": 40.36,
-   "change_pct": -1.8,
-   "pe_dynamic": 30.576,
-   "turnover": 0.38127,
-   "amount": 15643986.0,
-   "total_mv": 408412.288276,
-   "m30": null,
-   "m5": {
-    "kind": "2",
-    "label": "2买",
-    "price": 40.1,
-    "dt": "2026-10-12 14:50:00",
-    "bars_ago": 2,
-    "detail": "背驰一买 40.06 后回升至 40.89，回抽至 40.10 未破前低，动能比 0.57（背驰）",
-    "zs_zg": 41.52,
-    "zs_zd": 41.07,
-    "zs_start": "2026-09-30 14:55:00",
-    "zs_end": "2026-10-09 14:50:00",
-    "zs_bi_count": 5
-   },
-   "resonance": false,
-   "tags": [
-    "5分2买"
-   ],
-   "score": 44
-  },
-  {
    "code": "688667",
    "name": "菱电电控",
    "type": "stock",
@@ -4728,6 +4697,37 @@
     "zs_start": "2026-09-29 13:10:00",
     "zs_end": "2026-10-09 14:50:00",
     "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分2买"
+   ],
+   "score": 44
+  },
+  {
+   "code": "688665",
+   "name": "四方光电",
+   "type": "stock",
+   "market": "科创板",
+   "price": 40.36,
+   "change_pct": -1.8,
+   "pe_dynamic": 30.576,
+   "turnover": 0.38127,
+   "amount": 15643986.0,
+   "total_mv": 408412.288276,
+   "m30": null,
+   "m5": {
+    "kind": "2",
+    "label": "2买",
+    "price": 40.1,
+    "dt": "2026-10-12 14:50:00",
+    "bars_ago": 2,
+    "detail": "背驰一买 40.06 后回升至 40.89，回抽至 40.10 未破前低，动能比 0.57（背驰）",
+    "zs_zg": 41.52,
+    "zs_zd": 41.07,
+    "zs_start": "2026-09-30 14:55:00",
+    "zs_end": "2026-10-09 14:50:00",
+    "zs_bi_count": 5
    },
    "resonance": false,
    "tags": [
@@ -5790,37 +5790,6 @@
    "score": 42
   },
   {
-   "code": "601211",
-   "name": "国泰海通",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 17.2,
-   "change_pct": 2.32,
-   "pe_dynamic": 9.885,
-   "turnover": 0.48476,
-   "amount": 1113185064.0,
-   "total_mv": 30239419.67056,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 17.07,
-    "dt": "2026-10-12 14:20:00",
-    "bars_ago": 8,
-    "detail": "向上离开中枢（上沿 16.91，创新高 17.17），回调至 17.07 未回中枢",
-    "zs_zg": 16.91,
-    "zs_zd": 16.79,
-    "zs_start": "2026-10-09 10:45:00",
-    "zs_end": "2026-10-09 15:00:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 42
-  },
-  {
    "code": "601229",
    "name": "上海银行",
    "type": "stock",
@@ -5848,6 +5817,37 @@
    "resonance": false,
    "tags": [
     "30分2买"
+   ],
+   "score": 42
+  },
+  {
+   "code": "601211",
+   "name": "国泰海通",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 17.2,
+   "change_pct": 2.32,
+   "pe_dynamic": 9.885,
+   "turnover": 0.48476,
+   "amount": 1113185064.0,
+   "total_mv": 30239419.67056,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 17.07,
+    "dt": "2026-10-12 14:20:00",
+    "bars_ago": 8,
+    "detail": "向上离开中枢（上沿 16.91，创新高 17.17），回调至 17.07 未回中枢",
+    "zs_zg": 16.91,
+    "zs_zd": 16.79,
+    "zs_start": "2026-10-09 10:45:00",
+    "zs_end": "2026-10-09 15:00:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
    ],
    "score": 42
   },
@@ -6503,37 +6503,6 @@
    "score": 40
   },
   {
-   "code": "002879",
-   "name": "长缆科技",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 15.89,
-   "change_pct": -2.873,
-   "pe_dynamic": 20.372,
-   "turnover": 3.40234,
-   "amount": 75086643.0,
-   "total_mv": 306848.03996,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 15.86,
-    "dt": "2026-10-12 14:55:00",
-    "bars_ago": 1,
-    "detail": "向下离开中枢下沿 16.00 且出现背驰，动能比 0.20（背驰）",
-    "zs_zg": 16.1,
-    "zs_zd": 16.0,
-    "zs_start": "2026-10-09 10:20:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 40
-  },
-  {
    "code": "002880",
    "name": "卫光生物",
    "type": "stock",
@@ -6556,6 +6525,37 @@
     "zs_zd": 22.01,
     "zs_start": "2026-10-09 11:30:00",
     "zs_end": "2026-10-12 11:10:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 40
+  },
+  {
+   "code": "002879",
+   "name": "长缆科技",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 15.89,
+   "change_pct": -2.873,
+   "pe_dynamic": 20.372,
+   "turnover": 3.40234,
+   "amount": 75086643.0,
+   "total_mv": 306848.03996,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 15.86,
+    "dt": "2026-10-12 14:55:00",
+    "bars_ago": 1,
+    "detail": "向下离开中枢下沿 16.00 且出现背驰，动能比 0.20（背驰）",
+    "zs_zg": 16.1,
+    "zs_zd": 16.0,
+    "zs_start": "2026-10-09 10:20:00",
+    "zs_end": "2026-10-12 11:30:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -8394,37 +8394,6 @@
    "score": 39
   },
   {
-   "code": "000417",
-   "name": "合百集团",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 5.6,
-   "change_pct": -2.609,
-   "pe_dynamic": 27.264,
-   "turnover": 2.59644,
-   "amount": 115014556.0,
-   "total_mv": 436735.152,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 5.62,
-    "dt": "2026-10-12 10:10:00",
-    "bars_ago": 40,
-    "detail": "向上离开中枢（上沿 5.59，创新高 5.86），回调至 5.62 未回中枢",
-    "zs_zg": 5.59,
-    "zs_zd": 5.54,
-    "zs_start": "2026-10-08 10:15:00",
-    "zs_end": "2026-10-09 10:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
    "code": "000419",
    "name": "通程控股",
    "type": "stock",
@@ -8448,6 +8417,37 @@
     "zs_start": "2026-09-28 11:15:00",
     "zs_end": "2026-10-09 10:20:00",
     "zs_bi_count": 6
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
+   "code": "000417",
+   "name": "合百集团",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 5.6,
+   "change_pct": -2.609,
+   "pe_dynamic": 27.264,
+   "turnover": 2.59644,
+   "amount": 115014556.0,
+   "total_mv": 436735.152,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 5.62,
+    "dt": "2026-10-12 10:10:00",
+    "bars_ago": 40,
+    "detail": "向上离开中枢（上沿 5.59，创新高 5.86），回调至 5.62 未回中枢",
+    "zs_zg": 5.59,
+    "zs_zd": 5.54,
+    "zs_start": "2026-10-08 10:15:00",
+    "zs_end": "2026-10-09 10:20:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -9045,6 +9045,37 @@
    "score": 39
   },
   {
+   "code": "002073",
+   "name": "软控股份",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 5.7,
+   "change_pct": -0.697,
+   "pe_dynamic": 14.423,
+   "turnover": 0.94442,
+   "amount": 54769847.0,
+   "total_mv": 583970.61621,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 5.68,
+    "dt": "2026-10-12 13:55:00",
+    "bars_ago": 14,
+    "detail": "向上离开中枢（上沿 5.66，创新高 5.78），回调至 5.68 未回中枢",
+    "zs_zg": 5.66,
+    "zs_zd": 5.62,
+    "zs_start": "2026-09-29 09:50:00",
+    "zs_end": "2026-10-08 14:35:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
    "code": "002062",
    "name": "宏润建设",
    "type": "stock",
@@ -9098,37 +9129,6 @@
     "zs_zd": 6.39,
     "zs_start": "2026-10-08 09:40:00",
     "zs_end": "2026-10-09 10:45:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
-   "code": "002073",
-   "name": "软控股份",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 5.7,
-   "change_pct": -0.697,
-   "pe_dynamic": 14.423,
-   "turnover": 0.94442,
-   "amount": 54769847.0,
-   "total_mv": 583970.61621,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 5.68,
-    "dt": "2026-10-12 13:55:00",
-    "bars_ago": 14,
-    "detail": "向上离开中枢（上沿 5.66，创新高 5.78），回调至 5.68 未回中枢",
-    "zs_zg": 5.66,
-    "zs_zd": 5.62,
-    "zs_start": "2026-09-29 09:50:00",
-    "zs_end": "2026-10-08 14:35:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -9262,6 +9262,37 @@
    "score": 39
   },
   {
+   "code": "002300",
+   "name": "太阳电缆",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 7.57,
+   "change_pct": 1.203,
+   "pe_dynamic": 65.769,
+   "turnover": 5.18745,
+   "amount": 287521347.0,
+   "total_mv": 546806.6109,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 7.5,
+    "dt": "2026-10-12 14:25:00",
+    "bars_ago": 7,
+    "detail": "向上离开中枢（上沿 7.45，创新高 7.97），回调至 7.50 未回中枢",
+    "zs_zg": 7.45,
+    "zs_zd": 7.39,
+    "zs_start": "2026-10-08 15:00:00",
+    "zs_end": "2026-10-09 14:05:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
    "code": "002299",
    "name": "圣农发展",
    "type": "stock",
@@ -9293,28 +9324,28 @@
    "score": 39
   },
   {
-   "code": "002300",
-   "name": "太阳电缆",
+   "code": "002322",
+   "name": "理工能科",
    "type": "stock",
    "market": "深市主板",
-   "price": 7.57,
-   "change_pct": 1.203,
-   "pe_dynamic": 65.769,
-   "turnover": 5.18745,
-   "amount": 287521347.0,
-   "total_mv": 546806.6109,
+   "price": 11.89,
+   "change_pct": -0.502,
+   "pe_dynamic": 19.492,
+   "turnover": 1.23627,
+   "amount": 51744022.0,
+   "total_mv": 434612.75633,
    "m30": null,
    "m5": {
     "kind": "3",
     "label": "3买",
-    "price": 7.5,
-    "dt": "2026-10-12 14:25:00",
-    "bars_ago": 7,
-    "detail": "向上离开中枢（上沿 7.45，创新高 7.97），回调至 7.50 未回中枢",
-    "zs_zg": 7.45,
-    "zs_zd": 7.39,
-    "zs_start": "2026-10-08 15:00:00",
-    "zs_end": "2026-10-09 14:05:00",
+    "price": 11.82,
+    "dt": "2026-10-12 10:15:00",
+    "bars_ago": 40,
+    "detail": "向上离开中枢（上沿 11.60，创新高 12.02），回调至 11.82 未回中枢",
+    "zs_zg": 11.6,
+    "zs_zd": 11.5,
+    "zs_start": "2026-10-08 11:05:00",
+    "zs_end": "2026-10-09 11:20:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -9347,37 +9378,6 @@
     "zs_start": "2026-09-30 13:55:00",
     "zs_end": "2026-10-09 10:20:00",
     "zs_bi_count": 5
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
-   "code": "002322",
-   "name": "理工能科",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 11.89,
-   "change_pct": -0.502,
-   "pe_dynamic": 19.492,
-   "turnover": 1.23627,
-   "amount": 51744022.0,
-   "total_mv": 434612.75633,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 11.82,
-    "dt": "2026-10-12 10:15:00",
-    "bars_ago": 40,
-    "detail": "向上离开中枢（上沿 11.60，创新高 12.02），回调至 11.82 未回中枢",
-    "zs_zg": 11.6,
-    "zs_zd": 11.5,
-    "zs_start": "2026-10-08 11:05:00",
-    "zs_end": "2026-10-09 11:20:00",
-    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -10657,6 +10657,37 @@
    "score": 39
   },
   {
+   "code": "301110",
+   "name": "青木科技",
+   "type": "stock",
+   "market": "创业板",
+   "price": 36.25,
+   "change_pct": 2.343,
+   "pe_dynamic": 27.262,
+   "turnover": 4.65715,
+   "amount": 153212105.0,
+   "total_mv": 469616.81425,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 36.38,
+    "dt": "2026-10-12 11:25:00",
+    "bars_ago": 25,
+    "detail": "向上离开中枢（上沿 34.88，创新高 36.60），回调至 36.38 未回中枢",
+    "zs_zg": 34.88,
+    "zs_zd": 34.6,
+    "zs_start": "2026-09-30 14:35:00",
+    "zs_end": "2026-10-09 11:15:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
    "code": "301101",
    "name": "明月镜片",
    "type": "stock",
@@ -10711,37 +10742,6 @@
     "zs_start": "2026-09-30 11:10:00",
     "zs_end": "2026-10-09 10:15:00",
     "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
-   "code": "301110",
-   "name": "青木科技",
-   "type": "stock",
-   "market": "创业板",
-   "price": 36.25,
-   "change_pct": 2.343,
-   "pe_dynamic": 27.262,
-   "turnover": 4.65715,
-   "amount": 153212105.0,
-   "total_mv": 469616.81425,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 36.38,
-    "dt": "2026-10-12 11:25:00",
-    "bars_ago": 25,
-    "detail": "向上离开中枢（上沿 34.88，创新高 36.60），回调至 36.38 未回中枢",
-    "zs_zg": 34.88,
-    "zs_zd": 34.6,
-    "zs_start": "2026-09-30 14:35:00",
-    "zs_end": "2026-10-09 11:15:00",
-    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -11029,37 +11029,6 @@
    "score": 39
   },
   {
-   "code": "301616",
-   "name": "浙江华业",
-   "type": "stock",
-   "market": "创业板",
-   "price": 38.18,
-   "change_pct": 2.304,
-   "pe_dynamic": 14.548,
-   "turnover": 4.86872,
-   "amount": 52609507.0,
-   "total_mv": 305440.0,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 37.89,
-    "dt": "2026-10-12 10:15:00",
-    "bars_ago": 39,
-    "detail": "向上离开中枢（上沿 37.39，创新高 38.79），回调至 37.89 未回中枢",
-    "zs_zg": 37.39,
-    "zs_zd": 36.42,
-    "zs_start": "2026-09-30 15:00:00",
-    "zs_end": "2026-10-09 11:15:00",
-    "zs_bi_count": 6
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
    "code": "301633",
    "name": "港迪技术",
    "type": "stock",
@@ -11083,6 +11052,37 @@
     "zs_start": "2026-10-08 13:25:00",
     "zs_end": "2026-10-09 14:05:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
+   "code": "301616",
+   "name": "浙江华业",
+   "type": "stock",
+   "market": "创业板",
+   "price": 38.18,
+   "change_pct": 2.304,
+   "pe_dynamic": 14.548,
+   "turnover": 4.86872,
+   "amount": 52609507.0,
+   "total_mv": 305440.0,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 37.89,
+    "dt": "2026-10-12 10:15:00",
+    "bars_ago": 39,
+    "detail": "向上离开中枢（上沿 37.39，创新高 38.79），回调至 37.89 未回中枢",
+    "zs_zg": 37.39,
+    "zs_zd": 36.42,
+    "zs_start": "2026-09-30 15:00:00",
+    "zs_end": "2026-10-09 11:15:00",
+    "zs_bi_count": 6
    },
    "resonance": false,
    "tags": [
@@ -12083,37 +12083,6 @@
    "score": 39
   },
   {
-   "code": "601717",
-   "name": "中创智领",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 13.92,
-   "change_pct": 0.943,
-   "pe_dynamic": 5.689,
-   "turnover": 1.35447,
-   "amount": 288741355.0,
-   "total_mv": 2485276.70256,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 13.66,
-    "dt": "2026-10-12 10:20:00",
-    "bars_ago": 39,
-    "detail": "向上离开中枢（上沿 13.38，创新高 13.79），回调至 13.66 未回中枢",
-    "zs_zg": 13.38,
-    "zs_zd": 13.18,
-    "zs_start": "2026-09-30 11:05:00",
-    "zs_end": "2026-10-09 10:40:00",
-    "zs_bi_count": 8
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
    "code": "601766",
    "name": "中国中车",
    "type": "stock",
@@ -12137,6 +12106,37 @@
     "zs_start": "2026-09-24 10:00:00",
     "zs_end": "2026-10-08 13:40:00",
     "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
+   "code": "601717",
+   "name": "中创智领",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 13.92,
+   "change_pct": 0.943,
+   "pe_dynamic": 5.689,
+   "turnover": 1.35447,
+   "amount": 288741355.0,
+   "total_mv": 2485276.70256,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 13.66,
+    "dt": "2026-10-12 10:20:00",
+    "bars_ago": 39,
+    "detail": "向上离开中枢（上沿 13.38，创新高 13.79），回调至 13.66 未回中枢",
+    "zs_zg": 13.38,
+    "zs_zd": 13.18,
+    "zs_start": "2026-09-30 11:05:00",
+    "zs_end": "2026-10-09 10:40:00",
+    "zs_bi_count": 8
    },
    "resonance": false,
    "tags": [
@@ -12362,37 +12362,6 @@
    "score": 39
   },
   {
-   "code": "603039",
-   "name": "泛微网络",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 34.74,
-   "change_pct": 0.029,
-   "pe_dynamic": 30.474,
-   "turnover": 2.83114,
-   "amount": 302882772.0,
-   "total_mv": 1068738.393204,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 34.2,
-    "dt": "2026-10-12 09:45:00",
-    "bars_ago": 45,
-    "detail": "向上离开中枢（上沿 33.21，创新高 34.96），回调至 34.20 未回中枢",
-    "zs_zg": 33.21,
-    "zs_zd": 32.98,
-    "zs_start": "2026-10-08 11:00:00",
-    "zs_end": "2026-10-09 11:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 39
-  },
-  {
    "code": "603043",
    "name": "广州酒家",
    "type": "stock",
@@ -12416,6 +12385,37 @@
     "zs_start": "2026-10-08 13:55:00",
     "zs_end": "2026-10-09 14:25:00",
     "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 39
+  },
+  {
+   "code": "603039",
+   "name": "泛微网络",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 34.74,
+   "change_pct": 0.029,
+   "pe_dynamic": 30.474,
+   "turnover": 2.83114,
+   "amount": 302882772.0,
+   "total_mv": 1068738.393204,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 34.2,
+    "dt": "2026-10-12 09:45:00",
+    "bars_ago": 45,
+    "detail": "向上离开中枢（上沿 33.21，创新高 34.96），回调至 34.20 未回中枢",
+    "zs_zg": 33.21,
+    "zs_zd": 32.98,
+    "zs_start": "2026-10-08 11:00:00",
+    "zs_end": "2026-10-09 11:20:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -15183,37 +15183,6 @@
    "score": 36
   },
   {
-   "code": "001233",
-   "name": "海安集团",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 43.25,
-   "change_pct": -3.782,
-   "pe_dynamic": 11.09,
-   "turnover": 5.68009,
-   "amount": 94166525.0,
-   "total_mv": 804334.66955,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 43.07,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 43.41 且出现背驰，动能比 0.21（背驰）",
-    "zs_zg": 43.75,
-    "zs_zd": 43.41,
-    "zs_start": "2026-10-09 09:40:00",
-    "zs_end": "2026-10-12 13:25:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
    "code": "001257",
    "name": "盛龙股份",
    "type": "stock",
@@ -15237,6 +15206,37 @@
     "zs_start": "2026-10-09 09:55:00",
     "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "001233",
+   "name": "海安集团",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 43.25,
+   "change_pct": -3.782,
+   "pe_dynamic": 11.09,
+   "turnover": 5.68009,
+   "amount": 94166525.0,
+   "total_mv": 804334.66955,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 43.07,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 43.41 且出现背驰，动能比 0.21（背驰）",
+    "zs_zg": 43.75,
+    "zs_zd": 43.41,
+    "zs_start": "2026-10-09 09:40:00",
+    "zs_end": "2026-10-12 13:25:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -15834,37 +15834,6 @@
    "score": 36
   },
   {
-   "code": "002777",
-   "name": "久远银海",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 13.21,
-   "change_pct": 1.615,
-   "pe_dynamic": 69.526,
-   "turnover": 2.62643,
-   "amount": 139131584.0,
-   "total_mv": 539273.201198,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 12.85,
-    "dt": "2026-10-12 10:05:00",
-    "bars_ago": 41,
-    "detail": "向上离开中枢（上沿 12.55，创新高 13.03），回调至 12.85 未回中枢",
-    "zs_zg": 12.55,
-    "zs_zd": 12.42,
-    "zs_start": "2026-10-08 13:15:00",
-    "zs_end": "2026-10-09 10:45:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 36
-  },
-  {
    "code": "002778",
    "name": "中晟高科",
    "type": "stock",
@@ -15892,6 +15861,37 @@
    "resonance": false,
    "tags": [
     "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "002777",
+   "name": "久远银海",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 13.21,
+   "change_pct": 1.615,
+   "pe_dynamic": 69.526,
+   "turnover": 2.62643,
+   "amount": 139131584.0,
+   "total_mv": 539273.201198,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 12.85,
+    "dt": "2026-10-12 10:05:00",
+    "bars_ago": 41,
+    "detail": "向上离开中枢（上沿 12.55，创新高 13.03），回调至 12.85 未回中枢",
+    "zs_zg": 12.55,
+    "zs_zd": 12.42,
+    "zs_start": "2026-10-08 13:15:00",
+    "zs_end": "2026-10-09 10:45:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
    ],
    "score": 36
   },
@@ -16454,37 +16454,6 @@
    "score": 36
   },
   {
-   "code": "300409",
-   "name": "道氏技术",
-   "type": "stock",
-   "market": "创业板",
-   "price": 17.86,
-   "change_pct": -2.03,
-   "pe_dynamic": 26.296,
-   "turnover": 4.54749,
-   "amount": 573405734.0,
-   "total_mv": 1397096.630058,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 17.82,
-    "dt": "2026-10-12 14:45:00",
-    "bars_ago": 4,
-    "detail": "向下离开中枢下沿 18.03 且出现背驰，动能比 0.69（背驰）",
-    "zs_zg": 18.35,
-    "zs_zd": 18.03,
-    "zs_start": "2026-10-09 10:30:00",
-    "zs_end": "2026-10-12 13:05:00",
-    "zs_bi_count": 5
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
    "code": "300416",
    "name": "苏试试验",
    "type": "stock",
@@ -16507,6 +16476,37 @@
     "zs_zd": 13.29,
     "zs_start": "2026-10-08 10:50:00",
     "zs_end": "2026-10-12 11:30:00",
+    "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "300409",
+   "name": "道氏技术",
+   "type": "stock",
+   "market": "创业板",
+   "price": 17.86,
+   "change_pct": -2.03,
+   "pe_dynamic": 26.296,
+   "turnover": 4.54749,
+   "amount": 573405734.0,
+   "total_mv": 1397096.630058,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 17.82,
+    "dt": "2026-10-12 14:45:00",
+    "bars_ago": 4,
+    "detail": "向下离开中枢下沿 18.03 且出现背驰，动能比 0.69（背驰）",
+    "zs_zg": 18.35,
+    "zs_zd": 18.03,
+    "zs_start": "2026-10-09 10:30:00",
+    "zs_end": "2026-10-12 13:05:00",
     "zs_bi_count": 5
    },
    "resonance": false,
@@ -16981,28 +16981,28 @@
    "score": 36
   },
   {
-   "code": "300785",
-   "name": "值得买",
+   "code": "300792",
+   "name": "壹网壹创",
    "type": "stock",
    "market": "创业板",
-   "price": 36.43,
-   "change_pct": 1.931,
-   "pe_dynamic": 82.795,
-   "turnover": 13.75005,
-   "amount": 642624742.0,
-   "total_mv": 724429.650249,
+   "price": 25.05,
+   "change_pct": 1.458,
+   "pe_dynamic": 55.667,
+   "turnover": 4.69925,
+   "amount": 251193215.0,
+   "total_mv": 595343.95629,
    "m30": null,
    "m5": {
     "kind": "3",
     "label": "3买",
-    "price": 36.22,
-    "dt": "2026-10-12 11:25:00",
-    "bars_ago": 25,
-    "detail": "向上离开中枢（上沿 36.09，创新高 36.60），回调至 36.22 未回中枢",
-    "zs_zg": 36.09,
-    "zs_zd": 34.79,
-    "zs_start": "2026-09-30 13:55:00",
-    "zs_end": "2026-10-12 09:55:00",
+    "price": 24.48,
+    "dt": "2026-10-12 10:15:00",
+    "bars_ago": 39,
+    "detail": "向上离开中枢（上沿 24.16，创新高 24.87），回调至 24.48 未回中枢",
+    "zs_zg": 24.16,
+    "zs_zd": 23.68,
+    "zs_start": "2026-09-30 13:40:00",
+    "zs_end": "2026-10-09 11:20:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -17043,64 +17043,33 @@
    "score": 36
   },
   {
-   "code": "300792",
-   "name": "壹网壹创",
+   "code": "300785",
+   "name": "值得买",
    "type": "stock",
    "market": "创业板",
-   "price": 25.05,
-   "change_pct": 1.458,
-   "pe_dynamic": 55.667,
-   "turnover": 4.69925,
-   "amount": 251193215.0,
-   "total_mv": 595343.95629,
+   "price": 36.43,
+   "change_pct": 1.931,
+   "pe_dynamic": 82.795,
+   "turnover": 13.75005,
+   "amount": 642624742.0,
+   "total_mv": 724429.650249,
    "m30": null,
    "m5": {
     "kind": "3",
     "label": "3买",
-    "price": 24.48,
-    "dt": "2026-10-12 10:15:00",
-    "bars_ago": 39,
-    "detail": "向上离开中枢（上沿 24.16，创新高 24.87），回调至 24.48 未回中枢",
-    "zs_zg": 24.16,
-    "zs_zd": 23.68,
-    "zs_start": "2026-09-30 13:40:00",
-    "zs_end": "2026-10-09 11:20:00",
+    "price": 36.22,
+    "dt": "2026-10-12 11:25:00",
+    "bars_ago": 25,
+    "detail": "向上离开中枢（上沿 36.09，创新高 36.60），回调至 36.22 未回中枢",
+    "zs_zg": 36.09,
+    "zs_zd": 34.79,
+    "zs_start": "2026-09-30 13:55:00",
+    "zs_end": "2026-10-12 09:55:00",
     "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
     "5分3买"
-   ],
-   "score": 36
-  },
-  {
-   "code": "300811",
-   "name": "铂科新材",
-   "type": "stock",
-   "market": "创业板",
-   "price": 68.79,
-   "change_pct": -4.299,
-   "pe_dynamic": 47.441,
-   "turnover": 2.6882,
-   "amount": 626974960.0,
-   "total_mv": 2805461.366175,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 68.49,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 69.00 且出现背驰，动能比 0.08（背驰）",
-    "zs_zg": 72.46,
-    "zs_zd": 69.0,
-    "zs_start": "2026-10-08 15:00:00",
-    "zs_end": "2026-10-12 14:05:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
    ],
    "score": 36
   },
@@ -17128,6 +17097,37 @@
     "zs_start": "2026-10-09 11:15:00",
     "zs_end": "2026-10-12 11:15:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "300811",
+   "name": "铂科新材",
+   "type": "stock",
+   "market": "创业板",
+   "price": 68.79,
+   "change_pct": -4.299,
+   "pe_dynamic": 47.441,
+   "turnover": 2.6882,
+   "amount": 626974960.0,
+   "total_mv": 2805461.366175,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 68.49,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 69.00 且出现背驰，动能比 0.08（背驰）",
+    "zs_zg": 72.46,
+    "zs_zd": 69.0,
+    "zs_start": "2026-10-08 15:00:00",
+    "zs_end": "2026-10-12 14:05:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -18190,37 +18190,6 @@
    "score": 36
   },
   {
-   "code": "600966",
-   "name": "博汇纸业",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 4.72,
-   "change_pct": -1.871,
-   "pe_dynamic": 38.312,
-   "turnover": 0.74114,
-   "amount": 47231894.0,
-   "total_mv": 630990.503936,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 4.71,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 4.83 且出现背驰，动能比 0.64（背驰）",
-    "zs_zg": 4.86,
-    "zs_zd": 4.83,
-    "zs_start": "2026-09-30 09:45:00",
-    "zs_end": "2026-10-09 14:10:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
    "code": "600980",
    "name": "北矿科技",
    "type": "stock",
@@ -18244,6 +18213,37 @@
     "zs_start": "2026-09-28 10:45:00",
     "zs_end": "2026-10-12 13:25:00",
     "zs_bi_count": 15
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "600966",
+   "name": "博汇纸业",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 4.72,
+   "change_pct": -1.871,
+   "pe_dynamic": 38.312,
+   "turnover": 0.74114,
+   "amount": 47231894.0,
+   "total_mv": 630990.503936,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 4.71,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 4.83 且出现背驰，动能比 0.64（背驰）",
+    "zs_zg": 4.86,
+    "zs_zd": 4.83,
+    "zs_start": "2026-09-30 09:45:00",
+    "zs_end": "2026-10-09 14:10:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -19647,37 +19647,6 @@
    "score": 36
   },
   {
-   "code": "688579",
-   "name": "地纬智能",
-   "type": "stock",
-   "market": "科创板",
-   "price": 8.02,
-   "change_pct": 0.125,
-   "pe_dynamic": 53.36,
-   "turnover": 0.72946,
-   "amount": 23311656.0,
-   "total_mv": 320808.02,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 7.94,
-    "dt": "2026-10-12 11:00:00",
-    "bars_ago": 31,
-    "detail": "向上离开中枢（上沿 7.84，创新高 8.03），回调至 7.94 未回中枢",
-    "zs_zg": 7.84,
-    "zs_zd": 7.73,
-    "zs_start": "2026-10-08 10:10:00",
-    "zs_end": "2026-10-09 11:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 36
-  },
-  {
    "code": "688582",
    "name": "芯动联科",
    "type": "stock",
@@ -19709,6 +19678,37 @@
    "score": 36
   },
   {
+   "code": "688579",
+   "name": "地纬智能",
+   "type": "stock",
+   "market": "科创板",
+   "price": 8.02,
+   "change_pct": 0.125,
+   "pe_dynamic": 53.36,
+   "turnover": 0.72946,
+   "amount": 23311656.0,
+   "total_mv": 320808.02,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 7.94,
+    "dt": "2026-10-12 11:00:00",
+    "bars_ago": 31,
+    "detail": "向上离开中枢（上沿 7.84，创新高 8.03），回调至 7.94 未回中枢",
+    "zs_zg": 7.84,
+    "zs_zd": 7.73,
+    "zs_start": "2026-10-08 10:10:00",
+    "zs_end": "2026-10-09 11:20:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
+   ],
+   "score": 36
+  },
+  {
    "code": "688633",
    "name": "星球石墨",
    "type": "stock",
@@ -19731,37 +19731,6 @@
     "zs_zd": 21.38,
     "zs_start": "2026-10-08 11:10:00",
     "zs_end": "2026-10-12 10:55:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
-   "code": "688798",
-   "name": "艾为电子",
-   "type": "stock",
-   "market": "科创板",
-   "price": 49.31,
-   "change_pct": -2.837,
-   "pe_dynamic": 36.257,
-   "turnover": 1.80964,
-   "amount": 122041928.0,
-   "total_mv": 1149560.080269,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 49.08,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 49.44 且出现背驰，动能比 0.62（背驰）",
-    "zs_zg": 50.65,
-    "zs_zd": 49.44,
-    "zs_start": "2026-10-09 14:50:00",
-    "zs_end": "2026-10-12 13:30:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -19798,6 +19767,37 @@
    "resonance": false,
    "tags": [
     "5分3买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "688798",
+   "name": "艾为电子",
+   "type": "stock",
+   "market": "科创板",
+   "price": 49.31,
+   "change_pct": -2.837,
+   "pe_dynamic": 36.257,
+   "turnover": 1.80964,
+   "amount": 122041928.0,
+   "total_mv": 1149560.080269,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 49.08,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 49.44 且出现背驰，动能比 0.62（背驰）",
+    "zs_zg": 50.65,
+    "zs_zd": 49.44,
+    "zs_start": "2026-10-09 14:50:00",
+    "zs_end": "2026-10-12 13:30:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 36
   },
@@ -20236,37 +20236,6 @@
    "score": 35
   },
   {
-   "code": "159552",
-   "name": "2000增强",
-   "type": "etf",
-   "market": "ETF",
-   "price": 2.137,
-   "change_pct": -2.286,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 118929527.0,
-   "total_mv": 80520.0911703,
-   "m30": null,
-   "m5": {
-    "kind": "2",
-    "label": "2买",
-    "price": 2.14,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "背驰一买 2.14 后回升至 2.16，回抽至 2.14 未破前低，动能比 0.75（背驰）",
-    "zs_zg": 2.199,
-    "zs_zd": 2.184,
-    "zs_start": "2026-10-08 10:25:00",
-    "zs_end": "2026-10-09 14:45:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分2买"
-   ],
-   "score": 35
-  },
-  {
    "code": "159558",
    "name": "半导体E",
    "type": "etf",
@@ -20290,6 +20259,37 @@
     "zs_start": "2026-10-09 11:20:00",
     "zs_end": "2026-10-09 14:45:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分2买"
+   ],
+   "score": 35
+  },
+  {
+   "code": "159552",
+   "name": "2000增强",
+   "type": "etf",
+   "market": "ETF",
+   "price": 2.137,
+   "change_pct": -2.286,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 118929527.0,
+   "total_mv": 80520.0911703,
+   "m30": null,
+   "m5": {
+    "kind": "2",
+    "label": "2买",
+    "price": 2.14,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "背驰一买 2.14 后回升至 2.16，回抽至 2.14 未破前低，动能比 0.75（背驰）",
+    "zs_zg": 2.199,
+    "zs_zd": 2.184,
+    "zs_start": "2026-10-08 10:25:00",
+    "zs_end": "2026-10-09 14:45:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -20515,37 +20515,6 @@
    "score": 34
   },
   {
-   "code": "000548",
-   "name": "湖南投资",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 4.6,
-   "change_pct": -1.499,
-   "pe_dynamic": 54.567,
-   "turnover": 0.81031,
-   "amount": 18721717.0,
-   "total_mv": 229639.27306,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 4.59,
-    "dt": "2026-10-12 14:35:00",
-    "bars_ago": 5,
-    "detail": "向下离开中枢下沿 4.60 且出现背驰，动能比 0.43（背驰）",
-    "zs_zg": 4.68,
-    "zs_zd": 4.6,
-    "zs_start": "2026-10-08 09:55:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "000555",
    "name": "神州信息",
    "type": "stock",
@@ -20573,6 +20542,37 @@
    "resonance": false,
    "tags": [
     "5分3买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "000548",
+   "name": "湖南投资",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 4.6,
+   "change_pct": -1.499,
+   "pe_dynamic": 54.567,
+   "turnover": 0.81031,
+   "amount": 18721717.0,
+   "total_mv": 229639.27306,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 4.59,
+    "dt": "2026-10-12 14:35:00",
+    "bars_ago": 5,
+    "detail": "向下离开中枢下沿 4.60 且出现背驰，动能比 0.43（背驰）",
+    "zs_zg": 4.68,
+    "zs_zd": 4.6,
+    "zs_start": "2026-10-08 09:55:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -20856,37 +20856,6 @@
    "score": 34
   },
   {
-   "code": "001208",
-   "name": "华菱线缆",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 12.61,
-   "change_pct": -2.324,
-   "pe_dynamic": 63.05,
-   "turnover": 1.6895,
-   "amount": 68719834.0,
-   "total_mv": 804959.894752,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 12.62,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 12.67 且出现背驰，动能比 0.16（背驰）",
-    "zs_zg": 12.97,
-    "zs_zd": 12.67,
-    "zs_start": "2026-10-08 11:25:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "001210",
    "name": "金房能源",
    "type": "stock",
@@ -20909,6 +20878,37 @@
     "zs_zd": 24.75,
     "zs_start": "2026-10-08 15:00:00",
     "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "001208",
+   "name": "华菱线缆",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 12.61,
+   "change_pct": -2.324,
+   "pe_dynamic": 63.05,
+   "turnover": 1.6895,
+   "amount": 68719834.0,
+   "total_mv": 804959.894752,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 12.62,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 12.67 且出现背驰，动能比 0.16（背驰）",
+    "zs_zg": 12.97,
+    "zs_zd": 12.67,
+    "zs_start": "2026-10-08 11:25:00",
+    "zs_end": "2026-10-12 11:30:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -21197,37 +21197,6 @@
    "score": 34
   },
   {
-   "code": "001979",
-   "name": "招商蛇口",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 7.58,
-   "change_pct": -1.813,
-   "pe_dynamic": 94.75,
-   "turnover": 0.84382,
-   "amount": 569161581.0,
-   "total_mv": 6834152.385618,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 7.55,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 7.63 且出现背驰，动能比 0.81（背驰）",
-    "zs_zg": 7.82,
-    "zs_zd": 7.63,
-    "zs_start": "2026-09-30 11:30:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 6
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "002003",
    "name": "伟星股份",
    "type": "stock",
@@ -21251,6 +21220,37 @@
     "zs_start": "2026-10-09 13:55:00",
     "zs_end": "2026-10-12 11:10:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "001979",
+   "name": "招商蛇口",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 7.58,
+   "change_pct": -1.813,
+   "pe_dynamic": 94.75,
+   "turnover": 0.84382,
+   "amount": 569161581.0,
+   "total_mv": 6834152.385618,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 7.55,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 7.63 且出现背驰，动能比 0.81（背驰）",
+    "zs_zg": 7.82,
+    "zs_zd": 7.63,
+    "zs_start": "2026-09-30 11:30:00",
+    "zs_end": "2026-10-12 11:30:00",
+    "zs_bi_count": 6
    },
    "resonance": false,
    "tags": [
@@ -21786,37 +21786,6 @@
    "score": 34
   },
   {
-   "code": "002346",
-   "name": "柘中股份",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 17.31,
-   "change_pct": -3.404,
-   "pe_dynamic": 17.139,
-   "turnover": 1.02207,
-   "amount": 79032867.0,
-   "total_mv": 764367.045096,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 17.3,
-    "dt": "2026-10-12 14:25:00",
-    "bars_ago": 8,
-    "detail": "向下离开中枢下沿 17.36 且出现背驰，动能比 0.08（背驰）",
-    "zs_zg": 17.5,
-    "zs_zd": 17.36,
-    "zs_start": "2026-10-09 10:35:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "002349",
    "name": "精华制药",
    "type": "stock",
@@ -21840,6 +21809,37 @@
     "zs_start": "2026-09-30 13:30:00",
     "zs_end": "2026-10-12 10:35:00",
     "zs_bi_count": 7
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "002346",
+   "name": "柘中股份",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 17.31,
+   "change_pct": -3.404,
+   "pe_dynamic": 17.139,
+   "turnover": 1.02207,
+   "amount": 79032867.0,
+   "total_mv": 764367.045096,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 17.3,
+    "dt": "2026-10-12 14:25:00",
+    "bars_ago": 8,
+    "detail": "向下离开中枢下沿 17.36 且出现背驰，动能比 0.08（背驰）",
+    "zs_zg": 17.5,
+    "zs_zd": 17.36,
+    "zs_start": "2026-10-09 10:35:00",
+    "zs_end": "2026-10-12 11:30:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -22065,37 +22065,6 @@
    "score": 34
   },
   {
-   "code": "002462",
-   "name": "嘉事堂",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 12.25,
-   "change_pct": -1.05,
-   "pe_dynamic": 32.237,
-   "turnover": 0.75901,
-   "amount": 27218473.0,
-   "total_mv": 357341.222,
-   "m30": null,
-   "m5": {
-    "kind": "2",
-    "label": "2买",
-    "price": 12.22,
-    "dt": "2026-10-12 10:05:00",
-    "bars_ago": 41,
-    "detail": "背驰一买 12.02 后回升至 12.53，回抽至 12.22 未破前低，动能比 0.84（背驰）",
-    "zs_zg": 12.33,
-    "zs_zd": 12.17,
-    "zs_start": "2026-09-24 10:20:00",
-    "zs_end": "2026-10-08 13:10:00",
-    "zs_bi_count": 10
-   },
-   "resonance": false,
-   "tags": [
-    "5分2买"
-   ],
-   "score": 34
-  },
-  {
    "code": "002463",
    "name": "沪电股份",
    "type": "stock",
@@ -22123,6 +22092,37 @@
    "resonance": false,
    "tags": [
     "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "002462",
+   "name": "嘉事堂",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 12.25,
+   "change_pct": -1.05,
+   "pe_dynamic": 32.237,
+   "turnover": 0.75901,
+   "amount": 27218473.0,
+   "total_mv": 357341.222,
+   "m30": null,
+   "m5": {
+    "kind": "2",
+    "label": "2买",
+    "price": 12.22,
+    "dt": "2026-10-12 10:05:00",
+    "bars_ago": 41,
+    "detail": "背驰一买 12.02 后回升至 12.53，回抽至 12.22 未破前低，动能比 0.84（背驰）",
+    "zs_zg": 12.33,
+    "zs_zd": 12.17,
+    "zs_start": "2026-09-24 10:20:00",
+    "zs_end": "2026-10-08 13:10:00",
+    "zs_bi_count": 10
+   },
+   "resonance": false,
+   "tags": [
+    "5分2买"
    ],
    "score": 34
   },
@@ -22499,37 +22499,6 @@
    "score": 34
   },
   {
-   "code": "002905",
-   "name": "金逸影视",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 9.25,
-   "change_pct": 2.21,
-   "pe_dynamic": 115.625,
-   "turnover": 2.85651,
-   "amount": 91274220.0,
-   "total_mv": 348096.0,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 9.0,
-    "dt": "2026-10-12 10:15:00",
-    "bars_ago": 39,
-    "detail": "向上离开中枢（上沿 8.74，创新高 9.10），回调至 9.00 未回中枢",
-    "zs_zg": 8.74,
-    "zs_zd": 8.64,
-    "zs_start": "2026-10-08 13:25:00",
-    "zs_end": "2026-10-09 11:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 34
-  },
-  {
    "code": "002906",
    "name": "华阳集团",
    "type": "stock",
@@ -22557,6 +22526,37 @@
    "resonance": false,
    "tags": [
     "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "002905",
+   "name": "金逸影视",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 9.25,
+   "change_pct": 2.21,
+   "pe_dynamic": 115.625,
+   "turnover": 2.85651,
+   "amount": 91274220.0,
+   "total_mv": 348096.0,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 9.0,
+    "dt": "2026-10-12 10:15:00",
+    "bars_ago": 39,
+    "detail": "向上离开中枢（上沿 8.74，创新高 9.10），回调至 9.00 未回中枢",
+    "zs_zg": 8.74,
+    "zs_zd": 8.64,
+    "zs_start": "2026-10-08 13:25:00",
+    "zs_end": "2026-10-09 11:20:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
    ],
    "score": 34
   },
@@ -23119,37 +23119,6 @@
    "score": 34
   },
   {
-   "code": "300308",
-   "name": "中际旭创",
-   "type": "stock",
-   "market": "创业板",
-   "price": 724.47,
-   "change_pct": -6.411,
-   "pe_dynamic": 73.926,
-   "turnover": 1.89635,
-   "amount": 15623738770.0,
-   "total_mv": 85336019.761527,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 725.8,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 737.30 且出现背驰，动能比 0.11（背驰）",
-    "zs_zg": 777.0,
-    "zs_zd": 737.3,
-    "zs_start": "2026-10-08 15:00:00",
-    "zs_end": "2026-10-12 13:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "300314",
    "name": "戴维医疗",
    "type": "stock",
@@ -23173,6 +23142,37 @@
     "zs_start": "2026-10-09 10:00:00",
     "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "300308",
+   "name": "中际旭创",
+   "type": "stock",
+   "market": "创业板",
+   "price": 724.47,
+   "change_pct": -6.411,
+   "pe_dynamic": 73.926,
+   "turnover": 1.89635,
+   "amount": 15623738770.0,
+   "total_mv": 85336019.761527,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 725.8,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 737.30 且出现背驰，动能比 0.11（背驰）",
+    "zs_zg": 777.0,
+    "zs_zd": 737.3,
+    "zs_start": "2026-10-08 15:00:00",
+    "zs_end": "2026-10-12 13:20:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -23398,37 +23398,6 @@
    "score": 34
   },
   {
-   "code": "300452",
-   "name": "山河药辅",
-   "type": "stock",
-   "market": "创业板",
-   "price": 13.2,
-   "change_pct": -2.583,
-   "pe_dynamic": 17.6,
-   "turnover": 2.02968,
-   "amount": 53622274.0,
-   "total_mv": 309482.39652,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 13.18,
-    "dt": "2026-10-12 14:20:00",
-    "bars_ago": 8,
-    "detail": "向下离开中枢下沿 13.20 且出现背驰，动能比 0.22（背驰）",
-    "zs_zg": 13.4,
-    "zs_zd": 13.2,
-    "zs_start": "2026-10-09 09:35:00",
-    "zs_end": "2026-10-12 10:50:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "300465",
    "name": "高伟达",
    "type": "stock",
@@ -23487,6 +23456,37 @@
    "resonance": false,
    "tags": [
     "5分3买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "300452",
+   "name": "山河药辅",
+   "type": "stock",
+   "market": "创业板",
+   "price": 13.2,
+   "change_pct": -2.583,
+   "pe_dynamic": 17.6,
+   "turnover": 2.02968,
+   "amount": 53622274.0,
+   "total_mv": 309482.39652,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 13.18,
+    "dt": "2026-10-12 14:20:00",
+    "bars_ago": 8,
+    "detail": "向下离开中枢下沿 13.20 且出现背驰，动能比 0.22（背驰）",
+    "zs_zg": 13.4,
+    "zs_zd": 13.2,
+    "zs_start": "2026-10-09 09:35:00",
+    "zs_end": "2026-10-12 10:50:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -23739,37 +23739,6 @@
    "score": 34
   },
   {
-   "code": "300784",
-   "name": "利安科技",
-   "type": "stock",
-   "market": "创业板",
-   "price": 41.26,
-   "change_pct": -1.715,
-   "pe_dynamic": 43.432,
-   "turnover": 2.85512,
-   "amount": 20066029.0,
-   "total_mv": 232036.3376,
-   "m30": null,
-   "m5": {
-    "kind": "2",
-    "label": "2买",
-    "price": 41.35,
-    "dt": "2026-10-12 11:25:00",
-    "bars_ago": 25,
-    "detail": "背驰一买 41.01 后回升至 41.98，回抽至 41.35 未破前低，动能比 0.63（背驰）",
-    "zs_zg": 41.8,
-    "zs_zd": 41.14,
-    "zs_start": "2026-10-09 11:20:00",
-    "zs_end": "2026-10-09 14:55:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分2买"
-   ],
-   "score": 34
-  },
-  {
    "code": "300787",
    "name": "海能实业",
    "type": "stock",
@@ -23792,6 +23761,37 @@
     "zs_zd": 11.18,
     "zs_start": "2026-10-09 11:20:00",
     "zs_end": "2026-10-12 09:35:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "300784",
+   "name": "利安科技",
+   "type": "stock",
+   "market": "创业板",
+   "price": 41.26,
+   "change_pct": -1.715,
+   "pe_dynamic": 43.432,
+   "turnover": 2.85512,
+   "amount": 20066029.0,
+   "total_mv": 232036.3376,
+   "m30": null,
+   "m5": {
+    "kind": "2",
+    "label": "2买",
+    "price": 41.35,
+    "dt": "2026-10-12 11:25:00",
+    "bars_ago": 25,
+    "detail": "背驰一买 41.01 后回升至 41.98，回抽至 41.35 未破前低，动能比 0.63（背驰）",
+    "zs_zg": 41.8,
+    "zs_zd": 41.14,
+    "zs_start": "2026-10-09 11:20:00",
+    "zs_end": "2026-10-09 14:55:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -23828,6 +23828,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "300858",
+   "name": "科拓生物",
+   "type": "stock",
+   "market": "创业板",
+   "price": 14.23,
+   "change_pct": -3.197,
+   "pe_dynamic": 39.528,
+   "turnover": 1.04128,
+   "amount": 29341560.0,
+   "total_mv": 374953.552914,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 14.22,
+    "dt": "2026-10-12 14:25:00",
+    "bars_ago": 7,
+    "detail": "向下离开中枢下沿 14.33 且出现背驰，动能比 0.21（背驰）",
+    "zs_zg": 14.47,
+    "zs_zd": 14.33,
+    "zs_start": "2026-10-09 11:30:00",
+    "zs_end": "2026-10-12 11:15:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -23894,37 +23925,6 @@
    "score": 34
   },
   {
-   "code": "300858",
-   "name": "科拓生物",
-   "type": "stock",
-   "market": "创业板",
-   "price": 14.23,
-   "change_pct": -3.197,
-   "pe_dynamic": 39.528,
-   "turnover": 1.04128,
-   "amount": 29341560.0,
-   "total_mv": 374953.552914,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 14.22,
-    "dt": "2026-10-12 14:25:00",
-    "bars_ago": 7,
-    "detail": "向下离开中枢下沿 14.33 且出现背驰，动能比 0.21（背驰）",
-    "zs_zg": 14.47,
-    "zs_zd": 14.33,
-    "zs_start": "2026-10-09 11:30:00",
-    "zs_end": "2026-10-12 11:15:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "300877",
    "name": "金春股份",
    "type": "stock",
@@ -23983,37 +23983,6 @@
    "resonance": false,
    "tags": [
     "5分2买"
-   ],
-   "score": 34
-  },
-  {
-   "code": "300943",
-   "name": "春晖智控",
-   "type": "stock",
-   "market": "创业板",
-   "price": 28.5,
-   "change_pct": -7.797,
-   "pe_dynamic": 98.276,
-   "turnover": 5.44833,
-   "amount": 213638669.0,
-   "total_mv": 580887.0,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 28.5,
-    "dt": "2026-10-12 14:45:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 29.00 且出现背驰，动能比 0.13（背驰）",
-    "zs_zg": 31.15,
-    "zs_zd": 29.0,
-    "zs_start": "2026-10-08 13:35:00",
-    "zs_end": "2026-10-12 11:10:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
    ],
    "score": 34
   },
@@ -24111,6 +24080,37 @@
    "score": 34
   },
   {
+   "code": "300943",
+   "name": "春晖智控",
+   "type": "stock",
+   "market": "创业板",
+   "price": 28.5,
+   "change_pct": -7.797,
+   "pe_dynamic": 98.276,
+   "turnover": 5.44833,
+   "amount": 213638669.0,
+   "total_mv": 580887.0,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 28.5,
+    "dt": "2026-10-12 14:45:00",
+    "bars_ago": 3,
+    "detail": "向下离开中枢下沿 29.00 且出现背驰，动能比 0.13（背驰）",
+    "zs_zg": 31.15,
+    "zs_zd": 29.0,
+    "zs_start": "2026-10-08 13:35:00",
+    "zs_end": "2026-10-12 11:10:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
    "code": "300967",
    "name": "晓鸣股份",
    "type": "stock",
@@ -24173,37 +24173,6 @@
    "score": 34
   },
   {
-   "code": "301007",
-   "name": "德迈仕",
-   "type": "stock",
-   "market": "创业板",
-   "price": 28.5,
-   "change_pct": -2.129,
-   "pe_dynamic": 83.824,
-   "turnover": 1.00446,
-   "amount": 43625566.0,
-   "total_mv": 437019.0,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 28.22,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 28.48 且出现背驰，动能比 0.10（背驰）",
-    "zs_zg": 28.68,
-    "zs_zd": 28.48,
-    "zs_start": "2026-10-09 11:20:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "301017",
    "name": "漱玉平民",
    "type": "stock",
@@ -24227,6 +24196,37 @@
     "zs_start": "2026-10-08 14:05:00",
     "zs_end": "2026-10-12 11:30:00",
     "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "301007",
+   "name": "德迈仕",
+   "type": "stock",
+   "market": "创业板",
+   "price": 28.5,
+   "change_pct": -2.129,
+   "pe_dynamic": 83.824,
+   "turnover": 1.00446,
+   "amount": 43625566.0,
+   "total_mv": 437019.0,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 28.22,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 28.48 且出现背驰，动能比 0.10（背驰）",
+    "zs_zg": 28.68,
+    "zs_zd": 28.48,
+    "zs_start": "2026-10-09 11:20:00",
+    "zs_end": "2026-10-12 11:30:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -24576,37 +24576,6 @@
    "score": 34
   },
   {
-   "code": "301265",
-   "name": "华新科技",
-   "type": "stock",
-   "market": "创业板",
-   "price": 24.02,
-   "change_pct": 3.534,
-   "pe_dynamic": 120.04,
-   "turnover": 4.95329,
-   "amount": 287521782.0,
-   "total_mv": 727741.583164,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 23.26,
-    "dt": "2026-10-12 10:05:00",
-    "bars_ago": 41,
-    "detail": "向上离开中枢（上沿 22.17，创新高 24.14），回调至 23.26 未回中枢",
-    "zs_zg": 22.17,
-    "zs_zd": 21.59,
-    "zs_start": "2026-10-08 13:15:00",
-    "zs_end": "2026-10-09 10:30:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 34
-  },
-  {
    "code": "301266",
    "name": "宇邦新材",
    "type": "stock",
@@ -24634,6 +24603,37 @@
    "resonance": false,
    "tags": [
     "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "301265",
+   "name": "华新科技",
+   "type": "stock",
+   "market": "创业板",
+   "price": 24.02,
+   "change_pct": 3.534,
+   "pe_dynamic": 120.04,
+   "turnover": 4.95329,
+   "amount": 287521782.0,
+   "total_mv": 727741.583164,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 23.26,
+    "dt": "2026-10-12 10:05:00",
+    "bars_ago": 41,
+    "detail": "向上离开中枢（上沿 22.17，创新高 24.14），回调至 23.26 未回中枢",
+    "zs_zg": 22.17,
+    "zs_zd": 21.59,
+    "zs_start": "2026-10-08 13:15:00",
+    "zs_end": "2026-10-09 10:30:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
    ],
    "score": 34
   },
@@ -25072,37 +25072,6 @@
    "score": 34
   },
   {
-   "code": "600111",
-   "name": "北方稀土",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 34.85,
-   "change_pct": -0.457,
-   "pe_dynamic": 55.966,
-   "turnover": 0.90917,
-   "amount": 1156667126.0,
-   "total_mv": 12598504.45937,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 34.73,
-    "dt": "2026-10-12 14:45:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 35.00 且出现背驰，动能比 0.71（背驰）",
-    "zs_zg": 35.3,
-    "zs_zd": 35.0,
-    "zs_start": "2026-10-09 10:45:00",
-    "zs_end": "2026-10-12 13:20:00",
-    "zs_bi_count": 5
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "600116",
    "name": "三峡水利",
    "type": "stock",
@@ -25125,6 +25094,37 @@
     "zs_zd": 6.18,
     "zs_start": "2026-09-30 14:35:00",
     "zs_end": "2026-10-12 10:15:00",
+    "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "600111",
+   "name": "北方稀土",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 34.85,
+   "change_pct": -0.457,
+   "pe_dynamic": 55.966,
+   "turnover": 0.90917,
+   "amount": 1156667126.0,
+   "total_mv": 12598504.45937,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 34.73,
+    "dt": "2026-10-12 14:45:00",
+    "bars_ago": 3,
+    "detail": "向下离开中枢下沿 35.00 且出现背驰，动能比 0.71（背驰）",
+    "zs_zg": 35.3,
+    "zs_zd": 35.0,
+    "zs_start": "2026-10-09 10:45:00",
+    "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 5
    },
    "resonance": false,
@@ -25320,37 +25320,6 @@
    "score": 34
   },
   {
-   "code": "600521",
-   "name": "华海药业",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 16.88,
-   "change_pct": -3.266,
-   "pe_dynamic": 93.778,
-   "turnover": 2.78586,
-   "amount": 710701276.0,
-   "total_mv": 2527364.252352,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 16.89,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 16.98 且出现背驰，动能比 0.12（背驰）",
-    "zs_zg": 17.29,
-    "zs_zd": 16.98,
-    "zs_start": "2026-10-09 09:55:00",
-    "zs_end": "2026-10-12 11:25:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "600523",
    "name": "贵航股份",
    "type": "stock",
@@ -25378,6 +25347,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "600521",
+   "name": "华海药业",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 16.88,
+   "change_pct": -3.266,
+   "pe_dynamic": 93.778,
+   "turnover": 2.78586,
+   "amount": 710701276.0,
+   "total_mv": 2527364.252352,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 16.89,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 16.98 且出现背驰，动能比 0.12（背驰）",
+    "zs_zg": 17.29,
+    "zs_zd": 16.98,
+    "zs_start": "2026-10-09 09:55:00",
+    "zs_end": "2026-10-12 11:25:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -25630,37 +25630,6 @@
    "score": 34
   },
   {
-   "code": "600805",
-   "name": "悦达投资",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 4.65,
-   "change_pct": -1.483,
-   "pe_dynamic": 108.14,
-   "turnover": 0.80529,
-   "amount": 32015005.0,
-   "total_mv": 395665.93971,
-   "m30": null,
-   "m5": {
-    "kind": "3",
-    "label": "3买",
-    "price": 4.66,
-    "dt": "2026-10-12 10:20:00",
-    "bars_ago": 41,
-    "detail": "向上离开中枢（上沿 4.64，创新高 4.73），回调至 4.66 未回中枢",
-    "zs_zg": 4.64,
-    "zs_zd": 4.6,
-    "zs_start": "2026-09-30 10:20:00",
-    "zs_end": "2026-10-09 11:25:00",
-    "zs_bi_count": 7
-   },
-   "resonance": false,
-   "tags": [
-    "5分3买"
-   ],
-   "score": 34
-  },
-  {
    "code": "600819",
    "name": "耀皮玻璃",
    "type": "stock",
@@ -25688,6 +25657,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "600805",
+   "name": "悦达投资",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 4.65,
+   "change_pct": -1.483,
+   "pe_dynamic": 108.14,
+   "turnover": 0.80529,
+   "amount": 32015005.0,
+   "total_mv": 395665.93971,
+   "m30": null,
+   "m5": {
+    "kind": "3",
+    "label": "3买",
+    "price": 4.66,
+    "dt": "2026-10-12 10:20:00",
+    "bars_ago": 41,
+    "detail": "向上离开中枢（上沿 4.64，创新高 4.73），回调至 4.66 未回中枢",
+    "zs_zg": 4.64,
+    "zs_zd": 4.6,
+    "zs_start": "2026-09-30 10:20:00",
+    "zs_end": "2026-10-09 11:25:00",
+    "zs_bi_count": 7
+   },
+   "resonance": false,
+   "tags": [
+    "5分3买"
    ],
    "score": 34
   },
@@ -25785,37 +25785,6 @@
    "score": 34
   },
   {
-   "code": "600981",
-   "name": "苏豪汇鸿",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 2.39,
-   "change_pct": -2.049,
-   "pe_dynamic": 239.0,
-   "turnover": 0.70551,
-   "amount": 38156228.0,
-   "total_mv": 535941.532888,
-   "m30": {
-    "kind": "2",
-    "label": "2买",
-    "price": 2.35,
-    "dt": "2026-10-09 11:30:00",
-    "bars_ago": 13,
-    "detail": "背驰一买 2.34 后回升至 2.44，回抽至 2.35 未破前低，动能比 0.47（背驰）",
-    "zs_zg": 2.54,
-    "zs_zd": 2.45,
-    "zs_start": "2026-09-01 15:00:00",
-    "zs_end": "2026-09-22 10:00:00",
-    "zs_bi_count": 4
-   },
-   "m5": null,
-   "resonance": false,
-   "tags": [
-    "30分2买"
-   ],
-   "score": 34
-  },
-  {
    "code": "600986",
    "name": "浙文互联",
    "type": "stock",
@@ -25843,6 +25812,37 @@
    "resonance": false,
    "tags": [
     "5分3买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "600981",
+   "name": "苏豪汇鸿",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 2.39,
+   "change_pct": -2.049,
+   "pe_dynamic": 239.0,
+   "turnover": 0.70551,
+   "amount": 38156228.0,
+   "total_mv": 535941.532888,
+   "m30": {
+    "kind": "2",
+    "label": "2买",
+    "price": 2.35,
+    "dt": "2026-10-09 11:30:00",
+    "bars_ago": 13,
+    "detail": "背驰一买 2.34 后回升至 2.44，回抽至 2.35 未破前低，动能比 0.47（背驰）",
+    "zs_zg": 2.54,
+    "zs_zd": 2.45,
+    "zs_start": "2026-09-01 15:00:00",
+    "zs_end": "2026-09-22 10:00:00",
+    "zs_bi_count": 4
+   },
+   "m5": null,
+   "resonance": false,
+   "tags": [
+    "30分2买"
    ],
    "score": 34
   },
@@ -26126,37 +26126,6 @@
    "score": 34
   },
   {
-   "code": "603045",
-   "name": "福达合金",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 42.41,
-   "change_pct": -4.632,
-   "pe_dynamic": 53.159,
-   "turnover": 2.56975,
-   "amount": 150098226.0,
-   "total_mv": 574422.902355,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 42.6,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 42.93 且出现背驰，动能比 0.80（背驰）",
-    "zs_zg": 44.8,
-    "zs_zd": 42.93,
-    "zs_start": "2026-10-08 13:25:00",
-    "zs_end": "2026-10-12 14:00:00",
-    "zs_bi_count": 6
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "603049",
    "name": "中策橡胶",
    "type": "stock",
@@ -26184,6 +26153,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "603045",
+   "name": "福达合金",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 42.41,
+   "change_pct": -4.632,
+   "pe_dynamic": 53.159,
+   "turnover": 2.56975,
+   "amount": 150098226.0,
+   "total_mv": 574422.902355,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 42.6,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 42.93 且出现背驰，动能比 0.80（背驰）",
+    "zs_zg": 44.8,
+    "zs_zd": 42.93,
+    "zs_start": "2026-10-08 13:25:00",
+    "zs_end": "2026-10-12 14:00:00",
+    "zs_bi_count": 6
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -26839,33 +26839,33 @@
    "score": 34
   },
   {
-   "code": "603766",
-   "name": "隆鑫通用",
+   "code": "603799",
+   "name": "华友钴业",
    "type": "stock",
    "market": "沪市主板",
-   "price": 14.87,
-   "change_pct": 5.987,
-   "pe_dynamic": 18.588,
-   "turnover": 1.16643,
-   "amount": 350839528.0,
-   "total_mv": 3053616.73095,
+   "price": 34.53,
+   "change_pct": -3.006,
+   "pe_dynamic": 10.338,
+   "turnover": 1.71202,
+   "amount": 1129907959.0,
+   "total_mv": 6538350.516201,
    "m30": null,
    "m5": {
-    "kind": "2",
-    "label": "2买",
-    "price": 14.49,
-    "dt": "2026-10-12 11:15:00",
-    "bars_ago": 27,
-    "detail": "背驰一买 14.02 后回升至 14.60，回抽至 14.49 未破前低，动能比 0.52（背驰）",
-    "zs_zg": 14.34,
-    "zs_zd": 14.11,
-    "zs_start": "2026-09-30 09:35:00",
-    "zs_end": "2026-10-09 11:05:00",
-    "zs_bi_count": 3
+    "kind": "1",
+    "label": "1买",
+    "price": 34.45,
+    "dt": "2026-10-12 14:25:00",
+    "bars_ago": 7,
+    "detail": "向下离开中枢下沿 34.76 且出现背驰，动能比 0.18（背驰）",
+    "zs_zg": 35.38,
+    "zs_zd": 34.76,
+    "zs_start": "2026-10-09 09:45:00",
+    "zs_end": "2026-10-12 13:05:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
-    "5分2买"
+    "5分1买"
    ],
    "score": 34
   },
@@ -26901,33 +26901,33 @@
    "score": 34
   },
   {
-   "code": "603799",
-   "name": "华友钴业",
+   "code": "603766",
+   "name": "隆鑫通用",
    "type": "stock",
    "market": "沪市主板",
-   "price": 34.53,
-   "change_pct": -3.006,
-   "pe_dynamic": 10.338,
-   "turnover": 1.71202,
-   "amount": 1129907959.0,
-   "total_mv": 6538350.516201,
+   "price": 14.87,
+   "change_pct": 5.987,
+   "pe_dynamic": 18.588,
+   "turnover": 1.16643,
+   "amount": 350839528.0,
+   "total_mv": 3053616.73095,
    "m30": null,
    "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 34.45,
-    "dt": "2026-10-12 14:25:00",
-    "bars_ago": 7,
-    "detail": "向下离开中枢下沿 34.76 且出现背驰，动能比 0.18（背驰）",
-    "zs_zg": 35.38,
-    "zs_zd": 34.76,
-    "zs_start": "2026-10-09 09:45:00",
-    "zs_end": "2026-10-12 13:05:00",
-    "zs_bi_count": 4
+    "kind": "2",
+    "label": "2买",
+    "price": 14.49,
+    "dt": "2026-10-12 11:15:00",
+    "bars_ago": 27,
+    "detail": "背驰一买 14.02 后回升至 14.60，回抽至 14.49 未破前低，动能比 0.52（背驰）",
+    "zs_zg": 14.34,
+    "zs_zd": 14.11,
+    "zs_start": "2026-09-30 09:35:00",
+    "zs_end": "2026-10-09 11:05:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
-    "5分1买"
+    "5分2买"
    ],
    "score": 34
   },
@@ -27862,37 +27862,6 @@
    "score": 34
   },
   {
-   "code": "688677",
-   "name": "海泰新光",
-   "type": "stock",
-   "market": "科创板",
-   "price": 68.38,
-   "change_pct": -0.683,
-   "pe_dynamic": 47.486,
-   "turnover": 2.65909,
-   "amount": 217783133.0,
-   "total_mv": 819718.926,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 68.31,
-    "dt": "2026-10-12 14:20:00",
-    "bars_ago": 8,
-    "detail": "向下离开中枢下沿 68.47 且出现背驰，动能比 0.29（背驰）",
-    "zs_zg": 69.28,
-    "zs_zd": 68.47,
-    "zs_start": "2026-10-09 14:20:00",
-    "zs_end": "2026-10-12 13:35:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 34
-  },
-  {
    "code": "688689",
    "name": "银河微电",
    "type": "stock",
@@ -27920,6 +27889,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 34
+  },
+  {
+   "code": "688677",
+   "name": "海泰新光",
+   "type": "stock",
+   "market": "科创板",
+   "price": 68.38,
+   "change_pct": -0.683,
+   "pe_dynamic": 47.486,
+   "turnover": 2.65909,
+   "amount": 217783133.0,
+   "total_mv": 819718.926,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 68.31,
+    "dt": "2026-10-12 14:20:00",
+    "bars_ago": 8,
+    "detail": "向下离开中枢下沿 68.47 且出现背驰，动能比 0.29（背驰）",
+    "zs_zg": 69.28,
+    "zs_zd": 68.47,
+    "zs_start": "2026-10-09 14:20:00",
+    "zs_end": "2026-10-12 13:35:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 34
   },
@@ -29040,37 +29040,6 @@
    "score": 32
   },
   {
-   "code": "002544",
-   "name": "普天科技",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 14.76,
-   "change_pct": -1.796,
-   "pe_dynamic": 400.0,
-   "turnover": 0.94422,
-   "amount": 95348999.0,
-   "total_mv": 1004468.02164,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 14.69,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 14.70 且出现背驰，动能比 0.31（背驰）",
-    "zs_zg": 14.86,
-    "zs_zd": 14.7,
-    "zs_start": "2026-10-09 10:45:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 5
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "002549",
    "name": "凯美特气",
    "type": "stock",
@@ -29098,6 +29067,37 @@
    "resonance": false,
    "tags": [
     "5分2买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "002544",
+   "name": "普天科技",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 14.76,
+   "change_pct": -1.796,
+   "pe_dynamic": 400.0,
+   "turnover": 0.94422,
+   "amount": 95348999.0,
+   "total_mv": 1004468.02164,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 14.69,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 14.70 且出现背驰，动能比 0.31（背驰）",
+    "zs_zg": 14.86,
+    "zs_zd": 14.7,
+    "zs_start": "2026-10-09 10:45:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
    ],
    "score": 32
   },
@@ -29319,37 +29319,6 @@
    "score": 32
   },
   {
-   "code": "300102",
-   "name": "乾照光电",
-   "type": "stock",
-   "market": "创业板",
-   "price": 14.96,
-   "change_pct": -2.857,
-   "pe_dynamic": 124.667,
-   "turnover": 1.45499,
-   "amount": 201131836.0,
-   "total_mv": 1376819.459048,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 14.96,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 14.98 且出现背驰，动能比 0.06（背驰）",
-    "zs_zg": 15.17,
-    "zs_zd": 14.98,
-    "zs_start": "2026-10-09 10:45:00",
-    "zs_end": "2026-10-12 11:15:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "300101",
    "name": "振芯科技",
    "type": "stock",
@@ -29373,6 +29342,37 @@
     "zs_start": "2026-10-08 14:30:00",
     "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "300102",
+   "name": "乾照光电",
+   "type": "stock",
+   "market": "创业板",
+   "price": 14.96,
+   "change_pct": -2.857,
+   "pe_dynamic": 124.667,
+   "turnover": 1.45499,
+   "amount": 201131836.0,
+   "total_mv": 1376819.459048,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 14.96,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 14.98 且出现背驰，动能比 0.06（背驰）",
+    "zs_zg": 15.17,
+    "zs_zd": 14.98,
+    "zs_start": "2026-10-09 10:45:00",
+    "zs_end": "2026-10-12 11:15:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
@@ -30900,37 +30900,6 @@
    "score": 32
   },
   {
-   "code": "158053",
-   "name": "创算力DC",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.843,
-   "change_pct": -3.103,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 8562930.0,
-   "total_mv": 38893.3967526,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.844,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 0.85 且出现背驰，动能比 0.49（背驰）",
-    "zs_zg": 0.871,
-    "zs_zd": 0.85,
-    "zs_start": "2026-10-08 09:45:00",
-    "zs_end": "2026-10-12 10:30:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "158057",
    "name": "算力ETF",
    "type": "etf",
@@ -30953,6 +30922,37 @@
     "zs_zd": 0.855,
     "zs_start": "2026-09-30 14:15:00",
     "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "158053",
+   "name": "创算力DC",
+   "type": "etf",
+   "market": "ETF",
+   "price": 0.843,
+   "change_pct": -3.103,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 8562930.0,
+   "total_mv": 38893.3967526,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 0.844,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 0.85 且出现背驰，动能比 0.49（背驰）",
+    "zs_zg": 0.871,
+    "zs_zd": 0.85,
+    "zs_start": "2026-10-08 09:45:00",
+    "zs_end": "2026-10-12 10:30:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -31210,37 +31210,6 @@
    "score": 32
   },
   {
-   "code": "159066",
-   "name": "A股ETF",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.872,
-   "change_pct": -1.357,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 7217574.0,
-   "total_mv": 23782.3199544,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.869,
-    "dt": "2026-10-12 14:35:00",
-    "bars_ago": 5,
-    "detail": "向下离开中枢下沿 0.88 且出现背驰，动能比 0.30（背驰）",
-    "zs_zg": 0.887,
-    "zs_zd": 0.875,
-    "zs_start": "2026-10-08 09:50:00",
-    "zs_end": "2026-10-12 13:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159071",
    "name": "储能华宝",
    "type": "etf",
@@ -31294,6 +31263,37 @@
     "zs_zd": 0.81,
     "zs_start": "2026-09-30 10:20:00",
     "zs_end": "2026-10-12 13:05:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159066",
+   "name": "A股ETF",
+   "type": "etf",
+   "market": "ETF",
+   "price": 0.872,
+   "change_pct": -1.357,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 7217574.0,
+   "total_mv": 23782.3199544,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 0.869,
+    "dt": "2026-10-12 14:35:00",
+    "bars_ago": 5,
+    "detail": "向下离开中枢下沿 0.88 且出现背驰，动能比 0.30（背驰）",
+    "zs_zg": 0.887,
+    "zs_zd": 0.875,
+    "zs_start": "2026-10-08 09:50:00",
+    "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -31458,37 +31458,6 @@
    "score": 32
   },
   {
-   "code": "159176",
-   "name": "家用电器",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.962,
-   "change_pct": -0.104,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 7392316.0,
-   "total_mv": 2241.7814042,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.961,
-    "dt": "2026-10-12 14:35:00",
-    "bars_ago": 5,
-    "detail": "向下离开中枢下沿 0.96 且出现背驰，动能比 0.66（背驰）",
-    "zs_zg": 0.97,
-    "zs_zd": 0.964,
-    "zs_start": "2026-09-30 11:10:00",
-    "zs_end": "2026-10-12 09:40:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159178",
    "name": "消电ETF",
    "type": "etf",
@@ -31512,6 +31481,37 @@
     "zs_start": "2026-10-09 11:15:00",
     "zs_end": "2026-10-12 11:15:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159176",
+   "name": "家用电器",
+   "type": "etf",
+   "market": "ETF",
+   "price": 0.962,
+   "change_pct": -0.104,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 7392316.0,
+   "total_mv": 2241.7814042,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 0.961,
+    "dt": "2026-10-12 14:35:00",
+    "bars_ago": 5,
+    "detail": "向下离开中枢下沿 0.96 且出现背驰，动能比 0.66（背驰）",
+    "zs_zg": 0.97,
+    "zs_zd": 0.964,
+    "zs_start": "2026-09-30 11:10:00",
+    "zs_end": "2026-10-12 09:40:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -31985,37 +31985,6 @@
    "score": 32
   },
   {
-   "code": "159283",
-   "name": "航空NF",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.806,
-   "change_pct": -2.184,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 9617714.0,
-   "total_mv": 22280.9012686,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.806,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 0.81 且出现背驰，动能比 0.25（背驰）",
-    "zs_zg": 0.831,
-    "zs_zd": 0.808,
-    "zs_start": "2026-10-08 11:30:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159288",
    "name": "创业综YH",
    "type": "etf",
@@ -32047,37 +32016,6 @@
    "score": 32
   },
   {
-   "code": "159290",
-   "name": "创增ETF",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.037,
-   "change_pct": -2.446,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 1693487.0,
-   "total_mv": 4054.7110652,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.038,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.04 且出现背驰，动能比 0.15（背驰）",
-    "zs_zg": 1.065,
-    "zs_zd": 1.043,
-    "zs_start": "2026-10-08 09:45:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159295",
    "name": "创业西部",
    "type": "etf",
@@ -32100,6 +32038,68 @@
     "zs_zd": 0.913,
     "zs_start": "2026-09-30 11:05:00",
     "zs_end": "2026-10-12 11:15:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159283",
+   "name": "航空NF",
+   "type": "etf",
+   "market": "ETF",
+   "price": 0.806,
+   "change_pct": -2.184,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 9617714.0,
+   "total_mv": 22280.9012686,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 0.806,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 0.81 且出现背驰，动能比 0.25（背驰）",
+    "zs_zg": 0.831,
+    "zs_zd": 0.808,
+    "zs_start": "2026-10-08 11:30:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159290",
+   "name": "创增ETF",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.037,
+   "change_pct": -2.446,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 1693487.0,
+   "total_mv": 4054.7110652,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.038,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 1.04 且出现背驰，动能比 0.15（背驰）",
+    "zs_zg": 1.065,
+    "zs_zd": 1.043,
+    "zs_start": "2026-10-08 09:45:00",
+    "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -32171,37 +32171,6 @@
    "score": 32
   },
   {
-   "code": "159335",
-   "name": "央企科创",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.418,
-   "change_pct": -1.185,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 1054196.0,
-   "total_mv": 8321.3471002,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.417,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.43 且出现背驰，动能比 0.51（背驰）",
-    "zs_zg": 1.445,
-    "zs_zd": 1.431,
-    "zs_start": "2026-09-30 09:35:00",
-    "zs_end": "2026-10-09 14:25:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159338",
    "name": "中证A500",
    "type": "etf",
@@ -32233,6 +32202,37 @@
    "score": 32
   },
   {
+   "code": "159335",
+   "name": "央企科创",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.418,
+   "change_pct": -1.185,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 1054196.0,
+   "total_mv": 8321.3471002,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.417,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 1.43 且出现背驰，动能比 0.51（背驰）",
+    "zs_zg": 1.445,
+    "zs_zd": 1.431,
+    "zs_start": "2026-09-30 09:35:00",
+    "zs_end": "2026-10-09 14:25:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
    "code": "159365",
    "name": "恒指ETF",
    "type": "etf",
@@ -32255,68 +32255,6 @@
     "zs_zd": 0.955,
     "zs_start": "2026-09-28 11:10:00",
     "zs_end": "2026-10-12 09:45:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
-   "code": "159367",
-   "name": "创50华夏",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.456,
-   "change_pct": -2.933,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 14895569.0,
-   "total_mv": 15153.9066224,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.455,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.47 且出现背驰，动能比 0.67（背驰）",
-    "zs_zg": 1.504,
-    "zs_zd": 1.474,
-    "zs_start": "2026-10-08 10:15:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
-   "code": "159372",
-   "name": "创50万家",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.555,
-   "change_pct": -2.813,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 2584406.0,
-   "total_mv": 7534.221934,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.553,
-    "dt": "2026-10-12 14:45:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 1.57 且出现背驰，动能比 0.48（背驰）",
-    "zs_zg": 1.603,
-    "zs_zd": 1.574,
-    "zs_start": "2026-10-08 09:50:00",
-    "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -32377,6 +32315,37 @@
     "detail": "向下离开中枢下沿 0.63 且出现背驰，动能比 0.59（背驰）",
     "zs_zg": 0.638,
     "zs_zd": 0.626,
+    "zs_start": "2026-10-08 09:50:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159372",
+   "name": "创50万家",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.555,
+   "change_pct": -2.813,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 2584406.0,
+   "total_mv": 7534.221934,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.553,
+    "dt": "2026-10-12 14:45:00",
+    "bars_ago": 3,
+    "detail": "向下离开中枢下沿 1.57 且出现背驰，动能比 0.48（背驰）",
+    "zs_zg": 1.603,
+    "zs_zd": 1.574,
     "zs_start": "2026-10-08 09:50:00",
     "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 4
@@ -32450,6 +32419,68 @@
    "score": 32
   },
   {
+   "code": "159367",
+   "name": "创50华夏",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.456,
+   "change_pct": -2.933,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 14895569.0,
+   "total_mv": 15153.9066224,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.455,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 1.47 且出现背驰，动能比 0.67（背驰）",
+    "zs_zg": 1.504,
+    "zs_zd": 1.474,
+    "zs_start": "2026-10-08 10:15:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159389",
+   "name": "国企数字",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.579,
+   "change_pct": -2.591,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 11579693.0,
+   "total_mv": 16594.2421756,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.584,
+    "dt": "2026-10-12 14:35:00",
+    "bars_ago": 5,
+    "detail": "向下离开中枢下沿 1.59 且出现背驰，动能比 0.24（背驰）",
+    "zs_zg": 1.606,
+    "zs_zd": 1.589,
+    "zs_start": "2026-10-09 11:20:00",
+    "zs_end": "2026-10-12 13:20:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
    "code": "159381",
    "name": "创AI",
    "type": "etf",
@@ -32481,68 +32512,6 @@
    "score": 32
   },
   {
-   "code": "159382",
-   "name": "AI创业板",
-   "type": "etf",
-   "market": "ETF",
-   "price": 2.319,
-   "change_pct": -3.011,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 177486668.0,
-   "total_mv": 189475.2200766,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 2.316,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 2.34 且出现背驰，动能比 0.45（背驰）",
-    "zs_zg": 2.36,
-    "zs_zd": 2.338,
-    "zs_start": "2026-10-09 11:15:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
-   "code": "159385",
-   "name": "数字国企",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.56,
-   "change_pct": -2.072,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 3234185.0,
-   "total_mv": 6084.3939,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.557,
-    "dt": "2026-10-12 14:35:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.56 且出现背驰，动能比 0.28（背驰）",
-    "zs_zg": 1.599,
-    "zs_zd": 1.565,
-    "zs_start": "2026-10-08 09:50:00",
-    "zs_end": "2026-10-12 13:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159387",
    "name": "创业新能",
    "type": "etf",
@@ -32565,6 +32534,37 @@
     "zs_zd": 0.648,
     "zs_start": "2026-10-09 14:05:00",
     "zs_end": "2026-10-12 13:20:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159382",
+   "name": "AI创业板",
+   "type": "etf",
+   "market": "ETF",
+   "price": 2.319,
+   "change_pct": -3.011,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 177486668.0,
+   "total_mv": 189475.2200766,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 2.316,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 2.34 且出现背驰，动能比 0.45（背驰）",
+    "zs_zg": 2.36,
+    "zs_zd": 2.338,
+    "zs_start": "2026-10-09 11:15:00",
+    "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -33225,6 +33225,37 @@
    "score": 32
   },
   {
+   "code": "159783",
+   "name": "双创基金",
+   "type": "etf",
+   "market": "ETF",
+   "price": 0.922,
+   "change_pct": -2.64,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 147317133.0,
+   "total_mv": 410848.6805524,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 0.921,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 0.93 且出现背驰，动能比 0.55（背驰）",
+    "zs_zg": 0.938,
+    "zs_zd": 0.932,
+    "zs_start": "2026-10-09 11:15:00",
+    "zs_end": "2026-10-12 11:15:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
    "code": "159781",
    "name": "科创创业",
    "type": "etf",
@@ -33278,37 +33309,6 @@
     "zs_zd": 0.931,
     "zs_start": "2026-10-09 11:20:00",
     "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
-   "code": "159783",
-   "name": "双创基金",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.922,
-   "change_pct": -2.64,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 147317133.0,
-   "total_mv": 410848.6805524,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.921,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 0.93 且出现背驰，动能比 0.55（背驰）",
-    "zs_zg": 0.938,
-    "zs_zd": 0.932,
-    "zs_start": "2026-10-09 11:15:00",
-    "zs_end": "2026-10-12 11:15:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -33473,37 +33473,6 @@
    "score": 32
   },
   {
-   "code": "159895",
-   "name": "物联网50",
-   "type": "etf",
-   "market": "ETF",
-   "price": 1.206,
-   "change_pct": -2.899,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 8386593.0,
-   "total_mv": 8350.5687984,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 1.207,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.21 且出现背驰，动能比 0.17（背驰）",
-    "zs_zg": 1.244,
-    "zs_zd": 1.213,
-    "zs_start": "2026-09-30 09:35:00",
-    "zs_end": "2026-10-12 11:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "159903",
    "name": "深成ETF",
    "type": "etf",
@@ -33525,6 +33494,37 @@
     "zs_zg": 1.553,
     "zs_zd": 1.529,
     "zs_start": "2026-10-08 10:15:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "159895",
+   "name": "物联网50",
+   "type": "etf",
+   "market": "ETF",
+   "price": 1.206,
+   "change_pct": -2.899,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 8386593.0,
+   "total_mv": 8350.5687984,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 1.207,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 1.21 且出现背驰，动能比 0.17（背驰）",
+    "zs_zg": 1.244,
+    "zs_zd": 1.213,
+    "zs_start": "2026-09-30 09:35:00",
     "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 4
    },
@@ -33752,37 +33752,6 @@
    "score": 32
   },
   {
-   "code": "510770",
-   "name": "G60创新ETF申万菱信",
-   "type": "etf",
-   "market": "ETF",
-   "price": 0.753,
-   "change_pct": -2.587,
-   "pe_dynamic": null,
-   "turnover": null,
-   "amount": 2799316.0,
-   "total_mv": 1740.2339781,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 0.752,
-    "dt": "2026-10-12 14:35:00",
-    "bars_ago": 5,
-    "detail": "向下离开中枢下沿 0.76 且出现背驰，动能比 0.11（背驰）",
-    "zs_zg": 0.78,
-    "zs_zd": 0.756,
-    "zs_start": "2026-09-30 11:20:00",
-    "zs_end": "2026-10-12 13:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "510980",
    "name": "上证指数ETF汇添富",
    "type": "etf",
@@ -33814,28 +33783,28 @@
    "score": 32
   },
   {
-   "code": "512220",
-   "name": "TMTETF景顺",
+   "code": "510770",
+   "name": "G60创新ETF申万菱信",
    "type": "etf",
    "market": "ETF",
-   "price": 3.269,
-   "change_pct": -3.569,
+   "price": 0.753,
+   "change_pct": -2.587,
    "pe_dynamic": null,
    "turnover": null,
-   "amount": 16187936.0,
-   "total_mv": 61283.1721698,
+   "amount": 2799316.0,
+   "total_mv": 1740.2339781,
    "m30": null,
    "m5": {
     "kind": "1",
     "label": "1买",
-    "price": 3.273,
-    "dt": "2026-10-12 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 3.30 且出现背驰，动能比 0.21（背驰）",
-    "zs_zg": 3.405,
-    "zs_zd": 3.3,
-    "zs_start": "2026-10-09 09:35:00",
-    "zs_end": "2026-10-12 11:20:00",
+    "price": 0.752,
+    "dt": "2026-10-12 14:35:00",
+    "bars_ago": 5,
+    "detail": "向下离开中枢下沿 0.76 且出现背驰，动能比 0.11（背驰）",
+    "zs_zg": 0.78,
+    "zs_zd": 0.756,
+    "zs_start": "2026-09-30 11:20:00",
+    "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -33868,6 +33837,37 @@
     "zs_start": "2026-10-09 11:20:00",
     "zs_end": "2026-10-12 13:20:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "512220",
+   "name": "TMTETF景顺",
+   "type": "etf",
+   "market": "ETF",
+   "price": 3.269,
+   "change_pct": -3.569,
+   "pe_dynamic": null,
+   "turnover": null,
+   "amount": 16187936.0,
+   "total_mv": 61283.1721698,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 3.273,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 3.30 且出现背驰，动能比 0.21（背驰）",
+    "zs_zg": 3.405,
+    "zs_zd": 3.3,
+    "zs_start": "2026-10-09 09:35:00",
+    "zs_end": "2026-10-12 11:20:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -34341,29 +34341,29 @@
    "score": 32
   },
   {
-   "code": "588020",
-   "name": "科创成长ETF易方达",
+   "code": "588070",
+   "name": "科创成长ETF万家",
    "type": "etf",
    "market": "ETF",
-   "price": 0.713,
-   "change_pct": -3.908,
+   "price": 1.824,
+   "change_pct": -3.747,
    "pe_dynamic": null,
    "turnover": null,
-   "amount": 243303869.0,
-   "total_mv": 106905.2949,
+   "amount": 8825089.0,
+   "total_mv": 4457.3088,
    "m30": null,
    "m5": {
     "kind": "1",
     "label": "1买",
-    "price": 0.712,
-    "dt": "2026-10-12 14:45:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 0.72 且出现背驰，动能比 0.24（背驰）",
-    "zs_zg": 0.727,
-    "zs_zd": 0.721,
-    "zs_start": "2026-10-09 11:15:00",
+    "price": 1.824,
+    "dt": "2026-10-12 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 1.84 且出现背驰，动能比 0.22（背驰）",
+    "zs_zg": 1.911,
+    "zs_zd": 1.841,
+    "zs_start": "2026-09-30 14:40:00",
     "zs_end": "2026-10-12 11:05:00",
-    "zs_bi_count": 3
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -34372,28 +34372,28 @@
    "score": 32
   },
   {
-   "code": "588120",
-   "name": "科创100ETF国泰",
+   "code": "588160",
+   "name": "科创新材料ETF南方",
    "type": "etf",
    "market": "ETF",
-   "price": 0.779,
-   "change_pct": -2.381,
+   "price": 0.917,
+   "change_pct": -3.372,
    "pe_dynamic": null,
    "turnover": null,
-   "amount": 49708291.0,
-   "total_mv": 80519.1538,
+   "amount": 211767228.0,
+   "total_mv": 46170.5832,
    "m30": null,
    "m5": {
     "kind": "1",
     "label": "1买",
-    "price": 0.778,
+    "price": 0.919,
     "dt": "2026-10-12 14:30:00",
     "bars_ago": 6,
-    "detail": "向下离开中枢下沿 0.78 且出现背驰，动能比 0.27（背驰）",
-    "zs_zg": 0.803,
-    "zs_zd": 0.782,
-    "zs_start": "2026-09-30 14:45:00",
-    "zs_end": "2026-10-12 11:20:00",
+    "detail": "向下离开中枢下沿 0.92 且出现背驰，动能比 0.15（背驰）",
+    "zs_zg": 0.953,
+    "zs_zd": 0.92,
+    "zs_start": "2026-10-08 10:15:00",
+    "zs_end": "2026-10-12 11:15:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -34434,28 +34434,28 @@
    "score": 32
   },
   {
-   "code": "588160",
-   "name": "科创新材料ETF南方",
+   "code": "588120",
+   "name": "科创100ETF国泰",
    "type": "etf",
    "market": "ETF",
-   "price": 0.917,
-   "change_pct": -3.372,
+   "price": 0.779,
+   "change_pct": -2.381,
    "pe_dynamic": null,
    "turnover": null,
-   "amount": 211767228.0,
-   "total_mv": 46170.5832,
+   "amount": 49708291.0,
+   "total_mv": 80519.1538,
    "m30": null,
    "m5": {
     "kind": "1",
     "label": "1买",
-    "price": 0.919,
+    "price": 0.778,
     "dt": "2026-10-12 14:30:00",
     "bars_ago": 6,
-    "detail": "向下离开中枢下沿 0.92 且出现背驰，动能比 0.15（背驰）",
-    "zs_zg": 0.953,
-    "zs_zd": 0.92,
-    "zs_start": "2026-10-08 10:15:00",
-    "zs_end": "2026-10-12 11:15:00",
+    "detail": "向下离开中枢下沿 0.78 且出现背驰，动能比 0.27（背驰）",
+    "zs_zg": 0.803,
+    "zs_zd": 0.782,
+    "zs_start": "2026-09-30 14:45:00",
+    "zs_end": "2026-10-12 11:20:00",
     "zs_bi_count": 4
    },
    "resonance": false,
@@ -34527,29 +34527,29 @@
    "score": 32
   },
   {
-   "code": "589000",
-   "name": "科创综指ETF华夏",
+   "code": "589060",
+   "name": "科创综指ETF东财",
    "type": "etf",
    "market": "ETF",
-   "price": 1.356,
-   "change_pct": -2.516,
+   "price": 1.43,
+   "change_pct": -2.389,
    "pe_dynamic": null,
    "turnover": null,
-   "amount": 87217996.0,
-   "total_mv": 102989.2621548,
+   "amount": 8131247.0,
+   "total_mv": 8885.71398,
    "m30": null,
    "m5": {
     "kind": "1",
     "label": "1买",
-    "price": 1.355,
+    "price": 1.425,
     "dt": "2026-10-12 14:30:00",
     "bars_ago": 6,
-    "detail": "向下离开中枢下沿 1.36 且出现背驰，动能比 0.50（背驰）",
-    "zs_zg": 1.398,
-    "zs_zd": 1.359,
-    "zs_start": "2026-09-30 14:45:00",
+    "detail": "向下离开中枢下沿 1.45 且出现背驰，动能比 0.57（背驰）",
+    "zs_zg": 1.471,
+    "zs_zd": 1.453,
+    "zs_start": "2026-09-30 13:40:00",
     "zs_end": "2026-10-12 10:30:00",
-    "zs_bi_count": 4
+    "zs_bi_count": 6
    },
    "resonance": false,
    "tags": [
@@ -35581,37 +35581,6 @@
    "score": 30
   },
   {
-   "code": "002144",
-   "name": "宏达高科",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 10.87,
-   "change_pct": -1.629,
-   "pe_dynamic": 45.292,
-   "turnover": 2.00699,
-   "amount": 30135549.0,
-   "total_mv": 192140.867936,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 10.79,
-    "dt": "2026-10-12 10:15:00",
-    "bars_ago": 40,
-    "detail": "向下离开中枢下沿 10.97 且出现背驰，动能比 0.35（背驰）",
-    "zs_zg": 11.11,
-    "zs_zd": 10.97,
-    "zs_start": "2026-10-08 13:20:00",
-    "zs_end": "2026-10-12 09:35:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 30
-  },
-  {
    "code": "002155",
    "name": "湖南黄金",
    "type": "stock",
@@ -35634,6 +35603,37 @@
     "zs_zd": 23.13,
     "zs_start": "2026-10-09 11:20:00",
     "zs_end": "2026-10-12 11:15:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 30
+  },
+  {
+   "code": "002144",
+   "name": "宏达高科",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 10.87,
+   "change_pct": -1.629,
+   "pe_dynamic": 45.292,
+   "turnover": 2.00699,
+   "amount": 30135549.0,
+   "total_mv": 192140.867936,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 10.79,
+    "dt": "2026-10-12 10:15:00",
+    "bars_ago": 40,
+    "detail": "向下离开中枢下沿 10.97 且出现背驰，动能比 0.35（背驰）",
+    "zs_zg": 11.11,
+    "zs_zd": 10.97,
+    "zs_start": "2026-10-08 13:20:00",
+    "zs_end": "2026-10-12 09:35:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -36108,37 +36108,6 @@
    "score": 30
   },
   {
-   "code": "003023",
-   "name": "彩虹集团",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 25.06,
-   "change_pct": -7.151,
-   "pe_dynamic": 41.463,
-   "turnover": 5.71345,
-   "amount": 154668342.0,
-   "total_mv": 263986.0496,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 25.03,
-    "dt": "2026-10-12 13:30:00",
-    "bars_ago": 19,
-    "detail": "向下离开中枢下沿 25.29 且出现背驰，动能比 0.38（背驰）",
-    "zs_zg": 25.95,
-    "zs_zd": 25.29,
-    "zs_start": "2026-10-09 09:55:00",
-    "zs_end": "2026-10-12 11:10:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 30
-  },
-  {
    "code": "003027",
    "name": "同兴科技",
    "type": "stock",
@@ -36162,6 +36131,37 @@
     "zs_start": "2026-09-29 13:05:00",
     "zs_end": "2026-10-12 13:05:00",
     "zs_bi_count": 10
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 30
+  },
+  {
+   "code": "003023",
+   "name": "彩虹集团",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 25.06,
+   "change_pct": -7.151,
+   "pe_dynamic": 41.463,
+   "turnover": 5.71345,
+   "amount": 154668342.0,
+   "total_mv": 263986.0496,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 25.03,
+    "dt": "2026-10-12 13:30:00",
+    "bars_ago": 19,
+    "detail": "向下离开中枢下沿 25.29 且出现背驰，动能比 0.38（背驰）",
+    "zs_zg": 25.95,
+    "zs_zd": 25.29,
+    "zs_start": "2026-10-09 09:55:00",
+    "zs_end": "2026-10-12 11:10:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -37534,37 +37534,6 @@
    "score": 30
   },
   {
-   "code": "688127",
-   "name": "蓝特光学",
-   "type": "stock",
-   "market": "科创板",
-   "price": 53.3,
-   "change_pct": -3.929,
-   "pe_dynamic": 55.521,
-   "turnover": 1.19329,
-   "amount": 261833789.0,
-   "total_mv": 2163434.741,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 53.22,
-    "dt": "2026-10-12 14:25:00",
-    "bars_ago": 8,
-    "detail": "向下离开中枢下沿 53.50 且出现背驰，动能比 0.27（背驰）",
-    "zs_zg": 55.6,
-    "zs_zd": 53.5,
-    "zs_start": "2026-10-09 14:20:00",
-    "zs_end": "2026-10-12 14:00:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 30
-  },
-  {
    "code": "688128",
    "name": "中国电研",
    "type": "stock",
@@ -37588,6 +37557,37 @@
     "zs_start": "2026-09-29 14:10:00",
     "zs_end": "2026-10-12 09:45:00",
     "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 30
+  },
+  {
+   "code": "688127",
+   "name": "蓝特光学",
+   "type": "stock",
+   "market": "科创板",
+   "price": 53.3,
+   "change_pct": -3.929,
+   "pe_dynamic": 55.521,
+   "turnover": 1.19329,
+   "amount": 261833789.0,
+   "total_mv": 2163434.741,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 53.22,
+    "dt": "2026-10-12 14:25:00",
+    "bars_ago": 8,
+    "detail": "向下离开中枢下沿 53.50 且出现背驰，动能比 0.27（背驰）",
+    "zs_zg": 55.6,
+    "zs_zd": 53.5,
+    "zs_start": "2026-10-09 14:20:00",
+    "zs_end": "2026-10-12 14:00:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -39642,37 +39642,6 @@
    "score": 28
   },
   {
-   "code": "603061",
-   "name": "金海通",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 290.79,
-   "change_pct": -0.761,
-   "pe_dynamic": 95.341,
-   "turnover": 3.39093,
-   "amount": 875950120.0,
-   "total_mv": 2529873.0,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 281.5,
-    "dt": "2026-10-12 09:35:00",
-    "bars_ago": 47,
-    "detail": "向下离开中枢下沿 295.58 且出现背驰，动能比 0.62（背驰）",
-    "zs_zg": 297.84,
-    "zs_zd": 295.58,
-    "zs_start": "2026-10-08 10:30:00",
-    "zs_end": "2026-10-09 14:20:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 28
-  },
-  {
    "code": "603066",
    "name": "音飞储存",
    "type": "stock",
@@ -39696,6 +39665,37 @@
     "zs_start": "2026-10-08 09:35:00",
     "zs_end": "2026-10-12 11:30:00",
     "zs_bi_count": 5
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 28
+  },
+  {
+   "code": "603061",
+   "name": "金海通",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 290.79,
+   "change_pct": -0.761,
+   "pe_dynamic": 95.341,
+   "turnover": 3.39093,
+   "amount": 875950120.0,
+   "total_mv": 2529873.0,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 281.5,
+    "dt": "2026-10-12 09:35:00",
+    "bars_ago": 47,
+    "detail": "向下离开中枢下沿 295.58 且出现背驰，动能比 0.62（背驰）",
+    "zs_zg": 297.84,
+    "zs_zd": 295.58,
+    "zs_start": "2026-10-08 10:30:00",
+    "zs_end": "2026-10-09 14:20:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
