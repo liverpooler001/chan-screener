@@ -11,12 +11,20 @@ const $ = (s) => document.querySelector(s);
 const state = {
   dates: [],
   payload: null,
-  mode: 'and',          // and = 30分钟 且 5分钟；or = 任一
-  type: 'all',          // all | stock | etf
-  kinds: new Set(['2', '3']),
+  mode: 'and',                  // and = 两级同时满足；or = 任一满足
+  type: 'all',                  // all | stock | etf
+  k30: new Set(['2', '3']),     // 30 分钟要看哪些买点；空集 = 该级别不设条件
+  k5: new Set(['1', '2', '3']), // 5 分钟要看哪些买点；空集 = 该级别不设条件
   keyword: '',
   current: null,
 };
+
+const KIND_CN = { '1': '一买', '2': '二买', '3': '三买' };
+const KIND_CLS = { '1': 'b1', '2': 'b2', '3': 'b3' };
+const sel30 = () => state.k30;
+const sel5 = () => state.k5;
+const kindsCn = (set) =>
+  set.size ? Array.from(set).sort().map((k) => KIND_CN[k] || k).join(' / ') : '不限';
 
 /* ------------------------------------------------------------------ */
 /* 工具函数                                                            */
@@ -71,26 +79,45 @@ function scoreColor(s) {
 /* ------------------------------------------------------------------ */
 /* 过滤逻辑                                                            */
 /* ------------------------------------------------------------------ */
-function inKinds(sig) {
-  const ks = [];
-  if (sig.m30) ks.push(sig.m30.kind);
-  if (sig.m5) ks.push(sig.m5.kind);
-  if (!ks.length) return false;
-  // 命中集合中任意一个买点类型即可
-  return ks.some((k) => state.kinds.has(k));
+/* 两级买点各有一组勾选：
+     - 某级别"一个都没勾" = 该级别不参与判断（例如只看 30 分三买，5 分全不勾）；
+     - 共振(and)：两级都要满足（仅对"有勾选"的级别生效）；
+     - 任一(or)：命中任意一个"有勾选"的级别即可；
+     - 两级都没勾 = 不设买点条件，显示全部。 */
+function levelHit(lv, sel) {
+  return !!(lv && sel.has(lv.kind));
 }
 
-function passesMode(sig) {
-  if (state.mode === 'and') return !!(sig.m30 && sig.m5);
-  return !!(sig.m30 || sig.m5);
+function passesFilter(sig) {
+  const has30 = state.k30.size > 0;
+  const has5 = state.k5.size > 0;
+  if (!has30 && !has5) return true;
+
+  const h30 = levelHit(sig.m30, state.k30);
+  const h5 = levelHit(sig.m5, state.k5);
+
+  if (state.mode === 'and') {
+    return (has30 ? h30 : true) && (has5 ? h5 : true);
+  }
+  return h30 || h5;
+}
+
+function conditionText() {
+  const p = state.payload || {};
+  const datePart = p.trade_date ? `交易日 ${p.trade_date}` : '';
+  const typeCn = state.type === 'etf' ? 'ETF' : state.type === 'stock' ? '股票' : '全部品种';
+  if (!state.k30.size && !state.k5.size) {
+    return `${datePart} · ${typeCn} · 未限买点（显示全部）`;
+  }
+  const modeCn = state.mode === 'and' ? '共振' : '任一满足';
+  return `${datePart} · ${typeCn} · 30分 ${kindsCn(state.k30)} ${modeCn} 5分 ${kindsCn(state.k5)}`;
 }
 
 function filtered() {
   if (!state.payload) return [];
   const kw = state.keyword.trim().toUpperCase();
   return (state.payload.signals || []).filter((s) => {
-    if (!passesMode(s)) return false;
-    if (!inKinds(s)) return false;
+    if (!passesFilter(s)) return false;
     if (state.type !== 'all' && s.type !== state.type) return false;
     if (kw && !(s.code.includes(kw) || (s.name || '').toUpperCase().includes(kw))) return false;
     return true;
@@ -129,8 +156,9 @@ function renderStats(rows) {
 
 function bpBadge(lv, label) {
   if (!lv) return `<span class="bp none">${label} 无</span>`;
-  const cls = lv.kind === '3' ? 'b3' : 'b2';
-  return `<span class="bp ${cls}">${lv.label} · ${fmt(lv.price, 2)}</span>`;
+  const cls = KIND_CLS[lv.kind] || 'b2';
+  const cn = KIND_CN[lv.kind] || lv.label;
+  return `<span class="bp ${cls}">${cn} · ${fmt(lv.price, 2)}</span>`;
 }
 
 function renderTable(rows) {
@@ -211,7 +239,8 @@ function emptyState(rows) {
       <p>全市场扫描完成，暂无同时满足缠论买点条件的品种。<br>换个交易日看看，或放宽级别逻辑为「任一满足」。</p>`;
   } else {
     html = `<div class="big">当前筛选条件下没有结果</div>
-      <p>市场共命中 ${total} 只，但没有符合当前级别逻辑 / 买点类型 / 关键词的组合。<br>试试切换为「任一满足」。</p>`;
+      <p>市场共命中 ${total} 只，但没有符合「30 分钟买点 / 5 分钟买点 / 级别组合 / 品种 / 关键词」的组合。<br>
+      可以试试放宽买点勾选，或把级别组合切为「任一满足」。</p>`;
   }
   el.innerHTML = html;
 }
@@ -224,7 +253,7 @@ function render() {
   emptyState(rows);
   const p = state.payload || {};
   $('#resultTitle').textContent = '筛选结果';
-  $('#resultSub').textContent = p.trade_date ? `交易日 ${p.trade_date}` : '';
+  $('#resultSub').textContent = conditionText();
   $('#updatedAt').textContent = p.generated_at ? `更新于 ${p.generated_at}` : '加载中…';
 
   const banner = $('#demoBanner');
@@ -265,18 +294,22 @@ function zsBar(level) {
 }
 
 function levelBox(name, lv, lvKey) {
+  const sel = lvKey === 'm5' ? sel5() : sel30();
   if (!lv) {
+    const why = sel.size ? `未出现符合的 ${kindsCn(sel)}` : '该级别未设条件';
     return `<div class="lv-box miss">
       <div class="lv-h"><span class="t">${name}</span>
-        <span class="r">未出现符合的二买 / 三买</span></div>
+        <span class="r">${why}</span></div>
     </div>`;
   }
   const fresh = lv.bars_ago <= 2 ? '刚刚确认' :
                 lv.bars_ago <= 8 ? '信号新鲜' : '略有滞后';
+  const cls = KIND_CLS[lv.kind] || 'b2';
+  const cn = KIND_CN[lv.kind] || lv.label;
   return `<div class="lv-box hit">
     <div class="lv-h">
       <span class="t">${name}</span>
-      <span class="bp ${lv.kind === '3' ? 'b3' : 'b2'}">${lv.label}</span>
+      <span class="bp ${cls}">${cn}</span>
       <span class="r">${fresh} · ${lv.bars_ago} 根K线前</span>
     </div>
     <div class="kv" style="margin:0 0 4px">
@@ -323,7 +356,7 @@ function openDrawer(code) {
       </div>
     </div>
     <p class="note" style="margin-top:12px">
-      评分 = 买点类型（三买 &gt; 二买）+ 级别权重（30分 &gt; 5分）+ 双级别共振加分 + 信号新鲜度 + 市盈率合理性。
+      评分 = 买点类型（三买 &gt; 二买 &gt; 一买）+ 级别权重（30分 &gt; 5分）+ 双级别共振加分 + 信号新鲜度 + 市盈率合理性。
       分数越高代表「结构更完整、信号更近」，<b>不代表上涨概率</b>。
     </p>
 
@@ -404,19 +437,18 @@ function bind() {
     render();
   });
 
-  $('#kindChips').addEventListener('click', (e) => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    const k = b.dataset.kind;
-    if (state.kinds.has(k)) {
-      if (state.kinds.size === 1) return;   // 至少保留一项
-      state.kinds.delete(k);
-      b.setAttribute('aria-pressed', 'false');
-    } else {
-      state.kinds.add(k);
-      b.setAttribute('aria-pressed', 'true');
-    }
-    render();
+  // 两级买点各自独立的 chip 组：可以全不勾（＝该级别不设条件）
+  [['#k30Chips', 'k30'], ['#k5Chips', 'k5']].forEach(([sel, key]) => {
+    $(sel).addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      const k = b.dataset.kind;
+      const set = state[key];
+      if (set.has(k)) set.delete(k);
+      else set.add(k);
+      b.setAttribute('aria-pressed', String(set.has(k)));
+      render();
+    });
   });
 
   let timer = null;

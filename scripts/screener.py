@@ -104,7 +104,7 @@ def load_config(path: Optional[str]) -> dict:
 # --------------------------------------------------------------------------- #
 # 打分
 # --------------------------------------------------------------------------- #
-_KIND_SCORE = {"3": 40, "2": 34}
+_KIND_SCORE = {"3": 40, "2": 34, "1": 30}   # 三买 > 二买 > 一买（一买胜在位置低，风险高）
 
 
 def score_signal(sig: Dict, m30: Optional[Dict], m5: Optional[Dict]) -> int:
@@ -153,7 +153,10 @@ def analyze_one(
     code = item["code"]
     try:
         lv_cfg = cfg["levels"]
-        kinds = cfg["buy_kinds"]
+        # 买点类型按级别拆开：级别里写了 buy_kinds 就用级别自己的，
+        # 没写则回退到顶层 buy_kinds（兼容旧配置）。
+        kinds30 = lv_cfg["m30"].get("buy_kinds", cfg["buy_kinds"])
+        kinds5 = lv_cfg["m5"].get("buy_kinds", cfg["buy_kinds"])
         tol = cfg["break_tolerance"]
         st = cfg.get("strict", {})
         span = float(st.get("min_zs_span_pct", 0.0))
@@ -181,7 +184,7 @@ def analyze_one(
             zs_break_tol=zs_tol,
         )
         buy30, _ = chan.pick_valid_buy(
-            r30, kinds, r30.last_close, lv_cfg["m30"]["max_bars_ago"], tol, max_gain
+            r30, kinds30, r30.last_close, lv_cfg["m30"]["max_bars_ago"], tol, max_gain
         )
 
         bars5 = ds.get_min_bars(
@@ -204,7 +207,7 @@ def analyze_one(
                 zs_break_tol=zs_tol,
             )
             buy5, _ = chan.pick_valid_buy(
-                r5, kinds, r5.last_close, lv_cfg["m5"]["max_bars_ago"], tol, max_gain
+                r5, kinds5, r5.last_close, lv_cfg["m5"]["max_bars_ago"], tol, max_gain
             )
 
         if buy30 is None and buy5 is None:

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <title>缠论多级别买点选股 · A股/ETF 盘后自动筛选</title>
-<meta name="description" content="每日盘后自动筛选：动态市盈率为正、非ST、非北交所，且30分钟与5分钟级别出现缠论二买或三买的A股与ETF。">
+<meta name="description" content="每日盘后自动筛选：动态市盈率为正、非ST、非北交所的A股与ETF，可自选 30 分钟买点（二买/三买）与 5 分钟买点（一买/二买/三买）并按共振或任一满足组合查看。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232b5cd9'/><path d='M22 66l16-20 14 12 26-32' stroke='white' stroke-width='9' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -35,37 +35,57 @@
   <div id="demoBanner" class="banner" hidden></div>
 
   <section class="controls">
-    <div class="ctrl-group">
-      <span class="ctrl-label">级别逻辑</span>
-      <div class="segmented" id="modeSeg">
-        <button data-mode="and" aria-pressed="true">共振（30分 且 5分）</button>
-        <button data-mode="or" aria-pressed="false">任一满足</button>
+    <!-- 第 1 行：品种（股票 / ETF）+ 两级如何组合 -->
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-label">品种</span>
+        <div class="segmented" id="typeSeg">
+          <button data-type="all" aria-pressed="true">全部</button>
+          <button data-type="stock" aria-pressed="false">股票</button>
+          <button data-type="etf" aria-pressed="false">ETF</button>
+        </div>
+      </div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-label">级别组合</span>
+        <div class="segmented" id="modeSeg">
+          <button data-mode="and" aria-pressed="true">共振（两级同时满足）</button>
+          <button data-mode="or" aria-pressed="false">任一满足</button>
+        </div>
+      </div>
+
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="4.6" stroke="#6b7280" stroke-width="1.6"/>
+          <path d="M10.6 10.6L14 14" stroke="#6b7280" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input id="search" type="search" placeholder="搜索代码或名称…" autocomplete="off">
       </div>
     </div>
 
-    <div class="ctrl-group">
-      <span class="ctrl-label">品种</span>
-      <div class="segmented" id="typeSeg">
-        <button data-type="all" aria-pressed="true">全部</button>
-        <button data-type="stock" aria-pressed="false">股票</button>
-        <button data-type="etf" aria-pressed="false">ETF</button>
+    <!-- 第 2 行：30 分钟级别买点 -->
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-label">30分钟买点</span>
+        <div class="chip-row" id="k30Chips">
+          <button class="chip" data-kind="2" aria-pressed="true">二买</button>
+          <button class="chip" data-kind="3" aria-pressed="true">三买</button>
+        </div>
       </div>
+      <span class="ctrl-note">全部取消选择 ＝ 不对 30 分钟级别设条件</span>
     </div>
 
-    <div class="ctrl-group">
-      <span class="ctrl-label">买点</span>
-      <div class="chip-row" id="kindChips">
-        <button class="chip" data-kind="2" aria-pressed="true">二买</button>
-        <button class="chip" data-kind="3" aria-pressed="true">三买</button>
+    <!-- 第 3 行：5 分钟级别买点（含一买） -->
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-label">5分钟买点</span>
+        <div class="chip-row" id="k5Chips">
+          <button class="chip" data-kind="1" aria-pressed="true">一买</button>
+          <button class="chip" data-kind="2" aria-pressed="true">二买</button>
+          <button class="chip" data-kind="3" aria-pressed="true">三买</button>
+        </div>
       </div>
-    </div>
-
-    <div class="search">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-        <circle cx="7" cy="7" r="4.6" stroke="#6b7280" stroke-width="1.6"/>
-        <path d="M10.6 10.6L14 14" stroke="#6b7280" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <input id="search" type="search" placeholder="搜索代码或名称…" autocomplete="off">
+      <span class="ctrl-note">一买＝向下离开中枢且 MACD 背驰；全部取消选择 ＝ 不对 5 分钟级别设条件</span>
     </div>
   </section>
 
@@ -106,11 +126,13 @@
   <p>
     <b>筛选条件</b>：股票 —— 动态市盈率 &gt; 0、非 ST、非北交所（沪深主板 / 创业板 / 科创板）；
     ETF —— 不适用市盈率，仅做缠论结构判断，同类型仅保留最高分一只。
-    技术面 —— 30 分钟与 5 分钟级别的<b>缠论二买（一类买点后回调不破前低）或三买（向上离开中枢后回调不回中枢）</b>。
+    技术面 —— <b>30 分钟级别</b>：二买（一类买点后回调不破前低）、三买（向上离开中枢后回调不回中枢）；
+    <b>5 分钟级别</b>：一买（向下离开中枢且 MACD 背驰）、二买、三买。
+    两行买点条件均可多选，未选中的级别不参与判断；「共振」要求所选两级同时满足，「任一满足」只需命中其中一级。
   </p>
   <p>
     <b>计算口径</b>：K 线为前复权分钟线，经包含处理 → 分型 → 笔 → 中枢 → 买点逐层推导；
-    买点需在有效期内（30 分钟 ≤ 16 根、5 分钟 ≤ 48 根）且最新价未跌破买点价位 0.5%。
+    买点需在有效期内（30 分钟 ≤ 16 根、5 分钟 ≤ 48 根）且最新价未跌破买点价位 0.5%，三买另需未跌回中枢。
     本页所有内容由程序自动生成，<b>仅供研究参考，不构成任何投资建议</b>。
   </p>
 </footer>

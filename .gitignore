@@ -1,6 +1,9 @@
 # 分钟K线缓存（体积大，不入库）
 .cache/
 
+# 临时文件 / 截图
+tmp/
+
 # Python
 __pycache__/
 *.py[cod]
