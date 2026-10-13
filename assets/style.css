@@ -425,3 +425,75 @@ footer b { color: var(--text-2); }
 @media (max-width: 400px) {
   .brand-text p { display: none; }
 }
+
+/* ---------------- 立即更新（触发云端筛选） ---------------- */
+.btn-update {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 12px;
+  border: 1px solid #c9d8f8; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 12.5px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: .16s; white-space: nowrap;
+}
+.btn-update:hover { background: #e3ecff; border-color: #b3c9f5; }
+.btn-update:active { transform: translateY(1px); }
+.btn-update:disabled { opacity: .6; cursor: default; }
+.btn-update.busy svg { animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 令牌弹窗 */
+.modal {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: center; padding: 18px;
+}
+.modal[hidden] { display: none; }
+.modal-mask { position: absolute; inset: 0; background: rgba(16, 24, 40, .42); }
+.modal-box {
+  position: relative; width: 100%; max-width: 520px;
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); padding: 20px;
+  animation: mdIn .18s ease-out;
+}
+@keyframes mdIn { from { opacity: 0; transform: translateY(8px) scale(.99); } }
+.modal-box h3 { margin: 0 0 8px; font-size: 16px; }
+.modal-desc { margin: 0 0 12px; font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.modal-hint {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px 12px;
+  font-size: 12px; color: var(--text-2); line-height: 1.85;
+}
+.modal-hint code {
+  background: #eef1f5; padding: 1px 5px; border-radius: 4px;
+  font-family: var(--mono); font-size: 11.5px;
+}
+.modal-box input {
+  width: 100%; margin: 12px 0 14px; height: 38px; padding: 0 12px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  font-family: var(--mono); font-size: 13px; color: var(--text); background: var(--surface);
+}
+.modal-box input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.modal-actions { display: flex; align-items: center; gap: 8px; }
+.modal-actions .spacer { flex: 1; }
+.btn-primary, .btn-ghost {
+  height: 34px; padding: 0 16px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer;
+  border: 1px solid transparent; transition: .16s;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #2450c4; }
+.btn-ghost { background: var(--surface); color: var(--text-2); border-color: var(--border-strong); }
+.btn-ghost:hover { background: var(--surface-2); }
+
+/* 轻提示 */
+.toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+  z-index: 80; max-width: min(560px, calc(100vw - 32px));
+  background: #1f2430; color: #fff; border-radius: 10px; padding: 11px 16px;
+  font-size: 13px; line-height: 1.65; box-shadow: var(--shadow-lg);
+  animation: tIn .2s ease-out;
+}
+.toast[hidden] { display: none; }
+.toast.ok { background: #0f5c37; }
+.toast.err { background: #8c1f1f; }
+.toast a { color: #cfe0ff; text-decoration: underline; }
+@keyframes tIn { from { opacity: 0; transform: translate(-50%, 8px); } }

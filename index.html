@@ -21,6 +21,13 @@
       </div>
     </div>
     <div class="topbar-right">
+      <button class="btn-update" id="btnUpdate" title="触发云端重新筛选当天数据（全市场，约 10~20 分钟）">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13.4 8a5.4 5.4 0 1 1-1.65-3.88" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M13.7 1.9v3.1h-3.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="btnUpdateText">立即更新</span>
+      </button>
       <span class="live-dot" id="updatedAt">加载中…</span>
       <label class="date-pick">
         <span>交易日</span>
@@ -136,6 +143,35 @@
     本页所有内容由程序自动生成，<b>仅供研究参考，不构成任何投资建议</b>。
   </p>
 </footer>
+
+<div class="modal" id="tokenModal" hidden>
+  <div class="modal-mask" data-close="1"></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="tokenTitle">
+    <h3 id="tokenTitle">设置 GitHub 令牌</h3>
+    <p class="modal-desc">
+      「立即更新」会直接调用 GitHub 接口触发云端筛选，需要一个你自己的令牌。
+      令牌只保存在<b>本机浏览器</b>（localStorage），不会上传到任何第三方站点。
+    </p>
+    <div class="modal-hint">
+      <b>获取方式：</b>打开
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">新建细粒度令牌</a>
+      → 仅授权仓库 <code>sleepbox1/chan-screener</code> → 权限里把 <b>Actions</b> 设为 <b>Read and write</b>
+      → 生成后粘贴到下面。<br>
+      已有令牌？在项目里运行 <code>复制更新令牌.bat</code>（或 <code>python tools/trigger_screen.py --copy-token</code>）
+      即可把它复制到剪贴板。
+    </div>
+    <input id="tokenInput" type="password" autocomplete="off" spellcheck="false"
+           placeholder="粘贴令牌（ghp_… 或 github_pat_…）">
+    <div class="modal-actions">
+      <button class="btn-ghost" id="tokenClear">清除已存令牌</button>
+      <span class="spacer"></span>
+      <button class="btn-ghost" id="tokenCancel">取消</button>
+      <button class="btn-primary" id="tokenSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
 
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-hidden="true">

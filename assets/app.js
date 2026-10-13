@@ -414,6 +414,130 @@ function fillDates(dates, active) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 立即更新：直接调用 GitHub API 触发云端 Actions 跑一次               */
+/*   令牌由使用者自己粘贴，只存在本机浏览器的 localStorage 里             */
+/* ------------------------------------------------------------------ */
+const GH_REPO = 'sleepbox1/chan-screener';
+const GH_WORKFLOW = 'daily-screen.yml';
+const TOKEN_KEY = 'chan_screener_gh_token';
+
+const getToken = () => {
+  try { return localStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; }
+};
+const saveToken = (v) => {
+  try {
+    if (v) localStorage.setItem(TOKEN_KEY, v);
+    else localStorage.removeItem(TOKEN_KEY);
+  } catch (e) { /* 隐私模式下忽略 */ }
+};
+
+let toastTimer = null;
+function toast(html, kind, ms) {
+  const el = $('#toast');
+  el.className = 'toast' + (kind ? ' ' + kind : '');
+  el.innerHTML = html;
+  el.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.hidden = true; }, ms || 4500);
+}
+
+function openTokenModal() {
+  $('#tokenModal').hidden = false;
+  $('#tokenInput').value = getToken();
+  setTimeout(() => $('#tokenInput').focus(), 30);
+}
+function closeTokenModal() { $('#tokenModal').hidden = true; }
+
+async function triggerUpdate() {
+  const tok = getToken();
+  if (!tok) {
+    openTokenModal();
+    return;
+  }
+  const btn = $('#btnUpdate');
+  const label = $('#btnUpdateText');
+  btn.disabled = true;
+  btn.classList.add('busy');
+  label.textContent = '触发中…';
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${tok}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ref: 'main' }),
+      }
+    );
+    if (res.status === 204) {
+      toast(
+        `已提交更新任务：云端正在重新筛选全市场，约 10~20 分钟后刷新本页即可看到新数据。` +
+        ` <a href="https://github.com/${GH_REPO}/actions/workflows/${GH_WORKFLOW}" target="_blank" rel="noopener">查看进度</a>`,
+        'ok', 9000
+      );
+    } else if (res.status === 401) {
+      toast('令牌无效或已过期，请重新设置。', 'err', 6000);
+      openTokenModal();
+    } else if (res.status === 403) {
+      toast('令牌权限不足：需要该仓库的 <b>Actions: Read and write</b> 权限。', 'err', 7000);
+    } else if (res.status === 404) {
+      toast('找不到工作流：可能该令牌没有授权 <b>sleepbox1/chan-screener</b> 这个仓库。', 'err', 7000);
+    } else {
+      const t = await res.text();
+      toast(`触发失败：HTTP ${res.status} ${esc(t.slice(0, 140))}`, 'err', 8000);
+    }
+  } catch (e) {
+    toast(`请求失败：${esc(e.message)}<br>本页需要能访问 api.github.com。`, 'err', 8000);
+  } finally {
+    btn.disabled = false;
+    btn.classList.remove('busy');
+    label.textContent = '立即更新';
+  }
+}
+
+function bindUpdateUI() {
+  $('#btnUpdate').addEventListener('click', triggerUpdate);
+
+  $('#tokenSave').addEventListener('click', () => {
+    const v = $('#tokenInput').value.trim();
+    if (!v) { $('#tokenInput').focus(); return; }
+    saveToken(v);
+    closeTokenModal();
+    toast('令牌已保存到本机浏览器，现在点「立即更新」即可触发。', 'ok');
+  });
+  $('#tokenCancel').addEventListener('click', closeTokenModal);
+  $('#tokenClear').addEventListener('click', () => {
+    saveToken('');
+    $('#tokenInput').value = '';
+    toast('已清除本机保存的令牌。');
+  });
+  $('#tokenModal').addEventListener('click', (e) => {
+    if (e.target && e.target.dataset && e.target.dataset.close) closeTokenModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !$('#tokenModal').hidden) closeTokenModal();
+  });
+
+  // 首次访问给一句引导（不打扰老用户）
+  if (!getToken()) {
+    setTimeout(() => {
+      toast(
+        `想立刻更新当天数据？点右上角「立即更新」，首次需要粘贴一个你自己的 GitHub 令牌。` +
+        ` <a href="#" id="toastSetup">现在设置</a>`,
+        '', 7000
+      );
+      const link = $('#toastSetup');
+      if (link) {
+        link.addEventListener('click', (ev) => { ev.preventDefault(); openTokenModal(); });
+      }
+    }, 1600);
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* 事件绑定                                                            */
 /* ------------------------------------------------------------------ */
 function bind() {
@@ -467,6 +591,8 @@ function bind() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
   });
+
+  bindUpdateUI();
 }
 
 /* ------------------------------------------------------------------ */
