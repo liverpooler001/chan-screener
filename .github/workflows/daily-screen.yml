@@ -30,6 +30,10 @@ on:
 permissions:
   contents: write
 
+# 统一时区：runner 默认 UTC，不设置的话 generated_at / 提交日期都会差 8 小时
+env:
+  TZ: Asia/Shanghai
+
 concurrency:
   group: daily-chan-screen
   cancel-in-progress: false
@@ -86,7 +90,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "本次无数据变化，跳过提交"
           else
-            git commit -m "data: 更新 $(date -u -d '+8 hours' +%Y-%m-%d) 盘后缠论买点筛选结果"
+            git commit -m "data: 更新 $(date +%Y-%m-%d) 盘后缠论买点筛选结果"
             git push
           fi
 
