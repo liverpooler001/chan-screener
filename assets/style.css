@@ -426,6 +426,17 @@ footer b { color: var(--text-2); }
   .brand-text p { display: none; }
 }
 
+/* ---------------- 顶栏导航链接（跟踪表） ---------------- */
+.nav-link {
+  display: inline-flex; align-items: center;
+  height: 30px; padding: 0 12px;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); color: var(--text-2);
+  font-size: 12.5px; font-weight: 600; text-decoration: none;
+  transition: .16s; white-space: nowrap;
+}
+.nav-link:hover { border-color: #c9d8f8; color: var(--accent); background: var(--accent-soft); }
+
 /* ---------------- 立即更新（触发云端筛选） ---------------- */
 .btn-update {
   display: inline-flex; align-items: center; gap: 6px;

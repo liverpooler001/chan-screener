@@ -82,11 +82,16 @@ jobs:
           echo "运行参数: python scripts/screener.py $ARGS"
           python scripts/screener.py $ARGS
 
+      - name: 更新选股跟踪表（评分前5的股票/ETF，跟踪 1~14 个交易日）
+        run: |
+          python scripts/backtest.py || echo "跟踪数据更新失败，跳过"
+          python scripts/build_perf_page.py || echo "跟踪页生成失败，跳过"
+
       - name: 提交结果
         run: |
           git config user.name  "chan-screener-bot"
           git config user.email "chan-screener-bot@users.noreply.github.com"
-          git add data/
+          git add data/ perf.html
           if git diff --staged --quiet; then
             echo "本次无数据变化，跳过提交"
           else
