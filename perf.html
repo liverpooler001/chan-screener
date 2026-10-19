@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>选股跟踪 · 推荐后 1~14 天</title>
+<title>选股跟踪 · 推荐后 1~10 个交易日</title>
 <style>
 :root{
   --bg:#f6f7f9;--surface:#fff;--border:#e6e8ec;--text:#1f2329;--text-2:#5a6270;--text-3:#8b94a3;
@@ -61,21 +61,25 @@ svg{display:block;width:100%;height:auto;overflow:visible}
 .tbl-scroll{overflow-x:auto;margin:0 -4px;padding:0 4px 2px}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;font-variant-numeric:tabular-nums}
 th,td{padding:0;border-bottom:1px solid #f1f2f4;white-space:nowrap}
-thead th{position:sticky;top:0;z-index:3;background:#fff;font-size:11px;color:var(--text-3);
-  font-weight:600;padding:7px 0;text-align:center;border-bottom:1px solid var(--border)}
-thead th.nm{text-align:left;padding-left:8px;z-index:4}
-td.nm{position:sticky;left:0;background:#fff;z-index:2;text-align:left;padding:6px 10px 6px 8px;
-  border-right:1px solid #f4f5f7;min-width:158px;max-width:210px}
+thead{position:sticky;top:0;z-index:3;background:#fff}
+thead th{background:#fff;font-size:11px;color:var(--text-3);
+  font-weight:600;padding:6px 0;text-align:center;border-bottom:1px solid var(--border)}
+thead th.grp-h{color:var(--text-2);border-bottom:1px dashed #eceef2}
+thead th.corner{text-align:left;padding-left:10px;position:sticky;left:0;z-index:4;
+  border-right:1px solid #f4f5f7;font-size:12px;color:var(--text)}
+td.nm{position:sticky;left:0;background:#fff;z-index:2;text-align:left;padding:7px 12px 7px 10px;
+  border-right:1px solid #f4f5f7;min-width:170px;max-width:230px}
 tbody tr:hover td{background:#fafbfd}
 tbody tr:hover td.nm{background:#fafbfd}
-.nm-n{font-size:12.5px;font-weight:600;color:var(--text)}
-.nm-m{margin-left:5px;font-size:10.5px;color:var(--text-3);font-family:var(--mono)}
-.chip{display:inline-block;font-size:9.5px;line-height:1;padding:2px 4px;border-radius:4px;
-  margin-left:5px;vertical-align:1px;background:#eef1f6;color:#5b6472;font-weight:600;letter-spacing:.3px}
+.nm-l1{display:flex;align-items:center;gap:4px;line-height:1.35}
+.nm-l2{font-size:10.5px;color:var(--text-3);line-height:1.3;font-family:var(--mono)}
+.nm-n{font-size:13px;font-weight:600;color:var(--text)}
+.chip{display:inline-block;font-size:9px;line-height:1;padding:2px 4px;border-radius:4px;
+  background:#eef1f6;color:#5b6472;font-weight:600;letter-spacing:.3px}
 .chip.etf{background:#eef3ff;color:#3d63c4}
 .chip.stk{background:#f4f0fb;color:#7b4fc4}
-td.v{text-align:right;padding:6px 7px;min-width:44px;font-size:11.5px;color:var(--text-3)}
-td.v span{display:inline-block;padding:1px 4px;border-radius:4px;min-width:38px;text-align:right}
+td.v{text-align:right;padding:7px 9px;min-width:62px;font-size:11.5px;color:var(--text-3)}
+td.v span{display:inline-block;padding:1.5px 5px;border-radius:4px;min-width:52px;text-align:right}
 td.v .u{color:var(--up)}
 td.v .d{color:var(--down)}
 td.v .z{color:var(--text-3)}
@@ -92,10 +96,9 @@ tr.grp .gi .k{color:var(--text-3)}
   .wrap{padding:16px 12px 40px}
   h1{font-size:18px}
   .card{padding:12px 10px 12px}
-  td.nm{min-width:124px;max-width:150px;padding:5px 6px}
-  .nm-m{display:none}
-  td.v{min-width:40px;padding:5px 5px}
-  td.v span{min-width:34px;font-size:11px}
+  td.nm{min-width:120px;max-width:150px;padding:5px 7px}
+  td.v{min-width:54px;padding:5px 5px}
+  td.v span{min-width:46px;font-size:10.5px;padding:1px 3px}
 }
 </style>
 </head>
@@ -132,24 +135,24 @@ tr.grp .gi .k{color:var(--text-3)}
   <section class="card">
     <div class="card-head">
       <h2>跟踪明细</h2>
-      <span class="hint">单位 %，红涨绿跌 · 「·」= 还没走到那天</span>
+      <span class="hint">单位 %，红涨绿跌 · 「·」= 还没走到那天 · 推荐日列在名称下方</span>
     </div>
     <div class="tbl-scroll">
       <table id="tbl">
-        <thead><tr id="thead"></tr></thead>
+        <thead id="thead"></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
     <div class="note">
       <b>口径</b>：基准价为推荐日收盘价（前复权）；「n 天后」= 推荐日之后第 n 个交易日收盘相对基准价的涨跌；
-      一组走满 14 个交易日后自动从表里下线。每天取当日评分前 5 的股票和前 5 的 ETF 入表。
+      一组走满 10 个交易日（约两周）后自动从表里下线。每天取当日评分前 5 的股票和前 5 的 ETF 入表。
     </div>
   </section>
 </div>
 
 <script>
-const DATA = {"dates":["2026-10-16","2026-10-15","2026-10-14","2026-10-13","2026-10-12","2026-10-09","2026-10-08"],"groups":{"2026-10-16":{"base_date":"2026-10-16","rows":[{"code":"300453","name":"三鑫医疗","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":9.12,"rets":{},"done_days":0},{"code":"002811","name":"郑中设计","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":20.87,"rets":{},"done_days":0},{"code":"601188","name":"龙江交通","type":"stock","score":96,"tags":["30分3买","5分1买"],"base_price":3.16,"rets":{},"done_days":0},{"code":"300989","name":"蕾奥规划","type":"stock","score":95,"tags":["30分3买","5分3买"],"base_price":17.17,"rets":{},"done_days":0},{"code":"600210","name":"紫江企业","type":"stock","score":94,"tags":["30分2买","5分3买"],"base_price":6.74,"rets":{},"done_days":0},{"code":"159083","name":"红利嘉实","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":1.022,"rets":{},"done_days":0},{"code":"159170","name":"港互联网","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.778,"rets":{},"done_days":0},{"code":"159719","name":"开放共赢","type":"etf","score":43,"tags":["30分3买"],"base_price":1.67,"rets":{},"done_days":0},{"code":"512410","name":"银行ETF广发","type":"etf","score":43,"tags":["30分3买"],"base_price":1.15,"rets":{},"done_days":0},{"code":"516040","name":"300现金流ETF华夏","type":"etf","score":43,"tags":["30分3买"],"base_price":1.032,"rets":{},"done_days":0}]},"2026-10-15":{"base_date":"2026-10-15","rows":[{"code":"002727","name":"一心堂","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":12.79,"rets":{"1":1.49},"done_days":1},{"code":"600039","name":"四川路桥","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":8.984,"rets":{"1":-2.16},"done_days":1},{"code":"688367","name":"工大高科","type":"stock","score":93,"tags":["30分2买","5分3买"],"base_price":31.18,"rets":{"1":0.22},"done_days":1},{"code":"000156","name":"华数传媒","type":"stock","score":92,"tags":["30分3买","5分1买"],"base_price":7.3,"rets":{"1":-0.82},"done_days":1},{"code":"002372","name":"伟星新材","type":"stock","score":92,"tags":["30分3买","5分1买"],"base_price":8.47,"rets":{"1":2.13},"done_days":1},{"code":"562390","name":"中药ETF银华","type":"etf","score":94,"tags":["30分3买","5分2买"],"base_price":0.869,"rets":{"1":-0.23},"done_days":1},{"code":"516210","name":"银行ETF华安","type":"etf","score":90,"tags":["30分3买","5分1买"],"base_price":1.471,"rets":{"1":0.27},"done_days":1},{"code":"159083","name":"红利嘉实","type":"etf","score":86,"tags":["30分3买","5分1买"],"base_price":1.019,"rets":{"1":0.29},"done_days":1},{"code":"561010","name":"软件ETF华安","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.811,"rets":{"1":-0.74},"done_days":1},{"code":"159719","name":"开放共赢","type":"etf","score":50,"tags":["30分3买"],"base_price":1.67,"rets":{"1":0.0},"done_days":1}]},"2026-10-14":{"base_date":"2026-10-14","rows":[{"code":"000538","name":"云南白药","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":52.65,"rets":{"1":0.47,"2":0.82},"done_days":2},{"code":"600039","name":"四川路桥","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":9.084,"rets":{"1":-1.1,"2":-3.24},"done_days":2},{"code":"600236","name":"桂冠电力","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":10.07,"rets":{"1":-3.48,"2":-1.79},"done_days":2},{"code":"600660","name":"福耀玻璃","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":54.75,"rets":{"1":-0.42,"2":0.05},"done_days":2},{"code":"600887","name":"伊利股份","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":28.13,"rets":{"1":-0.11,"2":0.25},"done_days":2},{"code":"159945","name":"能源","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.424,"rets":{"1":-2.74,"2":-2.04},"done_days":2},{"code":"512330","name":"信息科技ETF南方","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.599,"rets":{"1":-3.19,"2":-3.88},"done_days":2},{"code":"560720","name":"红利低波100ETF工银","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":0.998,"rets":{"1":-0.3,"2":-0.5},"done_days":2},{"code":"561560","name":"电力ETF华泰柏瑞","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.285,"rets":{"1":-1.63,"2":-1.87},"done_days":2},{"code":"159568","name":"港股互联","type":"etf","score":86,"tags":["30分2买","5分3买"],"base_price":1.067,"rets":{"1":-2.72,"2":-1.03},"done_days":2}]},"2026-10-13":{"base_date":"2026-10-13","rows":[{"code":"601827","name":"三峰环境","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":8.11,"rets":{"1":0.86,"2":-0.74,"3":-2.1},"done_days":3},{"code":"600523","name":"贵航股份","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":11.97,"rets":{"1":-2.51,"2":-5.51,"3":-1.75},"done_days":3},{"code":"603355","name":"莱克电气","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":31.97,"rets":{"1":-0.53,"2":0.72,"3":-0.38},"done_days":3},{"code":"002617","name":"露笑科技","type":"stock","score":96,"tags":["30分3买","5分2买"],"base_price":7.39,"rets":{"1":-7.85,"2":-16.78,"3":-16.51},"done_days":3},{"code":"301206","name":"三元生物","type":"stock","score":96,"tags":["30分3买","5分2买"],"base_price":24.95,"rets":{"1":-0.6,"2":-2.12,"3":-1.84},"done_days":3},{"code":"560720","name":"红利低波100ETF工银","type":"etf","score":93,"tags":["30分2买","5分3买"],"base_price":0.99,"rets":{"1":0.81,"2":0.51,"3":0.3},"done_days":3},{"code":"159301","name":"公用事业","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":0.97,"rets":{"1":1.75,"2":0.1,"3":0.0},"done_days":3},{"code":"158011","name":"国泰创软","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.932,"rets":{"1":-1.18,"2":-3.0,"3":-4.61},"done_days":3},{"code":"516620","name":"影视ETF国泰","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.932,"rets":{"1":1.93,"2":-0.32,"3":-2.9},"done_days":3},{"code":"159945","name":"能源","type":"etf","score":81,"tags":["30分2买","5分2买"],"base_price":1.401,"rets":{"1":1.64,"2":-1.14,"3":-0.43},"done_days":3}]},"2026-10-12":{"base_date":"2026-10-12","rows":[{"code":"000719","name":"中原传媒","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":12.89,"rets":{"1":0.7,"2":2.4,"3":0.08,"4":2.02},"done_days":4},{"code":"301667","name":"纳百川","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":60.08,"rets":{"1":-7.76,"2":-12.92,"3":-17.29,"4":-18.89},"done_days":4},{"code":"600887","name":"伊利股份","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":27.96,"rets":{"1":-0.68,"2":0.61,"3":0.5,"4":0.86},"done_days":4},{"code":"600737","name":"中粮糖业","type":"stock","score":99,"tags":["30分3买","5分2买"],"base_price":15.99,"rets":{"1":1.88,"2":-7.13,"3":-16.14,"4":-12.13},"done_days":4},{"code":"603239","name":"浙江仙通","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":14.55,"rets":{"1":-1.37,"2":-5.43,"3":-9.83,"4":-0.82},"done_days":4},{"code":"159945","name":"能源","type":"etf","score":84,"tags":["30分2买","5分1买"],"base_price":1.383,"rets":{"1":1.3,"2":2.96,"3":0.14,"4":0.87},"done_days":4},{"code":"159197","name":"石油ETF","type":"etf","score":80,"tags":["30分2买","5分1买"],"base_price":0.89,"rets":{"1":1.35,"2":3.15,"3":-1.12,"4":-0.79},"done_days":4},{"code":"159981","name":"能源化工","type":"etf","score":80,"tags":["30分2买","5分1买"],"base_price":1.874,"rets":{"1":-0.27,"2":-0.27,"3":-2.29,"4":-2.03},"done_days":4},{"code":"159529","name":"标普消费","type":"etf","score":50,"tags":["30分3买"],"base_price":1.305,"rets":{"1":-1.0,"2":-1.53,"3":1.07,"4":3.98},"done_days":4},{"code":"560830","name":"电力ETF华夏","type":"etf","score":44,"tags":["30分2买"],"base_price":0.909,"rets":{"1":-0.88,"2":0.66,"3":-0.88,"4":-0.99},"done_days":4}]},"2026-10-09":{"base_date":"2026-10-09","rows":[{"code":"301059","name":"金三江","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":13.08,"rets":{"1":-3.98,"2":-1.83,"3":-5.2,"4":-5.81,"5":-5.58},"done_days":5},{"code":"600236","name":"桂冠电力","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":9.93,"rets":{"1":-0.2,"2":0.7,"3":1.41,"4":-2.11,"5":-0.4},"done_days":5},{"code":"601018","name":"宁波港","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":3.63,"rets":{"1":0.55,"2":0.55,"3":2.2,"4":0.0,"5":-1.1},"done_days":5},{"code":"603737","name":"三棵树","type":"stock","score":99,"tags":["30分3买","5分2买"],"base_price":23.21,"rets":{"1":-4.01,"2":-4.01,"3":-6.16,"4":-8.14,"5":-3.06},"done_days":5},{"code":"002832","name":"比音勒芬","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":27.74,"rets":{"1":-3.53,"2":-4.69,"3":-3.82,"4":-4.54,"5":-5.01},"done_days":5},{"code":"159018","name":"石油广发","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.911,"rets":{"1":-1.76,"2":-0.55,"3":1.32,"4":-3.29,"5":-2.74},"done_days":5},{"code":"159019","name":"石油","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.932,"rets":{"1":-1.61,"2":-0.64,"3":0.97,"4":-2.9,"5":-2.68},"done_days":5},{"code":"159195","name":"油气","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.909,"rets":{"1":-2.09,"2":-0.55,"3":1.1,"4":-2.97,"5":-3.08},"done_days":5},{"code":"159518","name":"标普油气","type":"etf","score":50,"tags":["30分3买"],"base_price":1.307,"rets":{"1":-0.31,"2":1.07,"3":4.06,"4":2.68,"5":0.69},"done_days":5},{"code":"159148","name":"油气富国","type":"etf","score":46,"tags":["30分3买"],"base_price":0.992,"rets":{"1":-2.02,"2":-0.6,"3":1.01,"4":-3.12,"5":-2.82},"done_days":5}]},"2026-10-08":{"base_date":"2026-10-08","rows":[{"code":"301019","name":"宁波色母","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":16.27,"rets":{"1":-0.12,"2":-1.6,"3":-1.23,"4":-3.44,"5":-5.29,"6":-6.02},"done_days":6},{"code":"600737","name":"中粮糖业","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":15.12,"rets":{"1":3.24,"2":5.75,"3":7.74,"4":-1.79,"5":-11.31,"6":-7.08},"done_days":6},{"code":"001872","name":"招商港口","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":24.61,"rets":{"1":0.08,"2":1.18,"3":3.37,"4":6.66,"5":0.98,"6":0.89},"done_days":6},{"code":"000786","name":"北新建材","type":"stock","score":93,"tags":["30分2买","5分2买"],"base_price":16.52,"rets":{"1":0.79,"2":-0.36,"3":-0.85,"4":-0.24,"5":-3.15,"6":0.42},"done_days":6},{"code":"300898","name":"熊猫乳品","type":"stock","score":93,"tags":["30分2买","5分2买"],"base_price":20.66,"rets":{"1":4.55,"2":-0.19,"3":2.27,"4":1.21,"5":0.82,"6":-1.21},"done_days":6},{"code":"561530","name":"银行ETF银华","type":"etf","score":93,"tags":["30分2买","5分3买"],"base_price":1.034,"rets":{"1":-1.35,"2":1.06,"3":0.58,"4":0.48,"5":0.19,"6":0.29},"done_days":6},{"code":"159275","name":"农牧渔","type":"etf","score":44,"tags":["30分2买"],"base_price":0.859,"rets":{"1":2.44,"2":1.75,"3":0.7,"4":0.0,"5":-3.03,"6":-0.93},"done_days":6},{"code":"159736","name":"饮食ETF","type":"etf","score":44,"tags":["30分2买"],"base_price":0.58,"rets":{"1":1.38,"2":1.03,"3":0.17,"4":0.34,"5":0.0,"6":0.69},"done_days":6},{"code":"159059","name":"电力DC","type":"etf","score":40,"tags":["5分3买"],"base_price":1.028,"rets":{"1":0.1,"2":0.0,"3":-0.78,"4":0.68,"5":-0.97,"6":-0.97},"done_days":6},{"code":"159201","name":"自由现金","type":"etf","score":40,"tags":["5分3买"],"base_price":1.166,"rets":{"1":0.6,"2":0.6,"3":0.77,"4":1.37,"5":-0.51,"6":0.51},"done_days":6}]}},"cutoff":"2026-10-18","updated_at":"2026-10-19 11:09:43"};
-const DAYS = 14;
+const DATA = {"dates":["2026-10-16","2026-10-15","2026-10-14","2026-10-13","2026-10-12","2026-10-09","2026-10-08"],"groups":{"2026-10-16":{"base_date":"2026-10-16","rows":[{"code":"300453","name":"三鑫医疗","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":9.12,"rets":{},"done_days":0},{"code":"002811","name":"郑中设计","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":20.87,"rets":{},"done_days":0},{"code":"601188","name":"龙江交通","type":"stock","score":96,"tags":["30分3买","5分1买"],"base_price":3.16,"rets":{},"done_days":0},{"code":"300989","name":"蕾奥规划","type":"stock","score":95,"tags":["30分3买","5分3买"],"base_price":17.17,"rets":{},"done_days":0},{"code":"600210","name":"紫江企业","type":"stock","score":94,"tags":["30分2买","5分3买"],"base_price":6.74,"rets":{},"done_days":0},{"code":"159083","name":"红利嘉实","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":1.022,"rets":{},"done_days":0},{"code":"159170","name":"港互联网","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.778,"rets":{},"done_days":0},{"code":"159719","name":"开放共赢","type":"etf","score":43,"tags":["30分3买"],"base_price":1.67,"rets":{},"done_days":0},{"code":"512410","name":"银行ETF广发","type":"etf","score":43,"tags":["30分3买"],"base_price":1.15,"rets":{},"done_days":0},{"code":"516040","name":"300现金流ETF华夏","type":"etf","score":43,"tags":["30分3买"],"base_price":1.032,"rets":{},"done_days":0}]},"2026-10-15":{"base_date":"2026-10-15","rows":[{"code":"002727","name":"一心堂","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":12.79,"rets":{"1":1.49},"done_days":1},{"code":"600039","name":"四川路桥","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":8.98,"rets":{"1":-2.12},"done_days":1},{"code":"688367","name":"工大高科","type":"stock","score":93,"tags":["30分2买","5分3买"],"base_price":31.18,"rets":{"1":0.22},"done_days":1},{"code":"000156","name":"华数传媒","type":"stock","score":92,"tags":["30分3买","5分1买"],"base_price":7.3,"rets":{"1":-0.82},"done_days":1},{"code":"002372","name":"伟星新材","type":"stock","score":92,"tags":["30分3买","5分1买"],"base_price":8.47,"rets":{"1":2.13},"done_days":1},{"code":"562390","name":"中药ETF银华","type":"etf","score":94,"tags":["30分3买","5分2买"],"base_price":0.869,"rets":{"1":-0.23},"done_days":1},{"code":"516210","name":"银行ETF华安","type":"etf","score":90,"tags":["30分3买","5分1买"],"base_price":1.471,"rets":{"1":0.27},"done_days":1},{"code":"159083","name":"红利嘉实","type":"etf","score":86,"tags":["30分3买","5分1买"],"base_price":1.019,"rets":{"1":0.29},"done_days":1},{"code":"561010","name":"软件ETF华安","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.811,"rets":{"1":-0.74},"done_days":1},{"code":"159719","name":"开放共赢","type":"etf","score":50,"tags":["30分3买"],"base_price":1.67,"rets":{"1":0.0},"done_days":1}]},"2026-10-14":{"base_date":"2026-10-14","rows":[{"code":"000538","name":"云南白药","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":52.65,"rets":{"1":0.47,"2":0.82},"done_days":2},{"code":"600039","name":"四川路桥","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":9.08,"rets":{"1":-1.1,"2":-3.19},"done_days":2},{"code":"600236","name":"桂冠电力","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":10.07,"rets":{"1":-3.48,"2":-1.79},"done_days":2},{"code":"600660","name":"福耀玻璃","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":54.75,"rets":{"1":-0.42,"2":0.05},"done_days":2},{"code":"600887","name":"伊利股份","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":28.13,"rets":{"1":-0.11,"2":0.25},"done_days":2},{"code":"159945","name":"能源","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.424,"rets":{"1":-2.74,"2":-2.04},"done_days":2},{"code":"512330","name":"信息科技ETF南方","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.599,"rets":{"1":-3.19,"2":-3.88},"done_days":2},{"code":"560720","name":"红利低波100ETF工银","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":0.998,"rets":{"1":-0.3,"2":-0.5},"done_days":2},{"code":"561560","name":"电力ETF华泰柏瑞","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":1.285,"rets":{"1":-1.63,"2":-1.87},"done_days":2},{"code":"159568","name":"港股互联","type":"etf","score":86,"tags":["30分2买","5分3买"],"base_price":1.067,"rets":{"1":-2.72,"2":-1.03},"done_days":2}]},"2026-10-13":{"base_date":"2026-10-13","rows":[{"code":"601827","name":"三峰环境","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":8.11,"rets":{"1":0.86,"2":-0.74,"3":-2.1},"done_days":3},{"code":"600523","name":"贵航股份","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":11.97,"rets":{"1":-2.51,"2":-5.51,"3":-1.75},"done_days":3},{"code":"603355","name":"莱克电气","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":31.97,"rets":{"1":-0.53,"2":0.72,"3":-0.38},"done_days":3},{"code":"002617","name":"露笑科技","type":"stock","score":96,"tags":["30分3买","5分2买"],"base_price":7.39,"rets":{"1":-7.85,"2":-16.78,"3":-16.51},"done_days":3},{"code":"301206","name":"三元生物","type":"stock","score":96,"tags":["30分3买","5分2买"],"base_price":24.95,"rets":{"1":-0.6,"2":-2.12,"3":-1.84},"done_days":3},{"code":"560720","name":"红利低波100ETF工银","type":"etf","score":93,"tags":["30分2买","5分3买"],"base_price":0.99,"rets":{"1":0.81,"2":0.51,"3":0.3},"done_days":3},{"code":"159301","name":"公用事业","type":"etf","score":89,"tags":["30分2买","5分3买"],"base_price":0.97,"rets":{"1":1.75,"2":0.1,"3":0.0},"done_days":3},{"code":"158011","name":"国泰创软","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.932,"rets":{"1":-1.18,"2":-3.0,"3":-4.61},"done_days":3},{"code":"516620","name":"影视ETF国泰","type":"etf","score":84,"tags":["30分2买","5分2买"],"base_price":0.932,"rets":{"1":1.93,"2":-0.32,"3":-2.9},"done_days":3},{"code":"159945","name":"能源","type":"etf","score":81,"tags":["30分2买","5分2买"],"base_price":1.401,"rets":{"1":1.64,"2":-1.14,"3":-0.43},"done_days":3}]},"2026-10-12":{"base_date":"2026-10-12","rows":[{"code":"000719","name":"中原传媒","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":12.89,"rets":{"1":0.7,"2":2.4,"3":0.08,"4":2.02},"done_days":4},{"code":"301667","name":"纳百川","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":60.08,"rets":{"1":-7.76,"2":-12.92,"3":-17.29,"4":-18.89},"done_days":4},{"code":"600887","name":"伊利股份","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":27.96,"rets":{"1":-0.68,"2":0.61,"3":0.5,"4":0.86},"done_days":4},{"code":"600737","name":"中粮糖业","type":"stock","score":99,"tags":["30分3买","5分2买"],"base_price":15.99,"rets":{"1":1.88,"2":-7.13,"3":-16.14,"4":-12.13},"done_days":4},{"code":"603239","name":"浙江仙通","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":14.55,"rets":{"1":-1.37,"2":-5.43,"3":-9.83,"4":-0.82},"done_days":4},{"code":"159945","name":"能源","type":"etf","score":84,"tags":["30分2买","5分1买"],"base_price":1.383,"rets":{"1":1.3,"2":2.96,"3":0.14,"4":0.87},"done_days":4},{"code":"159197","name":"石油ETF","type":"etf","score":80,"tags":["30分2买","5分1买"],"base_price":0.89,"rets":{"1":1.35,"2":3.15,"3":-1.12,"4":-0.79},"done_days":4},{"code":"159981","name":"能源化工","type":"etf","score":80,"tags":["30分2买","5分1买"],"base_price":1.874,"rets":{"1":-0.27,"2":-0.27,"3":-2.29,"4":-2.03},"done_days":4},{"code":"159529","name":"标普消费","type":"etf","score":50,"tags":["30分3买"],"base_price":1.305,"rets":{"1":-1.0,"2":-1.53,"3":1.07,"4":3.98},"done_days":4},{"code":"560830","name":"电力ETF华夏","type":"etf","score":44,"tags":["30分2买"],"base_price":0.909,"rets":{"1":-0.88,"2":0.66,"3":-0.88,"4":-0.99},"done_days":4}]},"2026-10-09":{"base_date":"2026-10-09","rows":[{"code":"301059","name":"金三江","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":13.08,"rets":{"1":-3.98,"2":-1.83,"3":-5.2,"4":-5.81,"5":-5.58},"done_days":5},{"code":"600236","name":"桂冠电力","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":9.93,"rets":{"1":-0.2,"2":0.7,"3":1.41,"4":-2.11,"5":-0.4},"done_days":5},{"code":"601018","name":"宁波港","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":3.63,"rets":{"1":0.55,"2":0.55,"3":2.2,"4":0.0,"5":-1.1},"done_days":5},{"code":"603737","name":"三棵树","type":"stock","score":99,"tags":["30分3买","5分2买"],"base_price":23.21,"rets":{"1":-4.01,"2":-4.01,"3":-6.16,"4":-8.14,"5":-3.06},"done_days":5},{"code":"002832","name":"比音勒芬","type":"stock","score":97,"tags":["30分3买","5分3买"],"base_price":27.74,"rets":{"1":-3.53,"2":-4.69,"3":-3.82,"4":-4.54,"5":-5.01},"done_days":5},{"code":"159018","name":"石油广发","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.911,"rets":{"1":-1.76,"2":-0.55,"3":1.32,"4":-3.29,"5":-2.74},"done_days":5},{"code":"159019","name":"石油","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.932,"rets":{"1":-1.61,"2":-0.64,"3":0.97,"4":-2.9,"5":-2.68},"done_days":5},{"code":"159195","name":"油气","type":"etf","score":90,"tags":["30分3买","5分2买"],"base_price":0.909,"rets":{"1":-2.09,"2":-0.55,"3":1.1,"4":-2.97,"5":-3.08},"done_days":5},{"code":"159518","name":"标普油气","type":"etf","score":50,"tags":["30分3买"],"base_price":1.307,"rets":{"1":-0.31,"2":1.07,"3":4.06,"4":2.68,"5":0.69},"done_days":5},{"code":"159148","name":"油气富国","type":"etf","score":46,"tags":["30分3买"],"base_price":0.992,"rets":{"1":-2.02,"2":-0.6,"3":1.01,"4":-3.12,"5":-2.82},"done_days":5}]},"2026-10-08":{"base_date":"2026-10-08","rows":[{"code":"301019","name":"宁波色母","type":"stock","score":100,"tags":["30分3买","5分3买"],"base_price":16.27,"rets":{"1":-0.12,"2":-1.6,"3":-1.23,"4":-3.44,"5":-5.29,"6":-6.02},"done_days":6},{"code":"600737","name":"中粮糖业","type":"stock","score":98,"tags":["30分2买","5分3买"],"base_price":15.12,"rets":{"1":3.24,"2":5.75,"3":7.74,"4":-1.79,"5":-11.31,"6":-7.08},"done_days":6},{"code":"001872","name":"招商港口","type":"stock","score":94,"tags":["30分3买","5分3买"],"base_price":24.61,"rets":{"1":0.08,"2":1.18,"3":3.37,"4":6.66,"5":0.98,"6":0.89},"done_days":6},{"code":"000786","name":"北新建材","type":"stock","score":93,"tags":["30分2买","5分2买"],"base_price":16.52,"rets":{"1":0.79,"2":-0.36,"3":-0.85,"4":-0.24,"5":-3.15,"6":0.42},"done_days":6},{"code":"300898","name":"熊猫乳品","type":"stock","score":93,"tags":["30分2买","5分2买"],"base_price":20.66,"rets":{"1":4.55,"2":-0.19,"3":2.27,"4":1.21,"5":0.82,"6":-1.21},"done_days":6},{"code":"561530","name":"银行ETF银华","type":"etf","score":93,"tags":["30分2买","5分3买"],"base_price":1.034,"rets":{"1":-1.35,"2":1.06,"3":0.58,"4":0.48,"5":0.19,"6":0.29},"done_days":6},{"code":"159275","name":"农牧渔","type":"etf","score":44,"tags":["30分2买"],"base_price":0.859,"rets":{"1":2.44,"2":1.75,"3":0.7,"4":0.0,"5":-3.03,"6":-0.93},"done_days":6},{"code":"159736","name":"饮食ETF","type":"etf","score":44,"tags":["30分2买"],"base_price":0.58,"rets":{"1":1.38,"2":1.03,"3":0.17,"4":0.34,"5":0.0,"6":0.69},"done_days":6},{"code":"159059","name":"电力DC","type":"etf","score":40,"tags":["5分3买"],"base_price":1.028,"rets":{"1":0.1,"2":0.0,"3":-0.78,"4":0.68,"5":-0.97,"6":-0.97},"done_days":6},{"code":"159201","name":"自由现金","type":"etf","score":40,"tags":["5分3买"],"base_price":1.166,"rets":{"1":0.6,"2":0.6,"3":0.77,"4":1.37,"5":-0.51,"6":0.51},"done_days":6}]}},"cutoff":"2026-10-18","updated_at":"2026-10-19 11:40:41"};
+const DAYS = 10;
 const COLORS = ['#2b6ff0','#e0742b','#7c3aed','#0f9d58','#d1477a','#b8860b','#0e8ea8','#8e5b3b','#4b6e9e','#a03fd0'];
 const state = { date: DATA.dates[0], type: 'all', off: new Set() };
 
@@ -163,7 +166,7 @@ function buildSub() {
   const d = state.date, g = group(d) || { rows: [] };
   const done = Math.max(0, ...g.rows.map(r => r.done_days || 0));
   document.getElementById('sub').textContent =
-    `数据截至 ${DATA.cutoff} · 共跟踪 ${DATA.dates.length} 个推荐日 · 当前查看 ${d}（已走 ${done} 个交易日）`;
+    `数据截至 ${DATA.cutoff} · 共跟踪 ${DATA.dates.length} 个推荐日 · 曲线图为 ${d}（已走 ${done} 个交易日），明细表含全部标的`;
 }
 
 document.getElementById('dateSeg').addEventListener('click', e => {
@@ -312,9 +315,11 @@ function bindHover(series, x, y, L, iw) {
 
 /* ---------------- 明细表 ---------------- */
 function head() {
-  let h = '<th class="nm">名称</th>';
-  for (let n = 1; n <= DAYS; n++) h += `<th>${n}天后</th>`;
-  document.getElementById('thead').innerHTML = h;
+  const days = Array.from({ length: DAYS }, (_, i) => `<th>${i + 1}个交易日</th>`).join('');
+  document.getElementById('thead').innerHTML =
+    `<tr><th class="nm corner" rowspan="2">个股名称</th>
+       <th class="grp-h" colspan="${DAYS}">推荐后涨跌（单位 %）</th></tr>
+     <tr>${days}</tr>`;
 }
 
 function cell(v) {
@@ -326,26 +331,22 @@ function cell(v) {
 }
 
 function renderTable() {
-  let out = '';
-  DATA.dates.forEach(d => {
-    const all = rowsOf(d);
-    const rows = shown(all);
-    if (!rows.length) return;
-    const done = Math.max(0, ...all.map(r => r.done_days || 0));
-    out += `<tr class="grp"><td colspan="${DAYS + 1}"><span class="gi">
-      <b>${d}</b><span class="k">推荐</span>
-      <span class="k">已跟踪 ${done} / ${DAYS} 天</span>
-      <span class="k">${rows.length} 只</span></span></td></tr>`;
-    rows.forEach(r => {
-      let tds = '';
-      for (let n = 1; n <= DAYS; n++) tds += cell(r.rets ? r.rets[String(n)] : null);
-      const chip = r.type === 'etf' ? '<span class="chip etf">ETF</span>' : '';
-      out += `<tr><td class="nm"><span class="nm-n">${r.name}</span>${
-        r.code ? `<span class="nm-m">${r.code}</span>` : ''}${chip}</td>${tds}</tr>`;
-    });
-  });
-  document.getElementById('tbody').innerHTML =
-    out || `<tr><td class="empty" colspan="${DAYS + 1}">还没有可展示的数据</td></tr>`;
+  const rows = [];
+  DATA.dates.forEach(d => rowsOf(d).forEach(r => {
+    if (state.type !== 'all' && r.type !== state.type) return;
+    rows.push({ ...r, base_date: d });
+  }));
+
+  document.getElementById('tbody').innerHTML = rows.length ? rows.map(r => {
+    let tds = '';
+    for (let n = 1; n <= DAYS; n++) tds += cell(r.rets ? r.rets[String(n)] : null);
+    const chip = r.type === 'etf' ? '<span class="chip etf">ETF</span>' : '';
+    const meta = [r.code, r.base_date ? r.base_date.slice(5) + ' 推荐' : '', r.score ? r.score + '分' : '']
+      .filter(Boolean).join(' · ');
+    return `<tr><td class="nm">
+      <div class="nm-l1"><span class="nm-n">${r.name}</span>${chip}</div>
+      <div class="nm-l2">${meta}</div></td>${tds}</tr>`;
+  }).join('') : `<tr><td class="empty" colspan="${DAYS + 1}">还没有可展示的数据</td></tr>`;
 }
 
 /* ---------------- 渲染 ---------------- */

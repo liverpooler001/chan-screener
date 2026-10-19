@@ -13,14 +13,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PERF = os.path.join(ROOT, "data", "perf")
 OUT = os.path.join(ROOT, "perf.html")
 
-MAX_DAYS = 14
+MAX_DAYS = 10
 
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>选股跟踪 · 推荐后 1~14 天</title>
+<title>选股跟踪 · 推荐后 1~10 个交易日</title>
 <style>
 :root{
   --bg:#f6f7f9;--surface:#fff;--border:#e6e8ec;--text:#1f2329;--text-2:#5a6270;--text-3:#8b94a3;
@@ -78,21 +78,25 @@ svg{display:block;width:100%;height:auto;overflow:visible}
 .tbl-scroll{overflow-x:auto;margin:0 -4px;padding:0 4px 2px}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;font-variant-numeric:tabular-nums}
 th,td{padding:0;border-bottom:1px solid #f1f2f4;white-space:nowrap}
-thead th{position:sticky;top:0;z-index:3;background:#fff;font-size:11px;color:var(--text-3);
-  font-weight:600;padding:7px 0;text-align:center;border-bottom:1px solid var(--border)}
-thead th.nm{text-align:left;padding-left:8px;z-index:4}
-td.nm{position:sticky;left:0;background:#fff;z-index:2;text-align:left;padding:6px 10px 6px 8px;
-  border-right:1px solid #f4f5f7;min-width:158px;max-width:210px}
+thead{position:sticky;top:0;z-index:3;background:#fff}
+thead th{background:#fff;font-size:11px;color:var(--text-3);
+  font-weight:600;padding:6px 0;text-align:center;border-bottom:1px solid var(--border)}
+thead th.grp-h{color:var(--text-2);border-bottom:1px dashed #eceef2}
+thead th.corner{text-align:left;padding-left:10px;position:sticky;left:0;z-index:4;
+  border-right:1px solid #f4f5f7;font-size:12px;color:var(--text)}
+td.nm{position:sticky;left:0;background:#fff;z-index:2;text-align:left;padding:7px 12px 7px 10px;
+  border-right:1px solid #f4f5f7;min-width:170px;max-width:230px}
 tbody tr:hover td{background:#fafbfd}
 tbody tr:hover td.nm{background:#fafbfd}
-.nm-n{font-size:12.5px;font-weight:600;color:var(--text)}
-.nm-m{margin-left:5px;font-size:10.5px;color:var(--text-3);font-family:var(--mono)}
-.chip{display:inline-block;font-size:9.5px;line-height:1;padding:2px 4px;border-radius:4px;
-  margin-left:5px;vertical-align:1px;background:#eef1f6;color:#5b6472;font-weight:600;letter-spacing:.3px}
+.nm-l1{display:flex;align-items:center;gap:4px;line-height:1.35}
+.nm-l2{font-size:10.5px;color:var(--text-3);line-height:1.3;font-family:var(--mono)}
+.nm-n{font-size:13px;font-weight:600;color:var(--text)}
+.chip{display:inline-block;font-size:9px;line-height:1;padding:2px 4px;border-radius:4px;
+  background:#eef1f6;color:#5b6472;font-weight:600;letter-spacing:.3px}
 .chip.etf{background:#eef3ff;color:#3d63c4}
 .chip.stk{background:#f4f0fb;color:#7b4fc4}
-td.v{text-align:right;padding:6px 7px;min-width:44px;font-size:11.5px;color:var(--text-3)}
-td.v span{display:inline-block;padding:1px 4px;border-radius:4px;min-width:38px;text-align:right}
+td.v{text-align:right;padding:7px 9px;min-width:62px;font-size:11.5px;color:var(--text-3)}
+td.v span{display:inline-block;padding:1.5px 5px;border-radius:4px;min-width:52px;text-align:right}
 td.v .u{color:var(--up)}
 td.v .d{color:var(--down)}
 td.v .z{color:var(--text-3)}
@@ -109,10 +113,9 @@ tr.grp .gi .k{color:var(--text-3)}
   .wrap{padding:16px 12px 40px}
   h1{font-size:18px}
   .card{padding:12px 10px 12px}
-  td.nm{min-width:124px;max-width:150px;padding:5px 6px}
-  .nm-m{display:none}
-  td.v{min-width:40px;padding:5px 5px}
-  td.v span{min-width:34px;font-size:11px}
+  td.nm{min-width:120px;max-width:150px;padding:5px 7px}
+  td.v{min-width:54px;padding:5px 5px}
+  td.v span{min-width:46px;font-size:10.5px;padding:1px 3px}
 }
 </style>
 </head>
@@ -149,24 +152,24 @@ tr.grp .gi .k{color:var(--text-3)}
   <section class="card">
     <div class="card-head">
       <h2>跟踪明细</h2>
-      <span class="hint">单位 %，红涨绿跌 · 「·」= 还没走到那天</span>
+      <span class="hint">单位 %，红涨绿跌 · 「·」= 还没走到那天 · 推荐日列在名称下方</span>
     </div>
     <div class="tbl-scroll">
       <table id="tbl">
-        <thead><tr id="thead"></tr></thead>
+        <thead id="thead"></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
     <div class="note">
       <b>口径</b>：基准价为推荐日收盘价（前复权）；「n 天后」= 推荐日之后第 n 个交易日收盘相对基准价的涨跌；
-      一组走满 14 个交易日后自动从表里下线。每天取当日评分前 5 的股票和前 5 的 ETF 入表。
+      一组走满 10 个交易日（约两周）后自动从表里下线。每天取当日评分前 5 的股票和前 5 的 ETF 入表。
     </div>
   </section>
 </div>
 
 <script>
 const DATA = __DATA__;
-const DAYS = 14;
+const DAYS = 10;
 const COLORS = ['#2b6ff0','#e0742b','#7c3aed','#0f9d58','#d1477a','#b8860b','#0e8ea8','#8e5b3b','#4b6e9e','#a03fd0'];
 const state = { date: DATA.dates[0], type: 'all', off: new Set() };
 
@@ -180,7 +183,7 @@ function buildSub() {
   const d = state.date, g = group(d) || { rows: [] };
   const done = Math.max(0, ...g.rows.map(r => r.done_days || 0));
   document.getElementById('sub').textContent =
-    `数据截至 ${DATA.cutoff} · 共跟踪 ${DATA.dates.length} 个推荐日 · 当前查看 ${d}（已走 ${done} 个交易日）`;
+    `数据截至 ${DATA.cutoff} · 共跟踪 ${DATA.dates.length} 个推荐日 · 曲线图为 ${d}（已走 ${done} 个交易日），明细表含全部标的`;
 }
 
 document.getElementById('dateSeg').addEventListener('click', e => {
@@ -329,9 +332,11 @@ function bindHover(series, x, y, L, iw) {
 
 /* ---------------- 明细表 ---------------- */
 function head() {
-  let h = '<th class="nm">名称</th>';
-  for (let n = 1; n <= DAYS; n++) h += `<th>${n}天后</th>`;
-  document.getElementById('thead').innerHTML = h;
+  const days = Array.from({ length: DAYS }, (_, i) => `<th>${i + 1}个交易日</th>`).join('');
+  document.getElementById('thead').innerHTML =
+    `<tr><th class="nm corner" rowspan="2">个股名称</th>
+       <th class="grp-h" colspan="${DAYS}">推荐后涨跌（单位 %）</th></tr>
+     <tr>${days}</tr>`;
 }
 
 function cell(v) {
@@ -343,26 +348,22 @@ function cell(v) {
 }
 
 function renderTable() {
-  let out = '';
-  DATA.dates.forEach(d => {
-    const all = rowsOf(d);
-    const rows = shown(all);
-    if (!rows.length) return;
-    const done = Math.max(0, ...all.map(r => r.done_days || 0));
-    out += `<tr class="grp"><td colspan="${DAYS + 1}"><span class="gi">
-      <b>${d}</b><span class="k">推荐</span>
-      <span class="k">已跟踪 ${done} / ${DAYS} 天</span>
-      <span class="k">${rows.length} 只</span></span></td></tr>`;
-    rows.forEach(r => {
-      let tds = '';
-      for (let n = 1; n <= DAYS; n++) tds += cell(r.rets ? r.rets[String(n)] : null);
-      const chip = r.type === 'etf' ? '<span class="chip etf">ETF</span>' : '';
-      out += `<tr><td class="nm"><span class="nm-n">${r.name}</span>${
-        r.code ? `<span class="nm-m">${r.code}</span>` : ''}${chip}</td>${tds}</tr>`;
-    });
-  });
-  document.getElementById('tbody').innerHTML =
-    out || `<tr><td class="empty" colspan="${DAYS + 1}">还没有可展示的数据</td></tr>`;
+  const rows = [];
+  DATA.dates.forEach(d => rowsOf(d).forEach(r => {
+    if (state.type !== 'all' && r.type !== state.type) return;
+    rows.push({ ...r, base_date: d });
+  }));
+
+  document.getElementById('tbody').innerHTML = rows.length ? rows.map(r => {
+    let tds = '';
+    for (let n = 1; n <= DAYS; n++) tds += cell(r.rets ? r.rets[String(n)] : null);
+    const chip = r.type === 'etf' ? '<span class="chip etf">ETF</span>' : '';
+    const meta = [r.code, r.base_date ? r.base_date.slice(5) + ' 推荐' : '', r.score ? r.score + '分' : '']
+      .filter(Boolean).join(' · ');
+    return `<tr><td class="nm">
+      <div class="nm-l1"><span class="nm-n">${r.name}</span>${chip}</div>
+      <div class="nm-l2">${meta}</div></td>${tds}</tr>`;
+  }).join('') : `<tr><td class="empty" colspan="${DAYS + 1}">还没有可展示的数据</td></tr>`;
 }
 
 /* ---------------- 渲染 ---------------- */

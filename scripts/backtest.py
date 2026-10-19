@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """选股跟踪表：每个推荐日记录「评分前 N 的股票」与「评分前 N 的 ETF」，
-跟踪其后第 1~14 个交易日的累计涨跌。
+跟踪其后第 1~10 个交易日的累计涨跌。
 
 口径：
   - 基准价 = 推荐日收盘价（前复权）
   - 「n 天后」= 推荐日之后第 n 个交易日的收盘价，相对基准价的涨跌幅
-  - 一行的 14 个格子都走完（已跟踪 > 14 个交易日）后，自动从跟踪表下线
+  - 一行的 10 个格子都走完（已跟踪 > 10 个交易日，约两周）后，自动从跟踪表下线
 
 数据源：腾讯前复权日线 web.ifzq.gtimg.cn
 输出：data/perf/<推荐日>.json、data/perf/index.json
@@ -32,8 +32,14 @@ DATA = os.path.join(ROOT, "data")
 HIST = os.path.join(DATA, "history")
 PERF = os.path.join(DATA, "perf")
 TX_URL = "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get"
+EM_URL = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+UA = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "Referer": "https://quote.eastmoney.com/",
+}
 
-MAX_DAYS = 14          # 跟踪 1~14 个交易日，超过即下线
+MAX_DAYS = 10          # 跟踪 1~10 个交易日（约两周），超过即下线
 PER_TYPE = 5           # 每天股票 / ETF 各取评分前 N
 
 
@@ -49,13 +55,47 @@ def last_complete_day():
     return now.strftime("%Y-%m-%d")
 
 
-def fetch_day_bars(symbol, start, end, tries=3):
-    """返回 [(date, close)]，前复权。"""
+def _fetch_em(symbol, start, end):
+    """东财日线（前复权），返回 [(date, close)]。"""
+    code = symbol[2:]
+    secid = ("1." if symbol.startswith("sh") else "0.") + code
+    try:
+        r = requests.get(
+            EM_URL,
+            params={
+                "secid": secid,
+                "fields1": "f1,f2,f3,f4,f5",
+                "fields2": "f51,f53",
+                "klt": "101",
+                "fqt": "1",          # 1 = 前复权
+                "beg": start.replace("-", ""),
+                "end": end.replace("-", ""),
+                "lmt": "500",
+            },
+            headers=UA,
+            timeout=15,
+        )
+        node = (r.json() or {}).get("data") or {}
+        out = []
+        for row in node.get("klines") or []:
+            try:
+                d, c = row.split(",")[:2]
+                out.append((d, float(c)))
+            except (ValueError, IndexError):
+                continue
+        return out
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _fetch_tx(symbol, start, end, tries=2):
+    """腾讯日线（前复权）备用通道。"""
     for i in range(tries):
         try:
             r = requests.get(
                 TX_URL,
                 params={"param": f"{symbol},day,{start},{end},400,qfq"},
+                headers=UA,
                 timeout=15,
             )
             j = r.json()
@@ -71,8 +111,16 @@ def fetch_day_bars(symbol, start, end, tries=3):
                 return out
         except Exception:  # noqa: BLE001
             pass
-        time.sleep(0.6 * (i + 1))
+        time.sleep(0.5 * (i + 1))
     return []
+
+
+def fetch_day_bars(symbol, start, end):
+    """返回 [(date, close)]，前复权。东财优先，腾讯兜底。"""
+    bars = _fetch_em(symbol, start, end)
+    if bars:
+        return bars
+    return _fetch_tx(symbol, start, end)
 
 
 def pct(a, b):
