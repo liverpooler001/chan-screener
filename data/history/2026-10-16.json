@@ -1,7 +1,7 @@
 {
  "trade_date": "2026-10-16",
- "generated_at": "2026-10-16 21:08:59",
- "elapsed_sec": 1535.2,
+ "generated_at": "2026-10-19 09:10:36",
+ "elapsed_sec": 1195.5,
  "params": {
   "buy_kinds": [
    "2",
@@ -43,9 +43,9 @@
   "etf_same_type_limit": 1
  },
  "stats": {
-  "scanned": 5470,
-  "matched": 788,
-  "stock": 717,
+  "scanned": 5468,
+  "matched": 786,
+  "stock": 715,
   "etf": 71,
   "resonance": 34,
   "reason_dist": {
@@ -53,7 +53,7 @@
    "30分钟数据不足": 14,
    "数据获取失败": 1
   },
-  "stocks": 3764,
+  "stocks": 3762,
   "etfs": 1706
  },
  "signals": [
@@ -2165,37 +2165,6 @@
     "zs_start": "2026-09-10 10:30:00",
     "zs_end": "2026-09-28 11:00:00",
     "zs_bi_count": 3
-   },
-   "m5": null,
-   "resonance": false,
-   "tags": [
-    "30分3买"
-   ],
-   "score": 48
-  },
-  {
-   "code": "600777",
-   "name": "新潮能源",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 4.4,
-   "change_pct": 0.228,
-   "pe_dynamic": 24.444,
-   "turnover": 0.55198,
-   "amount": 154438893.0,
-   "total_mv": 2992218.163,
-   "m30": {
-    "kind": "3",
-    "label": "3买",
-    "price": 4.35,
-    "dt": "2026-10-16 11:00:00",
-    "bars_ago": 7,
-    "detail": "向上离开中枢（上沿 4.05，创新高 4.79），回调至 4.35 未回中枢",
-    "zs_zg": 4.05,
-    "zs_zd": 3.99,
-    "zs_start": "2026-09-21 10:00:00",
-    "zs_end": "2026-10-12 11:30:00",
-    "zs_bi_count": 5
    },
    "m5": null,
    "resonance": false,
@@ -4923,37 +4892,6 @@
     "zs_zd": 30.93,
     "zs_start": "2026-09-30 10:30:00",
     "zs_end": "2026-10-13 11:00:00",
-    "zs_bi_count": 3
-   },
-   "m5": null,
-   "resonance": false,
-   "tags": [
-    "30分3买"
-   ],
-   "score": 43
-  },
-  {
-   "code": "600925",
-   "name": "苏能股份",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 4.31,
-   "change_pct": 0.466,
-   "pe_dynamic": 131.804,
-   "turnover": 0.14007,
-   "amount": 41468072.0,
-   "total_mv": 2969111.111159,
-   "m30": {
-    "kind": "3",
-    "label": "3买",
-    "price": 4.26,
-    "dt": "2026-10-15 14:30:00",
-    "bars_ago": 10,
-    "detail": "向上离开中枢（上沿 4.15，创新高 4.47），回调至 4.26 未回中枢",
-    "zs_zg": 4.15,
-    "zs_zd": 4.07,
-    "zs_start": "2026-09-10 10:00:00",
-    "zs_end": "2026-09-28 11:00:00",
     "zs_bi_count": 3
    },
    "m5": null,
@@ -12745,37 +12683,6 @@
    "score": 36
   },
   {
-   "code": "000883",
-   "name": "湖北能源",
-   "type": "stock",
-   "market": "深市主板",
-   "price": 4.39,
-   "change_pct": 0.228,
-   "pe_dynamic": 15.138,
-   "turnover": 0.40644,
-   "amount": 116028075.0,
-   "total_mv": 3107851.16957,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 4.36,
-    "dt": "2026-10-16 14:30:00",
-    "bars_ago": 6,
-    "detail": "向下离开中枢下沿 4.41 且出现背驰，动能比 0.48（背驰）",
-    "zs_zg": 4.45,
-    "zs_zd": 4.41,
-    "zs_start": "2026-10-13 15:00:00",
-    "zs_end": "2026-10-16 11:25:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
    "code": "000880",
    "name": "潍柴重机",
    "type": "stock",
@@ -12798,6 +12705,37 @@
     "zs_zd": 22.17,
     "zs_start": "2026-10-14 09:50:00",
     "zs_end": "2026-10-16 13:05:00",
+    "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "000883",
+   "name": "湖北能源",
+   "type": "stock",
+   "market": "深市主板",
+   "price": 4.39,
+   "change_pct": 0.228,
+   "pe_dynamic": 15.138,
+   "turnover": 0.40644,
+   "amount": 116028075.0,
+   "total_mv": 3107851.16957,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 4.36,
+    "dt": "2026-10-16 14:30:00",
+    "bars_ago": 6,
+    "detail": "向下离开中枢下沿 4.41 且出现背驰，动能比 0.48（背驰）",
+    "zs_zg": 4.45,
+    "zs_zd": 4.41,
+    "zs_start": "2026-10-13 15:00:00",
+    "zs_end": "2026-10-16 11:25:00",
     "zs_bi_count": 3
    },
    "resonance": false,
@@ -14977,37 +14915,6 @@
    "score": 36
   },
   {
-   "code": "603075",
-   "name": "热威股份",
-   "type": "stock",
-   "market": "沪市主板",
-   "price": 17.87,
-   "change_pct": -0.556,
-   "pe_dynamic": 22.062,
-   "turnover": 3.74564,
-   "amount": 28556023.0,
-   "total_mv": 719090.406513,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 17.8,
-    "dt": "2026-10-16 14:50:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 17.95 且出现背驰，动能比 0.65（背驰）",
-    "zs_zg": 18.29,
-    "zs_zd": 17.95,
-    "zs_start": "2026-10-13 13:40:00",
-    "zs_end": "2026-10-16 11:30:00",
-    "zs_bi_count": 4
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 36
-  },
-  {
    "code": "603073",
    "name": "彩蝶实业",
    "type": "stock",
@@ -15031,6 +14938,37 @@
     "zs_start": "2026-10-15 10:05:00",
     "zs_end": "2026-10-16 11:15:00",
     "zs_bi_count": 3
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 36
+  },
+  {
+   "code": "603075",
+   "name": "热威股份",
+   "type": "stock",
+   "market": "沪市主板",
+   "price": 17.87,
+   "change_pct": -0.556,
+   "pe_dynamic": 22.062,
+   "turnover": 3.74564,
+   "amount": 28556023.0,
+   "total_mv": 719090.406513,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 17.8,
+    "dt": "2026-10-16 14:50:00",
+    "bars_ago": 3,
+    "detail": "向下离开中枢下沿 17.95 且出现背驰，动能比 0.65（背驰）",
+    "zs_zg": 18.29,
+    "zs_zd": 17.95,
+    "zs_start": "2026-10-13 13:40:00",
+    "zs_end": "2026-10-16 11:30:00",
+    "zs_bi_count": 4
    },
    "resonance": false,
    "tags": [
@@ -20247,37 +20185,6 @@
    "score": 32
   },
   {
-   "code": "688807",
-   "name": "优迅股份",
-   "type": "stock",
-   "market": "科创板",
-   "price": 238.72,
-   "change_pct": 1.661,
-   "pe_dynamic": 162.395,
-   "turnover": 6.67893,
-   "amount": 258308441.0,
-   "total_mv": 1909760.0,
-   "m30": null,
-   "m5": {
-    "kind": "1",
-    "label": "1买",
-    "price": 235.08,
-    "dt": "2026-10-16 14:50:00",
-    "bars_ago": 3,
-    "detail": "向下离开中枢下沿 238.69 且出现背驰，动能比 0.48（背驰）",
-    "zs_zg": 243.96,
-    "zs_zd": 238.69,
-    "zs_start": "2026-10-15 13:30:00",
-    "zs_end": "2026-10-16 11:30:00",
-    "zs_bi_count": 3
-   },
-   "resonance": false,
-   "tags": [
-    "5分1买"
-   ],
-   "score": 32
-  },
-  {
    "code": "688808",
    "name": "联讯仪器",
    "type": "stock",
@@ -20301,6 +20208,37 @@
     "zs_start": "2026-10-13 13:35:00",
     "zs_end": "2026-10-16 13:05:00",
     "zs_bi_count": 8
+   },
+   "resonance": false,
+   "tags": [
+    "5分1买"
+   ],
+   "score": 32
+  },
+  {
+   "code": "688807",
+   "name": "优迅股份",
+   "type": "stock",
+   "market": "科创板",
+   "price": 238.72,
+   "change_pct": 1.661,
+   "pe_dynamic": 162.395,
+   "turnover": 6.67893,
+   "amount": 258308441.0,
+   "total_mv": 1909760.0,
+   "m30": null,
+   "m5": {
+    "kind": "1",
+    "label": "1买",
+    "price": 235.08,
+    "dt": "2026-10-16 14:50:00",
+    "bars_ago": 3,
+    "detail": "向下离开中枢下沿 238.69 且出现背驰，动能比 0.48（背驰）",
+    "zs_zg": 243.96,
+    "zs_zd": 238.69,
+    "zs_start": "2026-10-15 13:30:00",
+    "zs_end": "2026-10-16 11:30:00",
+    "zs_bi_count": 3
    },
    "resonance": false,
    "tags": [
