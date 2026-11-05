@@ -95,7 +95,20 @@
       </div>
       <span class="ctrl-note">一买＝向下离开中枢且 MACD 背驰；全部取消选择 ＝ 不对 5 分钟级别设条件</span>
     </div>
+
+    <!-- 第 4 行：可买性（P2） -->
+    <div class="ctrl-row">
+      <div class="ctrl-group">
+        <span class="ctrl-label">可买性</span>
+        <div class="chip-row" id="buyChips">
+          <button class="chip" data-buy="only" aria-pressed="false">只看可买</button>
+        </div>
+      </div>
+      <span class="ctrl-note">涨停/一字板、换手 &lt; 1%、偏离 20 日线 &gt; 15% 的标的默认排在最后并加黄色标记</span>
+    </div>
   </section>
+
+  <section class="mood" id="mood" hidden></section>
 
   <section class="stats" id="stats"></section>
 
@@ -140,6 +153,11 @@
     技术面 —— <b>30 分钟级别</b>：二买（一类买点后回调不破前低）、三买（向上离开中枢后回调不回中枢）；
     <b>5 分钟级别</b>：一买（向下离开中枢且 MACD 背驰）、二买、三买。
     两行买点条件均可多选，未选中的级别不参与判断；「共振」要求所选两级同时满足，「任一满足」只需命中其中一级。
+  </p>
+  <p>
+    <b>情绪择时</b>：盘后统计涨停/炸板/跌停家数、封板率、连板高度、昨日涨停溢价与沪深300 20 日线，
+    给出「进攻 / 中性 / 收缩」三档建议（只提示，不改动筛选结果）。
+    <b>可买性</b>：涨停或一字板、换手 &lt; 1%、偏离 20 日线 &gt; 15% 的标的加黄色标记并排在最后。
   </p>
   <p>
     <b>综合评分</b>：结构 40（买点类型 · 级别权重 · 双级别共振 · 信号新鲜度）+

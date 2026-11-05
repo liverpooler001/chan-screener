@@ -36,6 +36,7 @@ import chan  # noqa: E402
 import datasource as ds  # noqa: E402
 import factors  # noqa: E402
 import score as scoring  # noqa: E402
+import sentiment  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -231,6 +232,20 @@ def analyze_one(
         metrics["main_5d_pct"] = item.get("main_5d_pct")
         metrics["industry_fund_pct"] = item.get("industry_fund_pct")
         sig["metrics"] = metrics
+
+        # P2 可买性：涨停买不进、冷票没流动性、偏离均线太远＝追高
+        flags: List[str] = []
+        chg = item.get("change_pct")
+        if chg is not None and float(chg) >= ds.limit_pct(code, is_etf) - 0.2:
+            flags.append("涨停·次日难买")
+        turn = item.get("turnover")
+        if not is_etf and turn is not None and float(turn) < 1.0:
+            flags.append("换手<1%")
+        dev = metrics.get("dev_ma20")
+        if dev is not None and dev > 15:
+            flags.append("偏离20日线 +%.0f%%" % dev)
+        sig["flags"] = flags
+        sig["tradable"] = not flags
         sig["score"] = score_signal(sig, d30, d5, metrics, cfg.get("scoring", {}).get("weights"))
         return sig, ""
     except ds.DataFetchError:
@@ -483,7 +498,9 @@ def run(args) -> int:
     stocks_sig = sorted([s for s in signals if s["type"] == "stock"], key=lambda x: -x["score"])
     etf_sig = sorted([s for s in signals if s["type"] == "etf"], key=lambda x: -x["score"])
     etf_sig = dedup_etf(etf_sig, int(cfg["etf"].get("same_type_limit", 1)))
-    all_sig = sorted(stocks_sig + etf_sig, key=lambda x: -x["score"])
+    # 可买性优先：涨停/冷票/追高的排在后面，但都保留（信息不丢，用户可以自己判断）
+    all_sig = sorted(stocks_sig + etf_sig,
+                     key=lambda x: (0 if x.get("tradable", True) else 1, -x["score"]))
 
     # ---------- 4. 交易日期 ----------
     last_dts = [s["m30"]["dt"] for s in all_sig if s.get("m30")] + [
@@ -492,6 +509,22 @@ def run(args) -> int:
     trade_date = datetime.now().strftime("%Y-%m-%d")
     if last_dts:
         trade_date = max(last_dts)[:10]
+
+    # ---------- 4.5 情绪择时（P2） ----------
+    sent = None
+    if not args.codes:
+        try:
+            sent = sentiment.compute(
+                trade_date, ctx.get("index") or {},
+                {s["code"]: s.get("change_pct") for s in stocks},
+            )
+            sentiment.save(out_dir, sent)
+            m = sent["metrics"]
+            print(f"[情绪] {sent['level_cn']}（{sent['score']:+d}）涨停 {m['zt']} / 炸板 {m['broken']}"
+                  f" / 跌停 {m['dt']} / 封板率 {m['seal']} / 连板 {m['max_lbc']}"
+                  f" / 昨涨停溢价 {m['prev_premium']}", flush=True)
+        except Exception as e:  # noqa: BLE001
+            print(f"[warn] 情绪指标计算失败：{type(e).__name__}: {e}", flush=True)
 
     payload = {
         "trade_date": trade_date,
@@ -514,6 +547,7 @@ def run(args) -> int:
             "reason_dist": dict(sorted(reasons.items(), key=lambda kv: -kv[1])[:8]),
             **universe_stat,
         },
+        "sentiment": sent,
         "signals": all_sig,
     }
 

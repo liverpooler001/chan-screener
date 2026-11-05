@@ -270,6 +270,37 @@ def check_scoring():
     return ok, lines
 
 
+def check_p2():
+    """P2：情绪打分（纯函数，不联网）与涨跌停幅度判定。"""
+    import datasource as ds
+    import sentiment
+
+    lines, ok = [], True
+
+    hot = sentiment._score(zt=95, dt_n=1, seal=0.82, prem=3.5, above=True, lbc=6)
+    cold = sentiment._score(zt=18, dt_n=25, seal=0.45, prem=-5.0, above=False, lbc=2)
+    lines.append(f"  极端火热样例：{hot:+d} → {sentiment._level(hot)}（期望攻击）")
+    lines.append(f"  极端冰点样例：{cold:+d} → {sentiment._level(cold)}（期望收缩）")
+    if sentiment._level(hot) != "attack":
+        lines.append("  !! 火热情绪未判为进攻"); ok = False
+    if sentiment._level(cold) != "shrink":
+        lines.append("  !! 冰点情绪未判为收缩"); ok = False
+
+    miss = sentiment._score(zt=60, dt_n=4, seal=None, prem=None, above=None, lbc=None)
+    lines.append(f"  指标缺失样例：{miss:+d}（缺失项不参与打分）")
+    if not (-2 <= miss <= 3):
+        lines.append("  !! 缺失项不应主导档位"); ok = False
+
+    cases = [("688012", False, 20.0), ("300750", False, 20.0), ("600519", False, 10.0),
+             ("000001", False, 10.0), ("510300", True, 10.0)]
+    bad = [(c, ds.limit_pct(c, e), w) for c, e, w in cases if ds.limit_pct(c, e) != w]
+    lines.append(f"  涨跌停幅度：{len(cases) - len(bad)}/{len(cases)} 正确" +
+                 ("" if not bad else f"，异常 {bad}"))
+    if bad:
+        ok = False
+    return ok, lines
+
+
 def main():
     ok = True
 
@@ -307,12 +338,21 @@ def main():
         print("!! 用例5 误报：跌回中枢的三买仍被判为有效"); ok = False
 
     print("=" * 74)
-    print("用例6：P0 评分（结构 45 / 资金 30 / 比价 20 / 质量 5）")
+    print("用例6：评分（结构 40 / 资金 40 / 比价 15 / 质量 5）")
     print("=" * 74)
     sc_ok, sc_lines = check_scoring()
     for ln in sc_lines:
         print(ln)
     if not sc_ok:
+        ok = False
+
+    print("=" * 74)
+    print("用例7：P2 情绪档位与可买性")
+    print("=" * 74)
+    p2_ok, p2_lines = check_p2()
+    for ln in p2_lines:
+        print(ln)
+    if not p2_ok:
         ok = False
 
     print("=" * 74)

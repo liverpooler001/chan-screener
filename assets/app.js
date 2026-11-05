@@ -16,6 +16,7 @@ const state = {
   k30: new Set(['2', '3']),     // 30 分钟要看哪些买点；空集 = 该级别不设条件
   k5: new Set(['1', '2', '3']), // 5 分钟要看哪些买点；空集 = 该级别不设条件
   keyword: '',
+  onlyBuyable: false,           // 只看可买（排除涨停/冷票/追高）
   current: null,
 };
 
@@ -177,6 +178,7 @@ function filtered() {
   return (state.payload.signals || []).filter((s) => {
     if (!passesFilter(s)) return false;
     if (state.type !== 'all' && s.type !== state.type) return false;
+    if (state.onlyBuyable && s.tradable === false) return false;
     if (kw && !(s.code.includes(kw) || (s.name || '').toUpperCase().includes(kw))) return false;
     return true;
   });
@@ -185,6 +187,31 @@ function filtered() {
 /* ------------------------------------------------------------------ */
 /* 渲染                                                                */
 /* ------------------------------------------------------------------ */
+/* 情绪档位（P2）：进攻 / 中性 / 收缩 —— 回答"今天该不该买" */
+function renderMood(sent) {
+  const el = $('#mood');
+  if (!sent || !sent.level) { el.hidden = true; return; }
+  const m = sent.metrics || {};
+  const p2 = (v) => (v === null || v === undefined ? '—'
+    : (v > 0 ? '+' : '') + Number(v).toFixed(2) + '%');
+  const items = [
+    ['涨停', m.zt == null ? '—' : m.zt + ' 家'],
+    ['炸板', m.broken == null ? '—' : m.broken + ' 家'],
+    ['跌停', m.dt == null ? '—' : m.dt + ' 家'],
+    ['封板率', m.seal == null ? '—' : Math.round(m.seal * 100) + '%'],
+    ['连板高度', m.max_lbc == null ? '—' : m.max_lbc + ' 板'],
+    ['昨涨停溢价', p2(m.prev_premium)],
+    ['大盘', m.index_dev == null ? '—'
+      : (m.index_above_ma20 ? '20日线上 ' : '20日线下 ') + p2(m.index_dev)],
+  ];
+  el.hidden = false;
+  el.innerHTML = `
+    <span class="mood-lv ${esc(sent.level)}">情绪 · ${esc(sent.level_cn)}</span>
+    <span class="mood-score">${sent.score > 0 ? '+' : ''}${sent.score} 分</span>
+    <div class="mood-items">${items.map(([k, v]) => `<span><em>${k}</em>${v}</span>`).join('')}</div>
+    <div class="mood-adv">${esc(sent.advice || '')}</div>`;
+}
+
 function renderStats(rows) {
   const p = state.payload || {};
   const st = p.stats || {};
@@ -223,12 +250,14 @@ function renderTable(rows) {
   $('#tbody').innerHTML = rows
     .map((s, i) => {
       const tag = s.type === 'etf' ? '<span class="tag etf">ETF</span>' : `<span class="tag">${esc(s.market)}</span>`;
+      const flags = (s.flags || []).map((f) => `<span class="flag">${esc(f)}</span>`).join('');
       const sc = scoreColor(s.score);
       return `<tr data-code="${esc(s.code)}">
         <td class="cell-code">${i + 1}</td>
         <td>
           <div class="cell-name">${esc(s.name)}${tag}</div>
           <div class="cell-code">${esc(s.code)}</div>
+          ${flags ? `<div class="cell-flags">${flags}</div>` : ''}
         </td>
         <td class="num">${fmt(s.price, 2)}</td>
         <td class="num ${pctClass(s.change_pct)}">${fmtPct(s.change_pct)}</td>
@@ -258,6 +287,7 @@ function renderCards(rows) {
     .map((s) => {
       const sc = scoreColor(s.score);
       const tag = s.type === 'etf' ? '<span class="tag etf">ETF</span>' : '';
+      const cflags = (s.flags || []).map((f) => `<span class="flag">${esc(f)}</span>`).join('');
       return `<div class="sig-card" data-code="${esc(s.code)}">
         <div class="row1">
           <span class="nm">${esc(s.name)}</span>
@@ -267,7 +297,7 @@ function renderCards(rows) {
           ${tag}
           <span class="px">${fmt(s.price, 2)}</span>
         </div>
-        <div class="row2">${bpBadge(s.m30, '30分')}${bpBadge(s.m5, '5分')}</div>
+        <div class="row2">${bpBadge(s.m30, '30分')}${bpBadge(s.m5, '5分')}${cflags}</div>
         <div class="row3">
           <span>动态PE <b>${s.pe_dynamic ? fmt(s.pe_dynamic, 1) : '—'}</b></span>
           <span>评分 <b style="color:${sc}">${s.score}</b></span>
@@ -308,6 +338,7 @@ function emptyState(rows) {
 
 function render() {
   const rows = filtered();
+  renderMood((state.payload || {}).sentiment);
   renderStats(rows);
   renderTable(rows);
   renderCards(rows);
@@ -639,6 +670,14 @@ function bind() {
       b.setAttribute('aria-pressed', String(set.has(k)));
       render();
     });
+  });
+
+  $('#buyChips').addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    state.onlyBuyable = !state.onlyBuyable;
+    b.setAttribute('aria-pressed', String(state.onlyBuyable));
+    render();
   });
 
   let timer = null;

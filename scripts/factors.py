@@ -68,6 +68,7 @@ def compute(bars, ctx: Optional[Dict] = None, industry_pct: Optional[float] = No
     out = {
         "vol_ratio": None,     # 量比
         "amount_pct": None,    # 成交额分位 0~1
+        "dev_ma20": None,      # 收盘价偏离 20 日均线（%），用于追高过滤
         "ret5": None,
         "ret20": None,
         "rs5": None,
@@ -88,6 +89,11 @@ def compute(bars, ctx: Optional[Dict] = None, industry_pct: Optional[float] = No
         n = len(vals)
         below = sum(1 for v in vals if v <= today["amount"])
         out["amount_pct"] = round(below / n, 3)
+
+    if len(days) >= 20:
+        ma20 = sum(d["close"] for d in days[-20:]) / 20.0
+        if ma20:
+            out["dev_ma20"] = round((today["close"] / ma20 - 1) * 100, 2)
 
     for n in (5, 20):
         if len(days) > n and days[-1 - n]["close"]:

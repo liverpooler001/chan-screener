@@ -128,13 +128,21 @@ def pct(a, b):
 
 
 def pick_rows(hist, per_type):
-    """评分前 N 的股票 + 评分前 N 的 ETF。"""
+    """评分前 N 的股票 + 评分前 N 的 ETF。
+
+    优先选「可买」的（P2 标记：涨停/冷票/追高不算），凑不满再用不可买的补 ——
+    否则跟踪表会天天把收盘涨停、次日根本买不进的票当成"推荐"来记账。
+    """
     sigs = hist.get("signals") or []
     out = []
     for t in ("stock", "etf"):
         group = [s for s in sigs if s.get("type") == t]
         group.sort(key=lambda s: (-(s.get("score") or 0), s.get("code") or ""))
-        out.extend(group[:per_type])
+        buyable = [s for s in group if s.get("tradable", True)]
+        picks = buyable[:per_type]
+        if len(picks) < per_type:
+            picks += [s for s in group if s not in picks][: per_type - len(picks)]
+        out.extend(picks)
     return out
 
 

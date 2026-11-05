@@ -67,6 +67,18 @@ def market_of(code: str) -> str:
     return "其他"
 
 
+def limit_pct(code: str, is_etf: bool = False) -> float:
+    """涨跌停幅度（%）。ST 已在股票池阶段剔除，这里不单独处理 5% 的情形。"""
+    code = str(code).zfill(6)
+    if is_etf:
+        return 10.0
+    if code.startswith(("688", "689", "300", "301")):
+        return 20.0
+    if code.startswith(("8", "4", "9")):
+        return 30.0
+    return 10.0
+
+
 # --------------------------------------------------------------------------- #
 # 工具
 # --------------------------------------------------------------------------- #
