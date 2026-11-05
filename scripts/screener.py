@@ -34,6 +34,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import chan  # noqa: E402
 import datasource as ds  # noqa: E402
+import factors  # noqa: E402
+import score as scoring  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -77,6 +79,10 @@ DEFAULT_CONFIG = {
         "zs_break_tol": 0.003,             # 三买回调需高于中枢上沿的缓冲比例
         "max_gain_from_buy_pct": 0.15,     # 现价距买点涨幅上限（追高过滤）
     },
+    # 评分权重（结构 / 资金 / 比价 / 质量，合计 100）
+    "scoring": {
+        "weights": {"structure": 45, "fund": 30, "relative": 20, "quality": 5},
+    },
 }
 
 
@@ -102,38 +108,16 @@ def load_config(path: Optional[str]) -> dict:
 
 
 # --------------------------------------------------------------------------- #
-# 打分
+# 打分：结构 / 资金 / 比价 / 质量，具体实现见 score.py
 # --------------------------------------------------------------------------- #
-_KIND_SCORE = {"3": 40, "2": 34, "1": 30}   # 三买 > 二买 > 一买（一买胜在位置低，风险高）
-
-
-def score_signal(sig: Dict, m30: Optional[Dict], m5: Optional[Dict]) -> int:
-    s = 0.0
-    best_fresh = 99
-    for lv, base in ((m30, 1.0), (m5, 0.85)):
-        if not lv:
-            continue
-        s += _KIND_SCORE.get(lv["kind"], 25) * base
-        best_fresh = min(best_fresh, lv["bars_ago"])
-
-    if m30 and m5:
-        s += 15  # 多级别共振
-
-    if best_fresh <= 2:
-        s += 10
-    elif best_fresh <= 6:
-        s += 6
-    elif best_fresh <= 12:
-        s += 3
-
-    pe = sig.get("pe_dynamic")
-    if pe:
-        if pe < 50:
-            s += 5
-        elif pe < 100:
-            s += 2
-
-    return int(max(0, min(100, round(s))))
+def score_signal(sig: Dict, m30: Optional[Dict], m5: Optional[Dict],
+                 metrics: Optional[Dict], weights: Optional[Dict]) -> int:
+    total, parts, why = scoring.score_signal(
+        m30, m5, metrics, sig.get("pe_dynamic"), sig.get("type") == "etf", weights
+    )
+    sig["factors"] = parts
+    sig["why"] = why
+    return total
 
 
 # --------------------------------------------------------------------------- #
@@ -148,6 +132,7 @@ def analyze_one(
     end: str,
     cache: Optional[ds.BarCache],
     cache_day: str,
+    ctx: Optional[Dict] = None,
 ) -> Tuple[Optional[Dict], str]:
     """返回 (信号字典 或 None, 跳过原因)。"""
     code = item["code"]
@@ -233,12 +218,16 @@ def analyze_one(
             "turnover": item.get("turnover"),
             "amount": item.get("amount"),
             "total_mv": item.get("total_mv"),
+            "industry": item.get("industry"),
             "m30": d30,
             "m5": d5,
             "resonance": bool(d30 and d5),
             "tags": tags,
         }
-        sig["score"] = score_signal(sig, d30, d5)
+        # P0 因子：量比 / 成交额分位 / 相对强度 / 行业强弱
+        metrics = factors.compute(bars30, ctx, item.get("industry_pct"))
+        sig["metrics"] = metrics
+        sig["score"] = score_signal(sig, d30, d5, metrics, cfg.get("scoring", {}).get("weights"))
         return sig, ""
     except ds.DataFetchError:
         return None, "数据获取失败"
@@ -430,6 +419,18 @@ def run(args) -> int:
         print("[err] 股票池为空，退出")
         return 2
 
+    # ---------- 1.5 P0 因子上下文（指数日线 1 次请求 + 行业分位本地算） ----------
+    ctx: Dict = {"index": factors.fetch_index_daily()}
+    if ctx["index"]:
+        print(f"[因子] 沪深300 日线 {len(ctx['index'])} 根（用于相对强度 RS）", flush=True)
+    else:
+        print("[warn] 沪深300 日线获取失败，RS 因子按 0 分处理", flush=True)
+    if not args.codes:
+        ip = factors.industry_percentiles(stocks)
+        for s in stocks:
+            s["industry_pct"] = ip.get(s.get("industry"))
+        print(f"[因子] 行业强弱分位：{len(ip)} 个行业", flush=True)
+
     # ---------- 2. 并发分析 ----------
     ds._log(f"[扫] 开始分析 {len(targets)} 只标的（并发 {cfg['concurrency']}）...")
     signals: List[Dict] = []
@@ -440,7 +441,7 @@ def run(args) -> int:
     with ThreadPoolExecutor(max_workers=int(cfg["concurrency"])) as pool:
         futs = {
             pool.submit(
-                analyze_one, item, is_etf, cfg, start30, start5, end, cache, cache_day
+                analyze_one, item, is_etf, cfg, start30, start5, end, cache, cache_day, ctx
             ): item
             for item, is_etf in targets
         }
@@ -488,6 +489,7 @@ def run(args) -> int:
             "levels": cfg["levels"],
             "break_tolerance": cfg["break_tolerance"],
             "etf_same_type_limit": cfg["etf"].get("same_type_limit", 1),
+            "scoring": {**{"weights": scoring.DEFAULT_WEIGHTS}, **(cfg.get("scoring") or {})},
         },
         "stats": {
             "scanned": len(targets),

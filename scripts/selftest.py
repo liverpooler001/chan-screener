@@ -221,6 +221,43 @@ def show(title, bars, **kw):
     return res
 
 
+def check_scoring():
+    """P0 评分与因子聚合的单元校验（不联网）。"""
+    import factors
+    import score as scoring
+
+    lines, ok = [], True
+    m30 = {"kind": "3", "bars_ago": 1}
+    m5 = {"kind": "3", "bars_ago": 2}
+    full = {"vol_ratio": 1.8, "amount_pct": 0.8, "rs5": 4.0, "rs20": 6.0, "industry_pct": 0.9}
+    total, parts, _ = scoring.score_signal(m30, m5, full, 20, False)
+    lines.append(f"  满分样例：总分 {total}（结构 {parts['structure']} / 资金 {parts['fund']} / "
+                 f"比价 {parts['relative']} / 质量 {parts['quality']}）")
+    if total != 100:
+        lines.append("  !! 满分样例应得 100 分"); ok = False
+
+    t2, p2, _ = scoring.score_signal(m30, None, {}, 150, False)
+    lines.append(f"  单级别 + 无资金比价：总分 {t2}（结构 {p2['structure']}）")
+    if not 0 < p2["structure"] < 45:
+        lines.append("  !! 单级别结构分应低于满分 45"); ok = False
+
+    _, p3, _ = scoring.score_signal(m30, None, {"industry_pct": None}, None, True)
+    lines.append(f"  ETF 无行业数据：比价 {p3['relative']}（应为中性 4）")
+    if p3["relative"] != 4:
+        lines.append("  !! ETF 行业中性分不对"); ok = False
+
+    bars = [
+        chan.RawBar(idx=i, dt="2026-01-05 10:00:00", open=10, high=10, low=10, close=10, volume=100)
+        for i in range(8)
+    ]
+    days = factors.daily_series(bars)
+    lines.append(f"  日线聚合：{len(days)} 天，成交量 {days[0]['vol'] if days else '—'}")
+    if len(days) != 1 or abs(days[0]["vol"] - 800) > 1e-6:
+        lines.append("  !! 日线聚合结果不对"); ok = False
+
+    return ok, lines
+
+
 def main():
     ok = True
 
@@ -256,6 +293,15 @@ def main():
     print(f"失效校验: {'仍有效 -> ' + str(buy5.label) if buy5 else '已失效（' + why5 + '）'}")
     if buy5 is not None and buy5.kind == "3":
         print("!! 用例5 误报：跌回中枢的三买仍被判为有效"); ok = False
+
+    print("=" * 74)
+    print("用例6：P0 评分（结构 45 / 资金 30 / 比价 20 / 质量 5）")
+    print("=" * 74)
+    sc_ok, sc_lines = check_scoring()
+    for ln in sc_lines:
+        print(ln)
+    if not sc_ok:
+        ok = False
 
     print("=" * 74)
     print("自检结果：", "全部通过" if ok else "存在失败用例")

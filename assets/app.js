@@ -76,6 +76,49 @@ function scoreColor(s) {
   return '#5b7cc4';
 }
 
+/* 评分构成：结构 / 资金 / 比价 / 质量 */
+const FAC_META = [
+  ['structure', '结构', 45, '#2b5cd9'],
+  ['fund', '资金', 30, '#e07a1f'],
+  ['relative', '比价', 20, '#7c3aed'],
+  ['quality', '质量', 5, '#0f9d58'],
+];
+
+function facCell(s, key, max) {
+  const f = s.factors;
+  if (!f || f[key] === undefined || f[key] === null) return '<span class="mut">—</span>';
+  const v = Number(f[key]);
+  const cls = v / max >= 0.66 ? 'strong' : v / max >= 0.33 ? 'mid' : 'weak';
+  return `<span class="facv ${cls}">${Math.round(v)}<small>/${max}</small></span>`;
+}
+
+function facRows(s) {
+  const f = s.factors;
+  if (!f) return '<p class="note">本期数据未包含因子明细（旧版数据）。</p>';
+  return FAC_META.map(([k, label, max, color]) => {
+    const v = Number(f[k] || 0);
+    const w = Math.max(0, Math.min(100, (v / max) * 100));
+    return `<div class="fac-row">
+      <span class="fac-k">${label}</span>
+      <span class="fac-bar"><i style="width:${w}%;background:${color}"></i></span>
+      <span class="fac-v">${v.toFixed(0)}<small>/${max}</small></span>
+    </div>`;
+  }).join('');
+}
+
+function metricsRow(s) {
+  const m = s.metrics || {};
+  const cell = (k, v) => `<span class="mtr-i"><em>${k}</em><b>${v}</b></span>`;
+  const items = [];
+  items.push(cell('量比', m.vol_ratio == null ? '—' : m.vol_ratio.toFixed(2)));
+  items.push(cell('额分位', m.amount_pct == null ? '—' : Math.round(m.amount_pct * 100) + '%'));
+  items.push(cell('5日RS', m.rs5 == null ? '—' : (m.rs5 > 0 ? '+' : '') + m.rs5.toFixed(1) + '%'));
+  items.push(cell('20日RS', m.rs20 == null ? '—' : (m.rs20 > 0 ? '+' : '') + m.rs20.toFixed(1) + '%'));
+  items.push(cell('行业', m.industry_pct == null ? '—'
+    : `${esc(s.industry || '')} · 前${Math.max(1, Math.round((1 - m.industry_pct) * 100))}%`));
+  return `<div class="mtr">${items.join('')}</div>`;
+}
+
 /* ------------------------------------------------------------------ */
 /* 过滤逻辑                                                            */
 /* ------------------------------------------------------------------ */
@@ -177,6 +220,8 @@ function renderTable(rows) {
         <td class="num">${s.pe_dynamic ? fmt(s.pe_dynamic, 1) : '—'}</td>
         <td>${bpBadge(s.m30, '30分')}</td>
         <td>${bpBadge(s.m5, '5分')}</td>
+        <td class="num fac-cell">${facCell(s, 'fund', 30)}</td>
+        <td class="num fac-cell">${facCell(s, 'relative', 20)}</td>
         <td>
           <div class="score-cell">
             <span class="score-num" style="color:${sc}">${s.score}</span>
@@ -355,9 +400,13 @@ function openDrawer(code) {
         <i style="width:${Math.min(100, s.score)}%;background:${sc}"></i>
       </div>
     </div>
+    <div class="fac-list">${facRows(s)}</div>
+    ${metricsRow(s)}
+    ${(s.why && s.why.length) ? `<div class="why-list">${s.why.map((w) => `<span class="why">${esc(w)}</span>`).join('')}</div>` : ''}
     <p class="note" style="margin-top:12px">
-      评分 = 买点类型（三买 &gt; 二买 &gt; 一买）+ 级别权重（30分 &gt; 5分）+ 双级别共振加分 + 信号新鲜度 + 市盈率合理性。
-      分数越高代表「结构更完整、信号更近」，<b>不代表上涨概率</b>。
+      评分 = <b>结构 45</b>（买点类型 · 级别权重 · 共振 · 新鲜度）+ <b>资金 30</b>（量比 · 成交额分位）
+      + <b>比价 20</b>（相对沪深300 的强弱 · 行业强弱分位）+ <b>质量 5</b>（市盈率）。
+      分数只用于<b>同一交易日内的排序</b>，不代表上涨概率。
     </p>
 
     <div class="sect-title">提示</div>

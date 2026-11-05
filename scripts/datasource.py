@@ -177,11 +177,11 @@ _CLIST_HOSTS = (
     "https://1.push2.eastmoney.com",
 )
 
-_SPOT_FIELDS = "f12,f14,f2,f3,f9,f23,f8,f6,f20,f21"
+_SPOT_FIELDS = "f12,f14,f2,f3,f9,f23,f8,f6,f20,f21,f100"
 _SPOT_KEYMAP = {
     "f12": "代码", "f14": "名称", "f2": "最新价", "f3": "涨跌幅",
     "f9": "市盈率-动态", "f23": "市净率", "f8": "换手率",
-    "f6": "成交额", "f20": "总市值", "f21": "流通市值",
+    "f6": "成交额", "f20": "总市值", "f21": "流通市值", "f100": "所属行业",
 }
 
 
@@ -218,10 +218,22 @@ def _fetch_spot_pages(fs: str, label: str, page_size: int = 100) -> List[Dict]:
             try:
                 r = session.get(f"{host}/api/qt/clist/get", params=params, timeout=15)
                 j = r.json()
-                data = (j.get("data") or {}).get("diff")
-                if data is not None:
-                    last_err = None
-                    break
+                node = j.get("data")
+                diff = (node or {}).get("diff")
+                if diff is None:
+                    # 翻过最后一页时东财返回 {"data": null}，不算失败
+                    if rows:
+                        diff = []
+                    else:
+                        raise ValueError("空响应")
+                data = diff
+                if isinstance(node, dict) and node.get("total"):
+                    try:
+                        total = int(node["total"])
+                    except (TypeError, ValueError):
+                        pass
+                last_err = None
+                break
             except Exception as e:  # noqa: BLE001
                 last_err = e
             time.sleep(0.5 * (2 ** min(attempt, 4)) + random.uniform(0, 0.4))
@@ -241,8 +253,6 @@ def _fetch_spot_pages(fs: str, label: str, page_size: int = 100) -> List[Dict]:
                 row[cn] = None if v in (None, "-", "") else v
             rows.append(row)
 
-        if total is None:
-            total = int(d.get("total") or 0) if isinstance(d, dict) else 0
         if pn % 10 == 0 or (total and pn * page_size >= total):
             got = len(rows)
             _log(f"  {label} 翻页 {pn} 页，累计 {got}/{total or '?'} 条")
@@ -458,6 +468,7 @@ def get_stock_universe(
     c_amt = _pick(df, "成交额")
     c_mv = _pick(df, "总市值")
     c_fmv = _pick(df, "流通市值")
+    c_ind = _pick(df, "所属行业")
 
     out: List[Dict] = []
     skipped = {"st": 0, "bse": 0, "pe": 0, "halt": 0, "amount": 0, "mv": 0}
@@ -507,6 +518,7 @@ def get_stock_universe(
                 "amount": amount,
                 "total_mv": mv,
                 "float_mv": _num(r[c_fmv]) if c_fmv else None,
+                "industry": (str(r[c_ind]).strip() if c_ind and r[c_ind] not in (None, "-", "") else None),
                 "market": market_of(code),
             }
         )
