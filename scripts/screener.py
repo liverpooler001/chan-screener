@@ -80,9 +80,9 @@ DEFAULT_CONFIG = {
         "zs_break_tol": 0.003,             # 三买回调需高于中枢上沿的缓冲比例
         "max_gain_from_buy_pct": 0.15,     # 现价距买点涨幅上限（追高过滤）
     },
-    # 评分权重（结构 / 资金 / 比价 / 质量，合计 100）
+    # 评分权重（结构 / 资金 / 比价，合计 100）
     "scoring": {
-        "weights": {"structure": 45, "fund": 30, "relative": 20, "quality": 5},
+        "weights": {"structure": 60, "fund": 25, "relative": 15},
     },
 }
 
@@ -109,13 +109,11 @@ def load_config(path: Optional[str]) -> dict:
 
 
 # --------------------------------------------------------------------------- #
-# 打分：结构 / 资金 / 比价 / 质量，具体实现见 score.py
+# 打分：结构 / 资金 / 比价，具体实现见 score.py
 # --------------------------------------------------------------------------- #
 def score_signal(sig: Dict, m30: Optional[Dict], m5: Optional[Dict],
                  metrics: Optional[Dict], weights: Optional[Dict]) -> int:
-    total, parts, why = scoring.score_signal(
-        m30, m5, metrics, sig.get("pe_dynamic"), sig.get("type") == "etf", weights
-    )
+    total, parts, why = scoring.score_signal(m30, m5, metrics, weights)
     sig["factors"] = parts
     sig["why"] = why
     return total
@@ -233,7 +231,7 @@ def analyze_one(
         metrics["industry_fund_pct"] = item.get("industry_fund_pct")
         sig["metrics"] = metrics
 
-        # P2 可买性：涨停买不进、冷票没流动性、偏离均线太远＝追高
+        # P2 可买性：涨停买不进、冷票没流动性
         flags: List[str] = []
         chg = item.get("change_pct")
         if chg is not None and float(chg) >= ds.limit_pct(code, is_etf) - 0.2:
@@ -241,9 +239,6 @@ def analyze_one(
         turn = item.get("turnover")
         if not is_etf and turn is not None and float(turn) < 1.0:
             flags.append("换手<1%")
-        dev = metrics.get("dev_ma20")
-        if dev is not None and dev > 15:
-            flags.append("偏离20日线 +%.0f%%" % dev)
         sig["flags"] = flags
         sig["tradable"] = not flags
         sig["score"] = score_signal(sig, d30, d5, metrics, cfg.get("scoring", {}).get("weights"))

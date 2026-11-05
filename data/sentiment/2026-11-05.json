@@ -1,19 +1,19 @@
 {
  "date": "2026-11-05",
- "level": "neutral",
- "level_cn": "中性",
- "score": 3,
- "advice": "情绪一般：只做高评分（≥75）且双级别共振的标的，控制单笔仓位，不追高。",
+ "level": "attack",
+ "level_cn": "进攻",
+ "score": 4,
+ "advice": "赚钱效应回暖：可按评分正常排序参与，优先双级别共振 + 资金流入的标的。",
  "metrics": {
-  "zt": 78,
-  "dt": 1,
-  "broken": 50,
-  "seal": 0.609,
+  "zt": 84,
+  "dt": 0,
+  "broken": 48,
+  "seal": 0.636,
   "max_lbc": 4,
-  "prev_premium": 4.03,
+  "prev_premium": 4.51,
   "prev_date": "2026-11-04",
   "index_above_ma20": false,
-  "index_dev": -0.58
+  "index_dev": -0.31
  },
  "missing": []
 }

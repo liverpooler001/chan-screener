@@ -77,12 +77,11 @@ function scoreColor(s) {
   return '#5b7cc4';
 }
 
-/* 评分构成：结构 / 资金 / 比价 / 质量 */
+/* 评分构成：结构 / 资金 / 比价 */
 const FAC_META = [
-  ['structure', '结构', 40, '#2b5cd9'],
-  ['fund', '资金', 40, '#e07a1f'],
+  ['structure', '结构', 60, '#2b5cd9'],
+  ['fund', '资金', 25, '#e07a1f'],
   ['relative', '比价', 15, '#7c3aed'],
-  ['quality', '质量', 5, '#0f9d58'],
 ];
 
 /* 当日主力净流入占比（东财口径：超大单 + 大单），正红负绿 */
@@ -265,7 +264,7 @@ function renderTable(rows) {
         <td>${bpBadge(s.m30, '30分')}</td>
         <td>${bpBadge(s.m5, '5分')}</td>
         <td class="num main-cell">${mainCell(s)}</td>
-        <td class="num fac-cell">${facCell(s, 'fund', 40)}</td>
+        <td class="num fac-cell">${facCell(s, 'fund', 25)}</td>
         <td class="num fac-cell">${facCell(s, 'relative', 15)}</td>
         <td>
           <div class="score-cell">
@@ -451,9 +450,9 @@ function openDrawer(code) {
     ${metricsRow(s)}
     ${(s.why && s.why.length) ? `<div class="why-list">${s.why.map((w) => `<span class="why">${esc(w)}</span>`).join('')}</div>` : ''}
     <p class="note" style="margin-top:12px">
-      评分 = <b>结构 40</b>（买点类型 · 级别权重 · 共振 · 新鲜度）
-      + <b>资金 40</b>（主力净流入 · 5日主力 · 量比 · 成交额分位 · 行业资金排名）
-      + <b>比价 15</b>（相对沪深300 的强弱 · 行业强弱分位）+ <b>质量 5</b>（市盈率）。
+      评分 = <b>结构 60</b>（买点类型 · 级别权重 · 共振 · 新鲜度）
+      + <b>资金 25</b>（主力净流入 · 5日主力 · 量比 · 成交额分位 · 行业资金排名）
+      + <b>比价 15</b>（相对沪深300 的强弱 · 行业强弱分位）。
       分数只用于<b>同一交易日内的排序</b>，不代表上涨概率。
     </p>
 

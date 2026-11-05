@@ -68,7 +68,7 @@ def compute(bars, ctx: Optional[Dict] = None, industry_pct: Optional[float] = No
     out = {
         "vol_ratio": None,     # 量比
         "amount_pct": None,    # 成交额分位 0~1
-        "dev_ma20": None,      # 收盘价偏离 20 日均线（%），用于追高过滤
+        "dev_ma20": None,      # 收盘价偏离 20 日均线（%），仅记录，不参与评分/过滤
         "ret5": None,
         "ret20": None,
         "rs5": None,

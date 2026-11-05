@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-"""评分：结构 40 + 资金 40 + 比价 15 + 质量 5 = 100（P1 起含主力资金流）。
+"""评分：结构 60 + 资金 25 + 比价 15 = 100。
 
-    结构 structure  买点类型 / 级别权重 / 双级别共振 / 信号新鲜度（原评分归一化到 40）
+    结构 structure  买点类型 / 级别权重 / 双级别共振 / 信号新鲜度（原始 0~99 → 60）
     资金 fund       量比 8 + 成交额分位 8 + 当日主力净占比 12 + 5日主力净占比 7
-                    + 所属行业板块主力资金排名 5
-    比价 relative   RS5 6 + RS20 4 + 行业涨幅强弱分位 5
-    质量 quality    动态市盈率合理性 5
+                    + 所属行业板块主力资金排名 5（原始 0~40 → 25）
+    比价 relative   RS5 6 + RS20 4 + 行业涨幅强弱分位 5（原始 0~15 → 15）
 
-分数只用于「同一交易日内的排序」，不等于上涨概率。
-阈值集中在本文件顶部，权重从 config.yaml 的 scoring.weights 读取；
-把 fund 里各项调成 0、structure 调成 80 即可退回 P0 之前的纯结构排序。
+「质量（动态市盈率）」已移除：不做估值偏好，纯看结构 + 资金 + 比价。
+分数只用于「同一交易日内的排序」，不等于上涨概率。权重从 config.yaml 的
+scoring.weights 读取；内部各项阈值仍按原始满分口径，最后按权重等比缩放。
 """
 from __future__ import annotations
 
@@ -18,6 +17,10 @@ from typing import Dict, Optional, Tuple
 # ---------------- 结构 ----------------
 KIND_SCORE = {"3": 40, "2": 34, "1": 30}   # 三买 > 二买 > 一买
 STRUCT_RAW_MAX = 99.0                      # 40 + 34 + 15(共振) + 10(新鲜度)
+
+# ---------------- 资金 / 比价：原始满分（再按权重缩放） ----------------
+FUND_RAW_MAX = 40.0                        # 12 + 7 + 8 + 8 + 5
+REL_RAW_MAX = 15.0                         # 6 + 4 + 5
 
 # ---------------- 阈值 ----------------
 VOL_RATIO = ((1.5, 8), (1.2, 5), (1.0, 3))            # 量比 → 分
@@ -31,7 +34,7 @@ INDUSTRY_PCT = ((0.80, 5), (0.60, 3), (0.40, 1))      # 行业涨幅分位 → �
 INDUSTRY_NEUTRAL = 3                                   # ETF / 缺行业数据时给中性分
 IND_FUND_NEUTRAL = 2                                   # 同上，行业资金中性分
 
-DEFAULT_WEIGHTS = {"structure": 40, "fund": 40, "relative": 15, "quality": 5}
+DEFAULT_WEIGHTS = {"structure": 60, "fund": 25, "relative": 15}
 
 
 def _step(value: Optional[float], table) -> int:
@@ -63,51 +66,41 @@ def score_signal(
     m30: Optional[Dict],
     m5: Optional[Dict],
     metrics: Optional[Dict],
-    pe: Optional[float],
-    is_etf: bool,
     weights: Optional[Dict] = None,
 ) -> Tuple[int, Dict, list]:
     """返回 (总分, 各维度得分, 文字理由)。"""
     w = dict(DEFAULT_WEIGHTS)
     if weights:
-        w.update({k: v for k, v in weights.items() if isinstance(v, (int, float))})
+        w.update({k: v for k, v in weights.items() if k in DEFAULT_WEIGHTS
+                  and isinstance(v, (int, float))})
     metrics = metrics or {}
 
-    # ---- 结构 ----
+    # ---- 结构（原始 0~99 → 结构权重）----
     raw, fresh = structure_raw(m30, m5)
     structure = raw / STRUCT_RAW_MAX * w["structure"]
 
-    # ---- 资金 ----
+    # ---- 资金（原始 0~40 → 资金权重）----
     vr = metrics.get("vol_ratio")
     ap = metrics.get("amount_pct")
     mp = metrics.get("main_pct")
     m5p = metrics.get("main_5d_pct")
     ifp = metrics.get("industry_fund_pct")
-    fund = _step(vr, VOL_RATIO) + _step(ap, AMOUNT_PCT)
-    fund += _step(mp, MAIN_PCT) + _step(m5p, MAIN_5D)
-    fund += _step(ifp, IND_FUND_PCT) if ifp is not None else IND_FUND_NEUTRAL
+    fund_raw = _step(vr, VOL_RATIO) + _step(ap, AMOUNT_PCT)
+    fund_raw += _step(mp, MAIN_PCT) + _step(m5p, MAIN_5D)
+    fund_raw += _step(ifp, IND_FUND_PCT) if ifp is not None else IND_FUND_NEUTRAL
+    fund = fund_raw / FUND_RAW_MAX * w["fund"]
 
-    # ---- 比价 ----
+    # ---- 比价（原始 0~15 → 比价权重）----
     rs5, rs20 = metrics.get("rs5"), metrics.get("rs20")
     ip = metrics.get("industry_pct")
-    relative = _step(rs5, RS5) + _step(rs20, RS20)
-    relative += _step(ip, INDUSTRY_PCT) if ip is not None else INDUSTRY_NEUTRAL
-
-    # ---- 质量 ----
-    if is_etf:
-        quality = w["quality"]
-    elif pe and pe < 50:
-        quality = w["quality"]
-    elif pe and pe < 100:
-        quality = round(w["quality"] * 0.6, 1)
-    else:
-        quality = 0
+    rel_raw = _step(rs5, RS5) + _step(rs20, RS20)
+    rel_raw += _step(ip, INDUSTRY_PCT) if ip is not None else INDUSTRY_NEUTRAL
+    relative = rel_raw / REL_RAW_MAX * w["relative"]
 
     parts = {
         "structure": round(structure, 1),
         "fund": round(fund, 1),
         "relative": round(relative, 1),
-        "quality": round(quality, 1),
     }
     total = int(round(max(0, min(100, sum(parts.values())))))
 

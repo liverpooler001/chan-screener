@@ -234,29 +234,31 @@ def check_scoring():
         "main_pct": 15.0, "main_5d_pct": 10.0, "industry_fund_pct": 0.9,
         "rs5": 4.0, "rs20": 6.0, "industry_pct": 0.9,
     }
-    total, parts, _ = scoring.score_signal(m30, m5, full, 20, False)
+    total, parts, _ = scoring.score_signal(m30, m5, full)
     lines.append(f"  满分样例：总分 {total}（结构 {parts['structure']} / 资金 {parts['fund']} / "
-                 f"比价 {parts['relative']} / 质量 {parts['quality']}）")
+                 f"比价 {parts['relative']}）")
     if total != 100:
         lines.append("  !! 满分样例应得 100 分"); ok = False
 
-    t2, p2, _ = scoring.score_signal(m30, None, {}, 150, False)
+    t2, p2, _ = scoring.score_signal(m30, None, {})
     lines.append(f"  单级别 + 无资金比价：总分 {t2}（结构 {p2['structure']}）")
-    if not 0 < p2["structure"] < 40:
-        lines.append("  !! 单级别结构分应低于满分 40"); ok = False
+    if not 0 < p2["structure"] < 60:
+        lines.append("  !! 单级别结构分应低于满分 60"); ok = False
 
     # 资金流反向：主力大幅流出不能拿分，且总分应显著低于满分样例
     out = {"vol_ratio": 1.8, "amount_pct": 0.8, "main_pct": -8.0,
            "main_5d_pct": -6.0, "industry_fund_pct": 0.9}
-    t3, p3, _ = scoring.score_signal(m30, m5, out, 20, False)
-    lines.append(f"  主力流出样例：总分 {t3}（资金 {p3['fund']} / 40，满分样例同结构）")
-    if p3["fund"] >= 40 or t3 >= 100:
+    t3, p3, _ = scoring.score_signal(m30, m5, out)
+    lines.append(f"  主力流出样例：总分 {t3}（资金 {p3['fund']} / 25，满分样例同结构）")
+    if p3["fund"] >= 25 or t3 >= 100:
         lines.append("  !! 主力资金为负不应拿满分"); ok = False
 
-    _, p4, _ = scoring.score_signal(m30, None, {"industry_pct": None}, None, True)
-    lines.append(f"  ETF 无行业数据：比价 {p4['relative']}、资金 {p4['fund']}（应为中性 3 / 2）")
-    if p4["relative"] != scoring.INDUSTRY_NEUTRAL or p4["fund"] != scoring.IND_FUND_NEUTRAL:
-        lines.append("  !! ETF 行业中性分不对"); ok = False
+    _, p4, _ = scoring.score_signal(m30, None, {"industry_pct": None})
+    lines.append(f"  ETF 无行业数据：比价 {p4['relative']}、资金 {p4['fund']}（应为中性 3 / 1.2~1.3）")
+    if p4["relative"] != scoring.INDUSTRY_NEUTRAL:
+        lines.append("  !! 行业中性分不对"); ok = False
+    if not 1.0 <= p4["fund"] <= 1.6:
+        lines.append("  !! 行业资金中性分不对"); ok = False
 
     bars = [
         chan.RawBar(idx=i, dt="2026-01-05 10:00:00", open=10, high=10, low=10, close=10, volume=100)
@@ -338,7 +340,7 @@ def main():
         print("!! 用例5 误报：跌回中枢的三买仍被判为有效"); ok = False
 
     print("=" * 74)
-    print("用例6：评分（结构 40 / 资金 40 / 比价 15 / 质量 5）")
+    print("用例6：评分（结构 60 / 资金 25 / 比价 15）")
     print("=" * 74)
     sc_ok, sc_lines = check_scoring()
     for ln in sc_lines:
