@@ -177,11 +177,14 @@ _CLIST_HOSTS = (
     "https://1.push2.eastmoney.com",
 )
 
-_SPOT_FIELDS = "f12,f14,f2,f3,f9,f23,f8,f6,f20,f21,f100"
+_SPOT_FIELDS = "f12,f14,f2,f3,f9,f23,f8,f6,f20,f21,f100,f62,f184,f164,f165"
 _SPOT_KEYMAP = {
     "f12": "代码", "f14": "名称", "f2": "最新价", "f3": "涨跌幅",
     "f9": "市盈率-动态", "f23": "市净率", "f8": "换手率",
     "f6": "成交额", "f20": "总市值", "f21": "流通市值", "f100": "所属行业",
+    # 资金流（P1）：东财口径「主力」= 超大单 + 大单
+    "f62": "主力净额", "f184": "主力净占比",
+    "f164": "5日主力净额", "f165": "5日主力净占比",
 }
 
 
@@ -469,6 +472,9 @@ def get_stock_universe(
     c_mv = _pick(df, "总市值")
     c_fmv = _pick(df, "流通市值")
     c_ind = _pick(df, "所属行业")
+    c_mnet = _pick(df, "主力净额")
+    c_mpct = _pick(df, "主力净占比")
+    c_m5pct = _pick(df, "5日主力净占比")
 
     out: List[Dict] = []
     skipped = {"st": 0, "bse": 0, "pe": 0, "halt": 0, "amount": 0, "mv": 0}
@@ -519,6 +525,9 @@ def get_stock_universe(
                 "total_mv": mv,
                 "float_mv": _num(r[c_fmv]) if c_fmv else None,
                 "industry": (str(r[c_ind]).strip() if c_ind and r[c_ind] not in (None, "-", "") else None),
+                "main_net": _num(r[c_mnet]) if c_mnet else None,
+                "main_pct": _num(r[c_mpct]) if c_mpct else None,
+                "main_5d_pct": _num(r[c_m5pct]) if c_m5pct else None,
                 "market": market_of(code),
             }
         )
@@ -562,6 +571,9 @@ def get_etf_universe(exclude_st: bool = True, min_amount: float = 0.0) -> List[D
     c_chg = _pick(df, "涨跌幅")
     c_amt = _pick(df, "成交额")
     c_mv = _pick(df, "总市值", "流通市值")
+    c_mnet = _pick(df, "主力净额")
+    c_mpct = _pick(df, "主力净占比")
+    c_m5pct = _pick(df, "5日主力净占比")
 
     out: List[Dict] = []
     for _, r in df.iterrows():
@@ -588,6 +600,10 @@ def get_etf_universe(exclude_st: bool = True, min_amount: float = 0.0) -> List[D
                 "amount": amount,
                 "total_mv": _num(r[c_mv]) if c_mv else None,
                 "float_mv": None,
+                "industry": None,        # ETF 无行业归属
+                "main_net": _num(r[c_mnet]) if c_mnet else None,
+                "main_pct": _num(r[c_mpct]) if c_mpct else None,
+                "main_5d_pct": _num(r[c_m5pct]) if c_m5pct else None,
                 "market": "ETF",
             }
         )

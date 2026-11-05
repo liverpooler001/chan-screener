@@ -224,8 +224,12 @@ def analyze_one(
             "resonance": bool(d30 and d5),
             "tags": tags,
         }
-        # P0 因子：量比 / 成交额分位 / 相对强度 / 行业强弱
+        # 因子：量比 / 成交额分位 / 相对强度 / 行业强弱 / 主力资金流
         metrics = factors.compute(bars30, ctx, item.get("industry_pct"))
+        metrics["main_net"] = item.get("main_net")
+        metrics["main_pct"] = item.get("main_pct")
+        metrics["main_5d_pct"] = item.get("main_5d_pct")
+        metrics["industry_fund_pct"] = item.get("industry_fund_pct")
         sig["metrics"] = metrics
         sig["score"] = score_signal(sig, d30, d5, metrics, cfg.get("scoring", {}).get("weights"))
         return sig, ""
@@ -430,6 +434,16 @@ def run(args) -> int:
         for s in stocks:
             s["industry_pct"] = ip.get(s.get("industry"))
         print(f"[因子] 行业强弱分位：{len(ip)} 个行业", flush=True)
+
+        # P1：行业板块主力资金流（1 次请求，多页），失败按中性处理
+        board = factors.fetch_industry_fund()
+        if board:
+            fp = factors.industry_fund_percentiles(stocks, board)
+            for s in stocks:
+                s["industry_fund_pct"] = fp.get(s.get("industry"))
+            print(f"[因子] 行业资金流：{len(board)} 个板块，池内 {len(fp)} 个行业有排名", flush=True)
+        else:
+            print("[warn] 板块资金流获取失败，行业资金因子按中性处理", flush=True)
 
     # ---------- 2. 并发分析 ----------
     ds._log(f"[扫] 开始分析 {len(targets)} 只标的（并发 {cfg['concurrency']}）...")

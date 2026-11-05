@@ -222,14 +222,18 @@ def show(title, bars, **kw):
 
 
 def check_scoring():
-    """P0 评分与因子聚合的单元校验（不联网）。"""
+    """评分与因子聚合的单元校验（不联网）。"""
     import factors
     import score as scoring
 
     lines, ok = [], True
     m30 = {"kind": "3", "bars_ago": 1}
     m5 = {"kind": "3", "bars_ago": 2}
-    full = {"vol_ratio": 1.8, "amount_pct": 0.8, "rs5": 4.0, "rs20": 6.0, "industry_pct": 0.9}
+    full = {
+        "vol_ratio": 1.8, "amount_pct": 0.8,
+        "main_pct": 15.0, "main_5d_pct": 10.0, "industry_fund_pct": 0.9,
+        "rs5": 4.0, "rs20": 6.0, "industry_pct": 0.9,
+    }
     total, parts, _ = scoring.score_signal(m30, m5, full, 20, False)
     lines.append(f"  满分样例：总分 {total}（结构 {parts['structure']} / 资金 {parts['fund']} / "
                  f"比价 {parts['relative']} / 质量 {parts['quality']}）")
@@ -238,12 +242,20 @@ def check_scoring():
 
     t2, p2, _ = scoring.score_signal(m30, None, {}, 150, False)
     lines.append(f"  单级别 + 无资金比价：总分 {t2}（结构 {p2['structure']}）")
-    if not 0 < p2["structure"] < 45:
-        lines.append("  !! 单级别结构分应低于满分 45"); ok = False
+    if not 0 < p2["structure"] < 40:
+        lines.append("  !! 单级别结构分应低于满分 40"); ok = False
 
-    _, p3, _ = scoring.score_signal(m30, None, {"industry_pct": None}, None, True)
-    lines.append(f"  ETF 无行业数据：比价 {p3['relative']}（应为中性 4）")
-    if p3["relative"] != 4:
+    # 资金流反向：主力大幅流出不能拿分，且总分应显著低于满分样例
+    out = {"vol_ratio": 1.8, "amount_pct": 0.8, "main_pct": -8.0,
+           "main_5d_pct": -6.0, "industry_fund_pct": 0.9}
+    t3, p3, _ = scoring.score_signal(m30, m5, out, 20, False)
+    lines.append(f"  主力流出样例：总分 {t3}（资金 {p3['fund']} / 40，满分样例同结构）")
+    if p3["fund"] >= 40 or t3 >= 100:
+        lines.append("  !! 主力资金为负不应拿满分"); ok = False
+
+    _, p4, _ = scoring.score_signal(m30, None, {"industry_pct": None}, None, True)
+    lines.append(f"  ETF 无行业数据：比价 {p4['relative']}、资金 {p4['fund']}（应为中性 3 / 2）")
+    if p4["relative"] != scoring.INDUSTRY_NEUTRAL or p4["fund"] != scoring.IND_FUND_NEUTRAL:
         lines.append("  !! ETF 行业中性分不对"); ok = False
 
     bars = [

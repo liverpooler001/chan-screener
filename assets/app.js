@@ -78,11 +78,20 @@ function scoreColor(s) {
 
 /* 评分构成：结构 / 资金 / 比价 / 质量 */
 const FAC_META = [
-  ['structure', '结构', 45, '#2b5cd9'],
-  ['fund', '资金', 30, '#e07a1f'],
-  ['relative', '比价', 20, '#7c3aed'],
+  ['structure', '结构', 40, '#2b5cd9'],
+  ['fund', '资金', 40, '#e07a1f'],
+  ['relative', '比价', 15, '#7c3aed'],
   ['quality', '质量', 5, '#0f9d58'],
 ];
+
+/* 当日主力净流入占比（东财口径：超大单 + 大单），正红负绿 */
+function mainCell(s) {
+  const m = s.metrics || {};
+  const v = m.main_pct;
+  if (v === null || v === undefined) return '<span class="mut">—</span>';
+  const n = Number(v);
+  return `<span class="${pctClass(n)}">${n > 0 ? '+' : ''}${n.toFixed(1)}%</span>`;
+}
 
 function facCell(s, key, max) {
   const f = s.factors;
@@ -110,12 +119,18 @@ function metricsRow(s) {
   const m = s.metrics || {};
   const cell = (k, v) => `<span class="mtr-i"><em>${k}</em><b>${v}</b></span>`;
   const items = [];
+  items.push(cell('主力净流入', m.main_pct == null ? '—'
+    : `${m.main_pct > 0 ? '+' : ''}${m.main_pct.toFixed(1)}%`));
+  items.push(cell('5日主力', m.main_5d_pct == null ? '—'
+    : `${m.main_5d_pct > 0 ? '+' : ''}${m.main_5d_pct.toFixed(1)}%`));
   items.push(cell('量比', m.vol_ratio == null ? '—' : m.vol_ratio.toFixed(2)));
   items.push(cell('额分位', m.amount_pct == null ? '—' : Math.round(m.amount_pct * 100) + '%'));
   items.push(cell('5日RS', m.rs5 == null ? '—' : (m.rs5 > 0 ? '+' : '') + m.rs5.toFixed(1) + '%'));
   items.push(cell('20日RS', m.rs20 == null ? '—' : (m.rs20 > 0 ? '+' : '') + m.rs20.toFixed(1) + '%'));
   items.push(cell('行业', m.industry_pct == null ? '—'
     : `${esc(s.industry || '')} · 前${Math.max(1, Math.round((1 - m.industry_pct) * 100))}%`));
+  items.push(cell('行业资金', m.industry_fund_pct == null ? '—'
+    : `前${Math.max(1, Math.round((1 - m.industry_fund_pct) * 100))}%`));
   return `<div class="mtr">${items.join('')}</div>`;
 }
 
@@ -220,8 +235,9 @@ function renderTable(rows) {
         <td class="num">${s.pe_dynamic ? fmt(s.pe_dynamic, 1) : '—'}</td>
         <td>${bpBadge(s.m30, '30分')}</td>
         <td>${bpBadge(s.m5, '5分')}</td>
-        <td class="num fac-cell">${facCell(s, 'fund', 30)}</td>
-        <td class="num fac-cell">${facCell(s, 'relative', 20)}</td>
+        <td class="num main-cell">${mainCell(s)}</td>
+        <td class="num fac-cell">${facCell(s, 'fund', 40)}</td>
+        <td class="num fac-cell">${facCell(s, 'relative', 15)}</td>
         <td>
           <div class="score-cell">
             <span class="score-num" style="color:${sc}">${s.score}</span>
@@ -404,8 +420,9 @@ function openDrawer(code) {
     ${metricsRow(s)}
     ${(s.why && s.why.length) ? `<div class="why-list">${s.why.map((w) => `<span class="why">${esc(w)}</span>`).join('')}</div>` : ''}
     <p class="note" style="margin-top:12px">
-      评分 = <b>结构 45</b>（买点类型 · 级别权重 · 共振 · 新鲜度）+ <b>资金 30</b>（量比 · 成交额分位）
-      + <b>比价 20</b>（相对沪深300 的强弱 · 行业强弱分位）+ <b>质量 5</b>（市盈率）。
+      评分 = <b>结构 40</b>（买点类型 · 级别权重 · 共振 · 新鲜度）
+      + <b>资金 40</b>（主力净流入 · 5日主力 · 量比 · 成交额分位 · 行业资金排名）
+      + <b>比价 15</b>（相对沪深300 的强弱 · 行业强弱分位）+ <b>质量 5</b>（市盈率）。
       分数只用于<b>同一交易日内的排序</b>，不代表上涨概率。
     </p>
 

@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
-"""P0 因子：量比 / 成交额分位 / 相对强度 RS / 行业强弱分位。
+"""多因子原始值：P0（量比 / 成交额分位 / RS / 行业强弱）+ P1（主力资金流）。
 
 设计原则：**不新增逐标的的网络请求**。
 量比、成交额分位、涨跌幅都可以从「已经下载好的 30 分钟 K 线」按日聚合得到；
-只有沪深300 指数日线需要一次额外请求（全流程 1 次）。
+沪深300 指数日线 1 次请求；主力资金流随快照字段一起来，板块资金流 1 次请求。
 
 口径：
     量比      = 今日成交量 / 前 5 个交易日均量
     成交额分位 = 今日成交额在近 60 个交易日中的分位（1 = 最大）
     RS(n)     = 个股 n 日涨幅 − 沪深300 n 日涨幅
     行业分位   = 所属行业当日平均涨幅，在所有行业中的分位（1 = 最强）
+    主力净占比 = 东财「主力（超大单+大单）」净流入 / 成交额（快照 f184）
+    5日主力   = 近 5 日主力净流入占比（快照 f165）
+    行业资金分位 = 所属行业板块主力净占比排名（1 = 最强）
 """
 from __future__ import annotations
 
@@ -120,6 +123,76 @@ def industry_percentiles(stocks: List[Dict]) -> Dict[str, float]:
     means = sorted(((k, sum(v) / len(v)) for k, v in grp.items()), key=lambda kv: kv[1])
     n = len(means)
     return {k: round((i + 1) / n, 3) for i, (k, _) in enumerate(means)}
+
+
+# --------------------------------------------------------------------------- #
+# 行业板块资金流（P1，全流程只请求一次，板块级不是个股级）
+# --------------------------------------------------------------------------- #
+EM_CLIST = "https://push2.eastmoney.com/api/qt/clist/get"
+_SECTOR_FS = "m:90 t:2"          # 东财行业板块（含一/二/三级，约 500 个）
+_SECTOR_FIELDS = "f12,f14,f3,f62,f184"
+
+
+def fetch_industry_fund(tries: int = 3, max_pages: int = 8) -> Dict[str, Dict]:
+    """行业板块当日主力资金流 → {行业名: {net: 净额(元), pct: 净占比(%), chg: 涨幅}}。
+
+    用板块接口一次拿全（不是逐行业请求），失败返回空字典由调用方按中性处理。
+    """
+    import time as _t
+
+    for i in range(tries):
+        out: Dict[str, Dict] = {}
+        try:
+            for pn in range(1, max_pages + 1):
+                params = {
+                    "pn": pn, "pz": 100, "po": 1, "np": 1,
+                    "ut": "bd1d9ddb04089700cf9c27f6f7426281",
+                    "fltt": 2, "invt": 2, "fid": "f62",
+                    "fs": _SECTOR_FS, "fields": _SECTOR_FIELDS,
+                }
+                r = requests.get(EM_CLIST, params=params, headers=UA, timeout=15)
+                diff = ((r.json() or {}).get("data") or {}).get("diff") or []
+                if not diff:
+                    break
+                for x in diff:
+                    name = x.get("f14")
+                    if not name:
+                        continue
+                    out[name] = {
+                        "net": x.get("f62"),
+                        "pct": x.get("f184"),
+                        "chg": x.get("f3"),
+                    }
+                if len(diff) < 100:
+                    break
+            if out:
+                return out
+        except Exception:  # noqa: BLE001
+            pass
+        if i + 1 < tries:
+            _t.sleep(1.5 * (i + 1))
+    return {}
+
+
+def industry_fund_percentiles(stocks: List[Dict], board_fund: Dict[str, Dict]) -> Dict[str, float]:
+    """在「本池出现过的行业」范围内按主力净占比排名，1 = 最强。
+
+    只在本池行业内比较（而不是在全市场 500 个板块里比），避免分级行业
+    （如「半导体设备」与「半导体」）互相稀释。
+    """
+    vals = []
+    for ind in {s.get("industry") for s in stocks if s.get("industry")}:
+        node = board_fund.get(ind) or {}
+        v = node.get("pct")
+        if v is None:
+            v = node.get("net")
+        if v is not None:
+            vals.append((ind, float(v)))
+    if not vals:
+        return {}
+    vals.sort(key=lambda kv: kv[1])
+    n = len(vals)
+    return {k: round((i + 1) / n, 3) for i, (k, _) in enumerate(vals)}
 
 
 # --------------------------------------------------------------------------- #
