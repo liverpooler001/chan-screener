@@ -1,9 +1,9 @@
 {
  "date": "2026-11-06",
- "level": "shrink",
- "level_cn": "收缩",
- "score": -3,
- "advice": "亏钱效应明显：建议轻仓或空仓观望，等涨停家数回升、昨日涨停转正再考虑进场。",
+ "level": "neutral",
+ "level_cn": "中性",
+ "score": -2,
+ "advice": "情绪一般：只做高评分（≥75）且双级别共振的标的，控制单笔仓位，不追高。",
  "metrics": {
   "zt": 32,
   "dt": 15,
@@ -12,8 +12,10 @@
   "max_lbc": 5,
   "prev_premium": -0.35,
   "prev_date": "2026-11-05",
-  "index_above_ma20": false,
-  "index_dev": -1.42
+  "index_above_ma20": null,
+  "index_dev": null
  },
- "missing": []
+ "missing": [
+  "指数20日线"
+ ]
 }
